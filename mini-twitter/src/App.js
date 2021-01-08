@@ -6,27 +6,29 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import Home from './components/Home';
+import News from './components/News';
+import Search from './components/Search';
+import FavesTweets from './components/Faves-tweets';
+
 
 class App extends Component {
-  render(){
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={''} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  render() {
+    return (
+      <Router>
+        <div className="App">
+            <Link to='/'>Home</Link> {' || '}
+            <Link to='/news'>News</Link> {' || '}
+            <Link to='/search'>Search</Link> {' || '}
+            <Link to='/favesTweets'>FavesTweets</Link>
+
+            <Route exact path='/' component={Home} />
+            <Route path='/news' component={News} />
+            <Route path='/search' component={Search} />
+            <Route path='/favesTweets' component={FavesTweets} />
+        </div>
+      </Router>
+    );
   }
 }
 
