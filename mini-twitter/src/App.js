@@ -15,6 +15,7 @@ import Tab from 'react-bootstrap/Tab'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Nav from 'react-bootstrap/Nav'
+import 'font-awesome/css/font-awesome.min.css';
 
 
 class App extends Component {
@@ -32,16 +33,16 @@ class App extends Component {
               <Col sm={3}>
                 <Nav variant="pills" className="flex-column">
                   <Nav.Item>
-                    <Nav.Link as={Link} to="/" eventKey="Home" >Home</Nav.Link>
+                    <Nav.Link as={Link} to="/" eventKey="Home" ><i class="fa fa-home"></i>{'  '}Home</Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
-                    <Nav.Link as={Link} to="/news" eventKey="News" >News</Nav.Link>
+                    <Nav.Link as={Link} to="/news" eventKey="News" ><i class="fa fa-newspaper"></i>{'  '}News</Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
-                    <Nav.Link as={Link} to="/favesTweets" eventKey="favesTweets">favesTweets</Nav.Link>
+                    <Nav.Link as={Link} to="/favesTweets" eventKey="favesTweets"><i class="fa fa-star"></i>{'  '}favesTweets</Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
-                    <Nav.Link as={Link} to="/search" eventKey="search">search</Nav.Link>
+                    <Nav.Link as={Link} to="/search" eventKey="search"><i class="fa fa-search"></i>{'  '}search</Nav.Link>
                   </Nav.Item>
                 </Nav>
               </Col>
