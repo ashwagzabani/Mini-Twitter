@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import TwitterDB from '../TwitterDB'
-import '../comonents-style/TweetRow.css'
+import '../comonents-style/Tweet-row.css'
 class TweetRow extends Component {
     render() {
         return (
