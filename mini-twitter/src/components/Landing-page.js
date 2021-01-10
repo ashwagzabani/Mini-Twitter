@@ -6,24 +6,26 @@ import {
     Route,
     Link
 } from "react-router-dom";
-import Home from './Home'
+import RegisterForm from './Register-form'
 
 class LandingPage extends Component {
     render() {
         return (
-            <div className="LandingPage">
-                <Jumbotron>
-                    <h1>Welcom to mini-twitter</h1>
-                    <p>
-                        Join to a simple social now, enjoy writing your tweets and share it with others.
+            <Router>
+                <div className="LandingPage">
+                    <Jumbotron>
+                        <h1>Welcom to mini-twitter</h1>
+                        <p>
+                            Join to a simple social now, enjoy writing your tweets and share it with others.
                     </p>
-                    <p>
-                        <Button variant="primary" as={Link} to="/home">Join Now</Button>
-                    </p>
-                </Jumbotron>
-                <Route exact path='/home' component={Home} />
+                        <p>
+                            <Button variant="primary" as={Link} to="/register">Join Now</Button>
+                        </p>
+                    </Jumbotron>
+                    <Route exact path='/register' component={RegisterForm} />
 
-            </div>
+                </div>
+            </Router>
         );
     }
 }

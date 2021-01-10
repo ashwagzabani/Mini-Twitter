@@ -32,6 +32,12 @@ import TwitterDB from './TwitterDB'
 import LandingPage from './components/Landing-page';
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      loggedInUser: ""
+    }
+  }
   render() {
     //pop up message 
     const popover = (
@@ -67,7 +73,7 @@ class App extends Component {
           <Tab.Container id="left-tabs-example" defaultActiveKey="Home">
             <Row>
               <Col sm={3}>
-                <Nav variant="pills" className="flex-column">
+                {/* <Nav variant="pills" className="flex-column">
                   <Nav.Item>
                     <Nav.Link as={Link} to="/home" eventKey="Home" ><i className="fa fa-home"></i>{'  '}Home</Nav.Link>
                   </Nav.Item>
@@ -80,7 +86,7 @@ class App extends Component {
                   <Nav.Item>
                     <Nav.Link as={Link} to="/search" eventKey="search"><i className="fa fa-search"></i>{'  '}search</Nav.Link>
                   </Nav.Item>
-                </Nav>
+                </Nav> */}
               </Col>
               <Col sm={9}>
                 <Tab.Content>
@@ -90,7 +96,7 @@ class App extends Component {
                   <Tab.Pane eventKey="second">
                     <Route path='/news' component={News} />
                   </Tab.Pane> */}
-                  <Route exact path='/home' component={Home} />
+                  <Route path='/home' component={Home} />
                   <Route path='/news' component={News} />
                   <Route path='/search' component={Search} />
                   <Route path='/favesTweets' component={FavesTweets} />
