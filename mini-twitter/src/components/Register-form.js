@@ -1,30 +1,83 @@
 import React, { Component } from 'react';
-import { Form, Button } from 'react-bootstrap'
+import { Form } from 'react-bootstrap'
+import TwitterDB from '../TwitterDB'
 
 class RegisterForm extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            userId: TwitterDB.users.length,
+            userName: '',
+            displayName: '',
+            email: '',
+            password: ''
+
+        }
+        this.assignValueToState = this.assignValueToState.bind(this);
+
+    }
+
+    register = (e) => {
+        e.preventDefault();
+        // if (validation()) {
+        const newUser = {
+            "id": this.state.userId + 1,
+            "userName": this.state.userName,
+            "displayName": this.state.displayName,
+            "email": this.state.email,
+            "password": this.state.password
+        }
+        TwitterDB.users.push(newUser)
+        console.log(newUser);
+        // }
+        //this.validation();
+    }
+
+    validation = () => {
+        //check if user name already used
+        //check if email already used
+        //check if password less than 6 digit
+        TwitterDB.users.map((element, index) => {
+            if (element.email)
+                console.log(element);
+
+        });
+        console.log(this.state.value);
+        console.log(this.state.userName);
+
+    }
+
+    assignValueToState = (event) => {
+        let fieldName = event.target.name;
+        // console.log(this.state.[fieldName]);
+        // console.log(fieldName);
+        this.setState({
+            [fieldName]: event.target.value
+        })
+    }
     render() {
         return (
             <div className="RegisterForm">
-                <form method="post">
+                <form>
                     <fieldset>
                         <legend>User Information</legend>
                         <Form.Group>
                             <Form.Label>User Name</Form.Label>
-                            <Form.Control type="email" placeholder="Enter user name" />
+                            <input type="text" name="userName" value={this.state.userName} placeholder="Enter user name" onChange={this.assignValueToState} />
                         </Form.Group>
                         <Form.Group>
                             <Form.Label>Display Name</Form.Label>
-                            <Form.Control type="email" placeholder="Enter display name" />
+                            <input type="text" name="displayName" value={this.state.displayName} placeholder="Enter display name" onChange={this.assignValueToState} />
                         </Form.Group>
                         <Form.Group>
                             <Form.Label>Email address</Form.Label>
-                            <Form.Control type="email" placeholder="Enter email" />
+                            <input type="email" name="email" value={this.state.email} placeholder="Enter email" onChange={this.assignValueToState} />
                         </Form.Group>
                         <Form.Group>
                             <Form.Label>password</Form.Label>
-                            <Form.Control type="password" placeholder="Enter password" />
+                            <input name="password" value={this.state.password} type="password" placeholder="Enter password" onChange={this.assignValueToState} />
                         </Form.Group>
-                        <Button variant="primary">Register</Button>
+                        <button className="primary" type="submit" onClick={this.register}>Register</button>
                     </fieldset>
                 </form>
             </div>

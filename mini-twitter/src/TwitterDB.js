@@ -1,13 +1,13 @@
 const TwitterDB = {
-    users: [
+    "users": [
         {
             "id": 1,
             "userName": "@ashwag.amz",
             "displayName": "Ashwag Zabani",
             "email": "ashwag@gmail.com",
             "password": "123456",
-            tweets: {
-                tweet: [
+            "tweets": {
+                "tweet": [
                     {
                         "id": 1,
                         "content": "Hello, this my fisrt tweet",
@@ -27,6 +27,5 @@ const TwitterDB = {
         }
     ]
 }
-
 export default TwitterDB;
 
