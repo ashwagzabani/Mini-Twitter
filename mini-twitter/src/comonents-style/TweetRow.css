@@ -1,0 +1,28 @@
+.TweetRow{
+    margin-right: 5px;
+}
+
+.Tweet{
+    border: 3px solid gray;
+    margin-bottom: 10px;
+}
+
+.TweetRow .userDetails, .optionsIcon{
+    padding: 5px 5px;
+}
+
+.TweetRow .userDetails{
+    border-bottom:1px solid gray ;
+    margin-bottom: 5px;
+}
+
+.TweetRow span{
+    padding: 10px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.fave{
+    color: red;
+}

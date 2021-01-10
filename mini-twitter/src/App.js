@@ -15,14 +15,40 @@ import Tab from 'react-bootstrap/Tab'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Nav from 'react-bootstrap/Nav'
+import Popover from 'react-bootstrap/Popover'
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
+import Dropdown from 'react-bootstrap/Dropdown'
 import 'font-awesome/css/font-awesome.min.css';
-
+import TwitterDB from './TwitterDB'
 
 class App extends Component {
   render() {
+    //pop up message 
+    const popover = (
+      <Popover>
+        {/* <ul>
+          <li>My Profile</li>
+          <li>Followers</li>
+          <li>Sign out</li>
+        </ul> */}
+        <Dropdown.Item href="#/action-1">My Profile</Dropdown.Item>
+        <Dropdown.Item href="#/action-2">Sign out</Dropdown.Item>
+      </Popover>
+    );
+
     return (
       <Router>
         <div className="App">
+          <div className="App-header">
+            {TwitterDB.users[0].displayName}
+            <OverlayTrigger trigger="click" placement="right" overlay={popover}>
+              <span className="options">
+                <i className="fa fa-bars">
+                </i>
+              </span>
+            </OverlayTrigger>
+          </div>
+
           {/* <Link to='/'>Home</Link> {' || '}
           <Link to='/news'>News</Link> {' || '}
           <Link to='/search'>Search</Link> {' || '}
@@ -33,16 +59,16 @@ class App extends Component {
               <Col sm={3}>
                 <Nav variant="pills" className="flex-column">
                   <Nav.Item>
-                    <Nav.Link as={Link} to="/" eventKey="Home" ><i class="fa fa-home"></i>{'  '}Home</Nav.Link>
+                    <Nav.Link as={Link} to="/" eventKey="Home" ><i className="fa fa-home"></i>{'  '}Home</Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
-                    <Nav.Link as={Link} to="/news" eventKey="News" ><i class="fa fa-newspaper"></i>{'  '}News</Nav.Link>
+                    <Nav.Link as={Link} to="/news" eventKey="News" ><i className="fa fa-newspaper"></i>{'  '}News</Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
-                    <Nav.Link as={Link} to="/favesTweets" eventKey="favesTweets"><i class="fa fa-star"></i>{'  '}favesTweets</Nav.Link>
+                    <Nav.Link as={Link} to="/favesTweets" eventKey="favesTweets"><i className="fa fa-star"></i>{'  '}favesTweets</Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
-                    <Nav.Link as={Link} to="/search" eventKey="search"><i class="fa fa-search"></i>{'  '}search</Nav.Link>
+                    <Nav.Link as={Link} to="/search" eventKey="search"><i className="fa fa-search"></i>{'  '}search</Nav.Link>
                   </Nav.Item>
                 </Nav>
               </Col>

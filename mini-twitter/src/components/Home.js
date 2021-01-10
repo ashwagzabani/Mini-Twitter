@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import TweetList from './Tweet-list';
 
 class Home extends Component {
     render() {
         return (
             <div className="Home">
-                Home
+                {/*home page*/}
+                <TweetList />
             </div>
         );
     }
