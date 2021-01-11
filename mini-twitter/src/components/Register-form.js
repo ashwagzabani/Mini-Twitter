@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import { Form } from 'react-bootstrap'
 import TwitterDB from '../TwitterDB'
-
 class RegisterForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            userId: TwitterDB.users.length,
             userName: '',
             displayName: '',
             email: '',
@@ -19,20 +17,108 @@ class RegisterForm extends Component {
 
     register = (e) => {
         e.preventDefault();
+
+        //get db from local storage
+        //convert from string to json
+        //check if it's empty
+        //push the new user 
+        //set new db to local storage and convert db from json to string
         // if (validation()) {
-        const newUser = {
-            "id": this.state.userId + 1,
-            "userName": this.state.userName,
-            "displayName": this.state.displayName,
-            "email": this.state.email,
-            "password": this.state.password
+        let getTwitterDB;
+        if (localStorage.getItem('TwitterDB') == '') {
+            console.log("object");
+            let arrOfObject = [];
+            const newUser = this.getNewUser(1);
+            //this.setState({ userId: 1 })
+            //getTwitterDB = localStorage.getItem('TwitterDB');
+            arrOfObject.push(newUser);
+            // if (getTwitterDB === '') {
+            //     console.log('object');
+            // }
+            // let arrOfObject = [];
+            // arrOfObject.push(getTwitterDB);
+            console.log(arrOfObject);
+            localStorage.setItem('TwitterDB', JSON.stringify(arrOfObject))
         }
-        TwitterDB.users.push(newUser)
-        console.log(newUser);
+        else {
+            getTwitterDB = JSON.parse(localStorage.getItem('TwitterDB'));
+            // if (getTwitterDB[0] === '') {
+            //     getTwitterDB.shift(0);
+            //     console.log("donw");
+            // }
+            //console.log(getTwitterDB.length);
+            const newUser = this.getNewUser(getTwitterDB.length + 1)
+            getTwitterDB.push(newUser);
+            console.log(getTwitterDB);
+            localStorage.setItem('TwitterDB', JSON.stringify(getTwitterDB));
+        }
+        // const newUser = {
+        //     "id": this.state.userId + 1,
+        //     "userName": this.state.userName,
+        //     "displayName": this.state.displayName,
+        //     "email": this.state.email,
+        //     "password": this.state.password,
+        //     "tweets": {
+        //         "tweet": [
+        //             {
+        //                 "id": 1,
+        //                 "content": "Hello, this my fisrt tweet",
+        //                 "send_time": "2021-01-10 10:00:00 AM"
+        //             },
+        //             {
+        //                 "id": 2,
+        //                 "content": "Good morning",
+        //                 "send_time": "2021-01-10 10:20:00 AM"
+        //             }
+        //         ]
+        //     },
+        //     "favesTweets": [],
+        //     "intersetedTopics": [],
+        //     "followers": [],
+        //     "log_in": false
+        // }
+        // arrOfObject.push(newUser);
+        // //getTwitterDB.push(newUser)
+        // //store the db in local storage - stringify : to convert json to string
+        // localStorage.setItem('TwitterDB', JSON.stringify(arrOfObject));
+        // //to read json from local storage - 1/ get item 2/convert it from string to json
+        // //let b = JSON.parse(localStorage.getItem('notes'))
+        // TwitterDB.users.push(newUser)
+        // console.log(newUser);
+
+
         // }
         //this.validation();
     }
 
+    getNewUser = (id) => {
+        let newUser = {};
+        return newUser = {
+            "id": id,
+            "userName": this.state.userName,
+            "displayName": this.state.displayName,
+            "email": this.state.email,
+            "password": this.state.password,
+            "tweets": {
+                "tweet": [
+                    {
+                        "id": 1,
+                        "content": "Hello, this my fisrt tweet",
+                        "send_time": "2021-01-10 10:00:00 AM"
+                    },
+                    {
+                        "id": 2,
+                        "content": "Good morning",
+                        "send_time": "2021-01-10 10:20:00 AM"
+                    }
+                ]
+            },
+            "favesTweets": [],
+            "intersetedTopics": [],
+            "followers": [],
+            "log_in": false
+        }
+    }
     validation = () => {
         //check if user name already used
         //check if email already used
