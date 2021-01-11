@@ -9,6 +9,7 @@ import {
     Link
 } from "react-router-dom";
 import Home from './Home';
+import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
 
 class RegisterForm extends Component {
@@ -19,7 +20,8 @@ class RegisterForm extends Component {
             displayName: '',
             email: '',
             password: '',
-            alert: false
+            alert: false,
+            alertValue: ''
 
         }
         this.assignValueToState = this.assignValueToState.bind(this);
@@ -68,7 +70,7 @@ class RegisterForm extends Component {
         }
         //this.validation();
         //pass user id to home page
-        <Route path='/home' component={(props) => <Home userLoggedInId={userId} routeProps={props} />} ></Route>
+        <Route path='/home' render={(props) => <Home userLoggedInId={userId} routeProps={props} />} ></Route>
     }
 
     getNewUser = (id) => {
@@ -90,10 +92,20 @@ class RegisterForm extends Component {
                         "id": 2,
                         "content": "Good morning",
                         "send_time": "2021-01-10 10:20:00 AM"
+                    },
+                    {
+                        "id": 3,
+                        "content": "Good afternoon",
+                        "send_time": "2021-01-10 10:20:00 AM"
+                    },
+                    {
+                        "id": 4,
+                        "content": "hello",
+                        "send_time": "2021-01-10 10:20:00 AM"
                     }
                 ]
             },
-            "favesTweets": [],
+            "favesTweets": [4, 2],
             "intersetedTopics": [],
             "followers": [],
             "log_in": false
@@ -110,25 +122,17 @@ class RegisterForm extends Component {
         const TwitterDB = JSON.parse(localStorage.getItem('TwitterDB'));
         TwitterDB.map((element) => {
             if (element[fieldName] === value) {
-                // console.log(element[fieldName]);
                 console.log("problem");
                 this.setState({ alert: true })
-                // console.log(value);
+                this.componentDidUpdate(fieldName)
             } else {
-                this.setState({ alert: false })
+                this.setState({ alertValue: '' })
             }
-            //console.log(element[key]);
-            // return false;
-
-            //console.log(element);
         });
     }
 
     assignValueToState = (event) => {
         let fieldName = event.target.name;
-        // console.log(this.state.[fieldName]);
-        // console.log(fieldName);
-
 
         this.setState({
             [fieldName]: event.target.value
@@ -138,21 +142,26 @@ class RegisterForm extends Component {
         }
     }
 
-    alertMessage = (key) => {
-        let alertValue = '';
-        if (key === 'userName') {
-            alertValue = 'The user name already used';
-        } else if (key === 'email') {
-            alertValue = 'The email already registered';
+    componentDidUpdate(key) {
+        if (key === "userName") {
+            console.log("yes");
+            this.setState({ alertValue: "The user name already used" })
+        } else if (key === "email") {
+            this.setState({ alertValue: 'The email already registered' })
         }
-        else if (key === 'password') {
-            if (this.state.password.length < 6) {
-                alertValue = 'The password must be less than 6 digit';
-            }
-        }
+        // else if (key === "password") {
+        //     if (this.state.password.length < 6) {
+        //         this.setState({ alertValue: 'The password must be less than 6 digit' })
+        //     }
+        // }
+        console.log(this.state.alertValue);
+        this.alertMessage();
+
+    }
+    alertMessage = () => {
         return (
             <Alert variant='warning'>
-                {alertValue}
+                {this.state.alertValue}
             </Alert>);
     }
 
@@ -160,7 +169,7 @@ class RegisterForm extends Component {
         return (
             <Router>
                 <div className="RegisterForm" >
-                    {this.state.alert ? this.alertMessage() : ''}
+                    {this.state.alertValue !== '' ? this.alertMessage() : ''}
 
                     <form>
                         <fieldset>
