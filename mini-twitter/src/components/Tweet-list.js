@@ -8,7 +8,8 @@ class TweetList extends Component {
             displayName: '',
             userName: '',
             favesTweets: [],
-            tweet1: []
+            tweet1: [],
+            listedTweets: this.props.listedTweets
         }
     }
     componentDidMount() {
@@ -34,29 +35,19 @@ class TweetList extends Component {
 
             return (<TweetRow userName={this.state.userName} tweetId={index} tweetContent={getTweet.content} />
             )
-            //     // this.state.tweet1.map((element, index) => {
-            //     //     console.log(element[favesTweetId]);
-            //     // })
-            //     // console.log(element.content);
-            //     // return (<TweetRow userName={this.state.userName} tweetId={index} tweetContent={this.state.tweet} />
-            //     // )
-        })
-        // console.log(this.state.tweet1[3]);
+
+        });
 
 
-        // const favesweets = this.state.tweet1.map((element, index) => {
-        //     console.log(element.content);
-        //     return (<TweetRow userName={this.state.userName} tweetId={index} tweetContent={this.state.tweet} />
-        //     )
-        // })
-        // console.log(this.state.tweet1[0]["id"]);
+
         return (
             // {this.state.tweet1.forEach(element => {
             //     console.log(element.content);
             // })}
             <div className="TweetList">
                 {/* <TweetRow userName={this.state.userName} tweetId={1} tweetContent={this.state.tweet} /> */}
-                {tweets}
+                {this.state.listedTweets === 'all' ? tweets : favesTweet}
+                {/* {tweets} */}
                 {/**<FavesTweets />*/}
                 {/* {favesTweet} */}
             </div>

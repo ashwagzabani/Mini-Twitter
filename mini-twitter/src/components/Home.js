@@ -6,7 +6,7 @@ class Home extends Component {
         return (
             <div className="Home">
                 {/*home page*/}
-                <TweetList />
+                <TweetList listedTweets='all' />
             </div>
         );
     }

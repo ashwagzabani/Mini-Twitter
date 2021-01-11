@@ -6,10 +6,11 @@ import {
 import {
     BrowserRouter as Router,
     Route,
+    Switch,
     Link
 } from "react-router-dom";
+import { Redirect } from 'react-router-dom'
 import Home from './Home';
-import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
 
 class RegisterForm extends Component {
@@ -21,6 +22,7 @@ class RegisterForm extends Component {
             email: '',
             password: '',
             alert: false,
+            alertStatus: false,
             alertValue: ''
 
         }
@@ -70,7 +72,10 @@ class RegisterForm extends Component {
         }
         //this.validation();
         //pass user id to home page
-        <Route path='/home' render={(props) => <Home userLoggedInId={userId} routeProps={props} />} ></Route>
+        <Router>
+            <Redirect from="/register" to="/home" />
+            <Route path='/home' render={(props) => <Home userLoggedInId={userId} routeProps={props} />} ></Route>
+        </Router>
     }
 
     getNewUser = (id) => {
@@ -122,17 +127,26 @@ class RegisterForm extends Component {
         const TwitterDB = JSON.parse(localStorage.getItem('TwitterDB'));
         TwitterDB.map((element) => {
             if (element[fieldName] === value) {
+                // console.log(element[fieldName]);
                 console.log("problem");
-                this.setState({ alert: true })
-                this.componentDidUpdate(fieldName)
+                this.setState({ alertStatus: true, alertValue: fieldName })
+                console.log(fieldName, '  ', this.state.alertValue);
+                // this.alertMessage(fieldName);
             } else {
-                this.setState({ alertValue: '' })
+                this.setState({ alertValue: '', alertStatus: false })
             }
+            //console.log(element[key]);
+            // return false;
+
+            //console.log(element);
         });
     }
 
     assignValueToState = (event) => {
         let fieldName = event.target.name;
+        // console.log(this.state.[fieldName]);
+        // console.log(fieldName);
+
 
         this.setState({
             [fieldName]: event.target.value
@@ -142,59 +156,94 @@ class RegisterForm extends Component {
         }
     }
 
-    componentDidUpdate(key) {
-        if (key === "userName") {
-            console.log("yes");
-            this.setState({ alertValue: "The user name already used" })
-        } else if (key === "email") {
-            this.setState({ alertValue: 'The email already registered' })
-        }
-        // else if (key === "password") {
-        //     if (this.state.password.length < 6) {
-        //         this.setState({ alertValue: 'The password must be less than 6 digit' })
-        //     }
-        // }
-        console.log(this.state.alertValue);
-        this.alertMessage();
+    // componentDidUpdate(prevprop, prevstate) {
+    //     console.log(prevstate.alertType);
+    //     if (prevstate.alertType !== this.state.alertType) {
+    //         this.alertMessage();
+    //     }
+    //     //this.alertMessage();
+    //     // console.log(fieldName);
+    //     // // console.log(prevstate["alertType"]);
+    //     // let alertType = this.state.alertType;
+    //     // if (alertType === "userName") {
+    //     //     console.log("yes");
+    //     //     this.setState({ alertValue: "The user name already used" })
+    //     // } else if (alertType === "email") {
+    //     //     this.setState({ alertValue: 'The email already registered' })
+    //     // }
+    //     // else if (alertType === "password") {
+    //     //     if (this.state.password.length < 6) {
+    //     //         this.setState({ alertValue: 'The password must be less than 6 digit' })
+    //     //     }
+    //     // }
+    //     // console.log(this.state.alertType);
+    //     // // console.log(key);
+    //     // this.alertMessage();
+    // }
 
-    }
-    alertMessage = () => {
-        return (
-            <Alert variant='warning'>
-                {this.state.alertValue}
-            </Alert>);
-    }
+    // componentDidUpdate() {
+    //     this.alertMessage()
+    // }
+    // alertMessage = () => {
+    //     // console.log(fieldName);
+    //     // console.log(prevstate["alertType"]);
+    //     console.log('alert type: ' + this.state.alertType);
+    //     console.log('alert value: ' + this.state.alertValue);
+    //     console.log('alert status: ' + this.state.alertStatus);
+    //     let alertType = this.state.alertType;
+    //     if (alertType !== '') {
+    //         console.log("ok");
+
+    //         if (alertType === "userName") {
+    //             console.log("yes");
+    //             this.setState({ alertValue: "The user name already used" })
+    //         } else if (alertType === "email") {
+    //             this.setState({ alertValue: 'The email already registered' })
+    //         }
+    //         // else if (fieldName === "password") {
+    //         //     if (this.state.password.length < 6) {
+    //         //         this.setState({ alertValue: 'The password must be less than 6 digit' })
+    //         //     }
+    //         // }
+    //         console.log(this.state.alertType);
+    //         // console.log(key);
+    //         return (
+    //             <Alert variant='warning'>
+    //                 {this.state.alertValue}
+    //             </Alert>);
+    //     }
+
+
+    // }
 
     render() {
         return (
-            <Router>
-                <div className="RegisterForm" >
-                    {this.state.alertValue !== '' ? this.alertMessage() : ''}
+            <div className="RegisterForm" >
+                {/* {this.state.alertStatus ? this.alertMessage : ''} */}
 
-                    <form>
-                        <fieldset>
-                            <legend>User Information</legend>
-                            <Form.Group>
-                                <Form.Label>User Name</Form.Label>
-                                <input type="text" name="userName" value={this.state.userName} placeholder="Enter user name" onChange={this.assignValueToState} />
-                            </Form.Group>
-                            <Form.Group>
-                                <Form.Label>Display Name</Form.Label>
-                                <input type="text" name="displayName" value={this.state.displayName} placeholder="Enter display name" onChange={this.assignValueToState} />
-                            </Form.Group>
-                            <Form.Group>
-                                <Form.Label>Email address</Form.Label>
-                                <input type="email" name="email" value={this.state.email} placeholder="Enter email" onChange={this.assignValueToState} />
-                            </Form.Group>
-                            <Form.Group>
-                                <Form.Label>password</Form.Label>
-                                <input name="password" value={this.state.password} type="password" placeholder="Enter password" onChange={this.assignValueToState} />
-                            </Form.Group>
-                            <button className="primary" type="submit" onClick={this.register}><Link to="/home">Register</Link></button>
-                        </fieldset>
-                    </form>
-                </div>
-            </Router>
+                <form>
+                    <fieldset>
+                        <legend>User Information</legend>
+                        <Form.Group>
+                            <Form.Label>User Name</Form.Label>
+                            <input type="text" name="userName" value={this.state.userName} placeholder="Enter user name" onChange={this.assignValueToState} />
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label>Display Name</Form.Label>
+                            <input type="text" name="displayName" value={this.state.displayName} placeholder="Enter display name" onChange={this.assignValueToState} />
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label>Email address</Form.Label>
+                            <input type="email" name="email" value={this.state.email} placeholder="Enter email" onChange={this.assignValueToState} />
+                        </Form.Group>
+                        <Form.Group>
+                            <Form.Label>password</Form.Label>
+                            <input name="password" value={this.state.password} type="password" placeholder="Enter password" onChange={this.assignValueToState} />
+                        </Form.Group>
+                        <button className="primary" type="submit" onClick={this.register}><Link to="/home">Register</Link></button>
+                    </fieldset>
+                </form>
+            </div>
         );
     }
 }

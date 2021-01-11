@@ -14,7 +14,6 @@ class TweetRow extends Component {
 
     render() {
         //this.getUserLoggedInDetails();
-
         // this.getUserLoggedInDetails();
         // console.log(getUserDetails[0].displayName);
         // console.log(this.state.tweets);
