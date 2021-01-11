@@ -3,6 +3,14 @@ import {
     Form,
     Alert
 } from 'react-bootstrap'
+import {
+    BrowserRouter as Router,
+    Route,
+    Link
+} from "react-router-dom";
+import Home from './Home';
+
+
 class RegisterForm extends Component {
     constructor(props) {
         super(props);
@@ -28,10 +36,12 @@ class RegisterForm extends Component {
         //set new db to local storage and convert db from json to string
         // if (validation()) {
         let getTwitterDB;
+        let userId = 0;
         if (localStorage.getItem('TwitterDB') == '') {
             console.log("object");
             let arrOfObject = [];
-            const newUser = this.getNewUser(1);
+            userId = 1;
+            const newUser = this.getNewUser(userId);
             //this.setState({ userId: 1 })
             //getTwitterDB = localStorage.getItem('TwitterDB');
             arrOfObject.push(newUser);
@@ -50,49 +60,15 @@ class RegisterForm extends Component {
             //     console.log("donw");
             // }
             //console.log(getTwitterDB.length);
-            const newUser = this.getNewUser(getTwitterDB.length + 1)
+            userId = getTwitterDB.length + 1;
+            const newUser = this.getNewUser(userId)
             getTwitterDB.push(newUser);
             console.log(getTwitterDB);
             localStorage.setItem('TwitterDB', JSON.stringify(getTwitterDB));
         }
-        // this.validation();
-        // const newUser = {
-        //     "id": this.state.userId + 1,
-        //     "userName": this.state.userName,
-        //     "displayName": this.state.displayName,
-        //     "email": this.state.email,
-        //     "password": this.state.password,
-        //     "tweets": {
-        //         "tweet": [
-        //             {
-        //                 "id": 1,
-        //                 "content": "Hello, this my fisrt tweet",
-        //                 "send_time": "2021-01-10 10:00:00 AM"
-        //             },
-        //             {
-        //                 "id": 2,
-        //                 "content": "Good morning",
-        //                 "send_time": "2021-01-10 10:20:00 AM"
-        //             }
-        //         ]
-        //     },
-        //     "favesTweets": [],
-        //     "intersetedTopics": [],
-        //     "followers": [],
-        //     "log_in": false
-        // }
-        // arrOfObject.push(newUser);
-        // //getTwitterDB.push(newUser)
-        // //store the db in local storage - stringify : to convert json to string
-        // localStorage.setItem('TwitterDB', JSON.stringify(arrOfObject));
-        // //to read json from local storage - 1/ get item 2/convert it from string to json
-        // //let b = JSON.parse(localStorage.getItem('notes'))
-        // TwitterDB.users.push(newUser)
-        // console.log(newUser);
-
-
-        // }
         //this.validation();
+        //pass user id to home page
+        <Route path='/home' component={(props) => <Home userLoggedInId={userId} routeProps={props} />} ></Route>
     }
 
     getNewUser = (id) => {
@@ -182,32 +158,34 @@ class RegisterForm extends Component {
 
     render() {
         return (
-            <div className="RegisterForm" >
-                {this.state.alert ? this.alertMessage() : ''}
+            <Router>
+                <div className="RegisterForm" >
+                    {this.state.alert ? this.alertMessage() : ''}
 
-                <form>
-                    <fieldset>
-                        <legend>User Information</legend>
-                        <Form.Group>
-                            <Form.Label>User Name</Form.Label>
-                            <input type="text" name="userName" value={this.state.userName} placeholder="Enter user name" onChange={this.assignValueToState} />
-                        </Form.Group>
-                        <Form.Group>
-                            <Form.Label>Display Name</Form.Label>
-                            <input type="text" name="displayName" value={this.state.displayName} placeholder="Enter display name" onChange={this.assignValueToState} />
-                        </Form.Group>
-                        <Form.Group>
-                            <Form.Label>Email address</Form.Label>
-                            <input type="email" name="email" value={this.state.email} placeholder="Enter email" onChange={this.assignValueToState} />
-                        </Form.Group>
-                        <Form.Group>
-                            <Form.Label>password</Form.Label>
-                            <input name="password" value={this.state.password} type="password" placeholder="Enter password" onChange={this.assignValueToState} />
-                        </Form.Group>
-                        <button className="primary" type="submit" onClick={this.register}>Register</button>
-                    </fieldset>
-                </form>
-            </div>
+                    <form>
+                        <fieldset>
+                            <legend>User Information</legend>
+                            <Form.Group>
+                                <Form.Label>User Name</Form.Label>
+                                <input type="text" name="userName" value={this.state.userName} placeholder="Enter user name" onChange={this.assignValueToState} />
+                            </Form.Group>
+                            <Form.Group>
+                                <Form.Label>Display Name</Form.Label>
+                                <input type="text" name="displayName" value={this.state.displayName} placeholder="Enter display name" onChange={this.assignValueToState} />
+                            </Form.Group>
+                            <Form.Group>
+                                <Form.Label>Email address</Form.Label>
+                                <input type="email" name="email" value={this.state.email} placeholder="Enter email" onChange={this.assignValueToState} />
+                            </Form.Group>
+                            <Form.Group>
+                                <Form.Label>password</Form.Label>
+                                <input name="password" value={this.state.password} type="password" placeholder="Enter password" onChange={this.assignValueToState} />
+                            </Form.Group>
+                            <button className="primary" type="submit" onClick={this.register}><Link to="/home">Register</Link></button>
+                        </fieldset>
+                    </form>
+                </div>
+            </Router>
         );
     }
 }

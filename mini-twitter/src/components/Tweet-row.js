@@ -4,26 +4,26 @@ import '../comonents-style/Tweet-row.css'
 class TweetRow extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-
-        };
+        // this.state = {
+        //     displayName: 'ashwag',
+        //     tweets: []
+        // };
     }
+
+
+
     render() {
+        //this.getUserLoggedInDetails();
+
+        // this.getUserLoggedInDetails();
+        // console.log(getUserDetails[0].displayName);
+        // console.log(this.state.tweets);
+        // console.log(this.state.displayName);
         return (
             <div className="TweetRow">
                 <div className="Tweet">
-                    <div className="userDetails">{TwitterDB.users[0].displayName}</div>
-                    <div className="container">{TwitterDB.users[0].tweets.tweet[0].content}</div>
-                    <div className="optionsIcon">
-                        <span>
-                            <i className="fa fa-star"></i>
-                            <i className="fa fa-trash"></i>
-                        </span>
-                    </div>
-                </div>
-                <div className="Tweet">
-                    <div className="userDetails">{TwitterDB.users[0].displayName}</div>
-                    <div className="container">{TwitterDB.users[0].tweets.tweet[1].content}</div>
+                    <div className="userDetails">{this.props.userName}</div>
+                    <div className="container">{this.props.tweetContent}</div>
                     <div className="optionsIcon">
                         <span>
                             <i className="fa fa-star"></i>
