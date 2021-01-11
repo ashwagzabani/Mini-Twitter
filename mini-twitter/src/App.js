@@ -7,7 +7,7 @@ import {
   Link
 } from "react-router-dom";
 import Home from './components/Home';
-import News from './components/News';
+import Explore from './components/Explore';
 import Search from './components/Search';
 import FavesTweets from './components/Faves-tweets';
 
@@ -84,7 +84,7 @@ class App extends Component {
                     <Nav.Link as={Link} to="/home" eventKey="Home" ><i className="fa fa-home"></i>{'  '}Home</Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
-                    <Nav.Link as={Link} to="/news" eventKey="News" ><i className="fa fa-newspaper"></i>{'  '}News</Nav.Link>
+                    <Nav.Link as={Link} to="/explore" eventKey="Explore" ><i className="fa fa-newspaper"></i>{'  '}Explore</Nav.Link>
                   </Nav.Item>
                   <Nav.Item>
                     <Nav.Link as={Link} to="/favesTweets" eventKey="favesTweets"><i className="fa fa-star"></i>{'  '}favesTweets</Nav.Link>
@@ -103,7 +103,7 @@ class App extends Component {
                     <Route path='/news' component={News} />
                   </Tab.Pane> */}
                   <Route path='/home' component={Home} />
-                  <Route path='/news' component={News} />
+                  <Route path='/news' component={Explore} />
                   <Route path='/search' component={Search} />
                   <Route path='/favesTweets' component={FavesTweets} />
                 </Tab.Content>
