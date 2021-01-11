@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Form } from 'react-bootstrap'
-import TwitterDB from '../TwitterDB'
 class RegisterForm extends Component {
     constructor(props) {
         super(props);
@@ -52,6 +51,7 @@ class RegisterForm extends Component {
             console.log(getTwitterDB);
             localStorage.setItem('TwitterDB', JSON.stringify(getTwitterDB));
         }
+        // this.validation();
         // const newUser = {
         //     "id": this.state.userId + 1,
         //     "userName": this.state.userName,
@@ -119,31 +119,42 @@ class RegisterForm extends Component {
             "log_in": false
         }
     }
-    validation = () => {
+
+
+    validation = (fieldName, value) => {
         //check if user name already used
         //check if email already used
         //check if password less than 6 digit
-        TwitterDB.users.map((element, index) => {
-            if (element.email)
-                console.log(element);
+        let key = 'id';
+        console.log(fieldName);
+        const TwitterDB = JSON.parse(localStorage.getItem('TwitterDB'));
+        TwitterDB.map((element) => {
+            if (element[fieldName] === value) {
+                // console.log(element[fieldName]);
+                console.log("problem");
+                // console.log(value);
+            }
+            //console.log(element[key]);
+            // return false;
 
+            //console.log(element);
         });
-        console.log(this.state.value);
-        console.log(this.state.userName);
-
     }
 
     assignValueToState = (event) => {
         let fieldName = event.target.name;
         // console.log(this.state.[fieldName]);
         // console.log(fieldName);
+
+
         this.setState({
             [fieldName]: event.target.value
         })
+        this.validation(fieldName, event.target.value);
     }
     render() {
         return (
-            <div className="RegisterForm">
+            <div className="RegisterForm" >
                 <form>
                     <fieldset>
                         <legend>User Information</legend>
