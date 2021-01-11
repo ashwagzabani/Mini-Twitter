@@ -103,7 +103,7 @@ class App extends Component {
                     <Route path='/news' component={News} />
                   </Tab.Pane> */}
                   <Route path='/home' component={Home} />
-                  <Route path='/news' component={Explore} />
+                  <Route path='/explore' component={Explore} />
                   <Route path='/search' component={Search} />
                   <Route path='/favesTweets' component={FavesTweets} />
                 </Tab.Content>
