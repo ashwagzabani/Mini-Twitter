@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TwitterDB from '../TwitterDB'
 import '../comonents-style/Tweet-row.css'
+
 class TweetRow extends Component {
     constructor(props) {
         super(props);
@@ -9,7 +10,9 @@ class TweetRow extends Component {
         //     tweets: []
         // };
     }
-
+    handleFavesClick = () => {
+        console.log("clicked");
+    }
 
 
     render() {
@@ -18,6 +21,7 @@ class TweetRow extends Component {
         // console.log(getUserDetails[0].displayName);
         // console.log(this.state.tweets);
         // console.log(this.state.displayName);
+        const isFave = (this.props.isFave) ? 'fave' : '';
         return (
             <div className="TweetRow">
                 <div className="Tweet">
@@ -25,7 +29,7 @@ class TweetRow extends Component {
                     <div className="container">{this.props.tweetContent}</div>
                     <div className="optionsIcon">
                         <span>
-                            <i className="fa fa-star"></i>
+                            <i className={"fa fa-star " + isFave} onClick={this.handleFavesClick}></i>
                             <i className="fa fa-trash"></i>
                         </span>
                     </div>

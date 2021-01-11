@@ -24,16 +24,24 @@ class TweetList extends Component {
 
     render() {
         const tweets = this.state.tweet1.map((element, index) => {
-            console.log(element.content);
-            return (<TweetRow userName={this.state.userName} tweetId={index} tweetContent={element.content} />
-            )
+            //  console.log(element.content);
+            //console.log(this.state.favesTweets.includes(index));
+            if (this.state.favesTweets.includes(index + 1)) {
+                console.log("include: ", this.state.favesTweets.includes(index + 1));
+                console.log("content", element.content);
+                console.log("index", index + 1);
+                return (<TweetRow userName={this.state.userName} tweetId={index} tweetContent={element.content} isFave={true} />
+                );
+            } else {
+                return (<TweetRow userName={this.state.userName} tweetId={index} tweetContent={element.content} isFave={false} />);
+            }
         })
         // //the faves tweet saved by id of tweet so, fisrt: we need to get faves tweet id then get these tweet by id
         const favesTweet = this.state.favesTweets.map((favesTweetId, index) => {
             let getTweet = this.state.tweet1[favesTweetId - 1];
             // console.log(this.state.tweet1[favesTweetId - 1]);
 
-            return (<TweetRow userName={this.state.userName} tweetId={index} tweetContent={getTweet.content} />
+            return (<TweetRow userName={this.state.userName} tweetId={index} tweetContent={getTweet.content} isFave={true} />
             )
 
         });
