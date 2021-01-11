@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { Form } from 'react-bootstrap'
+import {
+    Form,
+    Alert
+} from 'react-bootstrap'
 class RegisterForm extends Component {
     constructor(props) {
         super(props);
@@ -7,7 +10,8 @@ class RegisterForm extends Component {
             userName: '',
             displayName: '',
             email: '',
-            password: ''
+            password: '',
+            alert: false
 
         }
         this.assignValueToState = this.assignValueToState.bind(this);
@@ -132,7 +136,10 @@ class RegisterForm extends Component {
             if (element[fieldName] === value) {
                 // console.log(element[fieldName]);
                 console.log("problem");
+                this.setState({ alert: true })
                 // console.log(value);
+            } else {
+                this.setState({ alert: false })
             }
             //console.log(element[key]);
             // return false;
@@ -150,11 +157,34 @@ class RegisterForm extends Component {
         this.setState({
             [fieldName]: event.target.value
         })
-        this.validation(fieldName, event.target.value);
+        if (fieldName !== 'password') {
+            this.validation(fieldName, event.target.value);
+        }
     }
+
+    alertMessage = (key) => {
+        let alertValue = '';
+        if (key === 'userName') {
+            alertValue = 'The user name already used';
+        } else if (key === 'email') {
+            alertValue = 'The email already registered';
+        }
+        else if (key === 'password') {
+            if (this.state.password.length < 6) {
+                alertValue = 'The password must be less than 6 digit';
+            }
+        }
+        return (
+            <Alert variant='warning'>
+                {alertValue}
+            </Alert>);
+    }
+
     render() {
         return (
             <div className="RegisterForm" >
+                {this.state.alert ? this.alertMessage() : ''}
+
                 <form>
                     <fieldset>
                         <legend>User Information</legend>

@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 import TwitterDB from '../TwitterDB'
 import '../comonents-style/Tweet-row.css'
 class TweetRow extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+
+        };
+    }
     render() {
         return (
             <div className="TweetRow">
