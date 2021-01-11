@@ -83,15 +83,16 @@ class TweetList extends Component {
         const favesTweet = this.state.favesTweets.map((favesTweetId, index) => {
             const getTweet = this.state.tweet1[favesTweetId - 1];
             console.log(getTweet);
-            if (getTweet === undefined) {
-                console.log("yes less than 0");
-            } else {
-                // console.log(favesTweetId);
-                // console.log(' content ', getTweet.content);
+            // if (getTweet === undefined) {
+            //     console.log("yes less than 0");
+            // } else {
+            //     // console.log(favesTweetId);
+            //     // console.log(' content ', getTweet.content);
 
-                return (<TweetRow userName={this.state.userName} tweetId={favesTweetId} isFaveToggle={this.handleFaveToggle} tweetContent={getTweet.content} isFave={true} />
-                )
-            }
+            //     return (<TweetRow userName={this.state.userName} tweetId={favesTweetId} isFaveToggle={this.handleFaveToggle} tweetContent={getTweet.content} isFave={true} />
+            //     )
+            return (<TweetRow userName={this.state.userName} tweetId={favesTweetId} isFaveToggle={this.handleFaveToggle} tweetContent={getTweet.content} isFave={true} />
+            )
 
 
         });
@@ -102,15 +103,15 @@ class TweetList extends Component {
             // {this.state.tweet1.forEach(element => {
             //     console.log(element.content);
             // })}
-            <div className="TweetList">
+            <div className="TweetList" >
                 {/* <TweetRow userName={this.state.userName} tweetId={1} tweetContent={this.state.tweet} /> */}
-                {this.state.listedTweets === 'all' ? tweets : favesTweet}
+                { this.state.listedTweets === 'all' ? tweets : favesTweet}
                 {/* {this.state.listedTweets === 'all' ? this.state.favesTweets.length < 0 ? '' : favesTweet : ''} */}
 
                 {/* {tweets} */}
                 {/**<FavesTweets />*/}
                 {/* {favesTweet} */}
-            </div>
+            </div >
         );
     }
 }
