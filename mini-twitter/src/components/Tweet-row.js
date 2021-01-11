@@ -11,7 +11,12 @@ class TweetRow extends Component {
         // };
     }
     handleFavesClick = () => {
-        console.log("clicked");
+        console.log("fave icon clicked");
+        this.props.isFaveToggle(this.props.tweetId)
+    }
+
+    handleDeleteClick = () => {
+        console.log("delee icon clicked");
     }
 
 
@@ -30,7 +35,7 @@ class TweetRow extends Component {
                     <div className="optionsIcon">
                         <span>
                             <i className={"fa fa-star " + isFave} onClick={this.handleFavesClick}></i>
-                            <i className="fa fa-trash"></i>
+                            <i className="fa fa-trash" onClick={this.handleDeleteClick}></i>
                         </span>
                     </div>
                 </div>
