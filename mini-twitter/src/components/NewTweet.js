@@ -26,7 +26,7 @@ class NewTweet extends Component {
     assignValueToState = (event) => {
         let newTweetContent = event.target.value;
         this.setState({ newTweetContent })
-        // console.log("tweet content:", this.state.tweetContent);
+        // console.log("tweet content:", this.state.newTweetContent);
     }
 
     getTweetContent = () => {
@@ -47,7 +47,7 @@ class NewTweet extends Component {
                         <Modal.Title>Write New Tweet</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <input type="text" name="newTweet" value={this.state.newTweetContent} placeholder="Write here" onChange={this.assignValueToState} />
+                        <input type="text" name="newTweet" value={this.state.n} placeholder="Write here" onChange={this.assignValueToState} />
                     </Modal.Body>
                     <Modal.Footer>
                         {/* <Button variant="secondary" onClick={this.handleClose}>

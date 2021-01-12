@@ -15,7 +15,7 @@ class Home extends Component {
             newTweetContent: ''
         }
 
-        // this.handleAddClicked = this.handleAddClicked.bind(this)
+        // this.getTheNewTweetContent = this.handleAddClicked.bind(this)
     }
 
     handleAddClicked = () => {
@@ -36,8 +36,10 @@ class Home extends Component {
     }
 
     getTheNewTweetContent = (newTweetContent) => {
-        this.setState({ newTweetContent })
-        console.log(newTweetContent);
+        this.setState({ newTweetContent: newTweetContent })
+        // console.log(newTweetContent);
+        // console.log(this.state.newTweetContent);
+        // return newTweetContent;
     }
 
     componentDidMount() {

@@ -10,7 +10,8 @@ class TweetList extends Component {
             userName: '',
             favesTweets: [],
             tweet1: [],
-            listedTweets: this.props.listedTweets
+            listedTweets: this.props.listedTweets,
+            newTweet: ''
         }
 
         this.handleFaveToggle = this.handleFaveToggle.bind(this);
@@ -26,7 +27,8 @@ class TweetList extends Component {
             displayName: getUserDetails[userLoggedInId].displayName,
             userName: getUserDetails[userLoggedInId].userName,
             favesTweets: getUserDetails[userLoggedInId].favesTweets,
-            tweet1: getUserDetails[userLoggedInId].tweets.tweet
+            tweet1: getUserDetails[userLoggedInId].tweets.tweet,
+            newTweet: this.props.newTweetContent
         });
     }
 
@@ -133,8 +135,37 @@ class TweetList extends Component {
         this.setState({ tweet1 });
     }
 
+    componentDidUpdate = () => {
+        this.setState({ newTweetContent: this.props.newTweetContent })
+        this.handleAddClick();
+    }
+
+    handleAddClick = () => {
+        if (this.state.newTweetContent != '') {
+            console.log("yahhooo", this.props.newTweetContent);
+            // this.addnewTweetToDb();
+        }
+    }
+    addnewTweetToDb = () => {
+        const getUserDetails = JSON.parse(localStorage.getItem('TwitterDB'));
+        const userLoggedInId = parseInt(localStorage.getItem("userLoggedInId")) - 1; //parseInt(localStorage.getItem('userLoggedInId'))
+        const currentTweets = this.state.tweet1.slice();
+
+        const newTweet = {
+            id: this.state.tweet1.length + 1,
+            content: this.props.newTweetContent
+        };
+        currentTweets.unshift(newTweet);
+        getUserDetails[userLoggedInId].tweets.tweet = currentTweets;
+        localStorage.setItem('TwitterDB', JSON.stringify(getUserDetails));
+        this.setState({
+            tweet1: currentTweets,
+            newTweetContent: ''
+        });
+    }
     render() {
-        console.log('pass user id', this.props.userLoggedInId);
+        console.log('pass user id', this.state.newTweet);
+        console.log('pass user id', this.props.newTweetContent);
         const tweets = this.state.tweet1.map((element, index) => {
             //  console.log(element.content);
             //console.log(this.state.favesTweets.includes(index));
