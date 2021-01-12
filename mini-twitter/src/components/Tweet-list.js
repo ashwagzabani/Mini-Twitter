@@ -46,9 +46,9 @@ class TweetList extends Component {
         //     faves.splice(tweetIndex, 1)
         // }
         tweetIndex < 0 ? favesTweets.unshift(tweetId) : favesTweets.splice(tweetIndex, 1);
-        console.log("after if statment :", favesTweets);
+        // console.log("after if statment :", favesTweets);
         // this.setState({ favesTweets });
-        console.log("state edit: ", this.state.favesTweets);
+        // console.log("state edit: ", this.state.favesTweets);
         // console.log(faves);
         // console.log(tweetIndex);
         // this.setState({ favesTweets: faves });
@@ -73,28 +73,45 @@ class TweetList extends Component {
     handleDeleteClick = (tweetId) => {
         //bring target tweet by id
         //check if tweet in Tweetslist and get their index 
-        //delete tweets
-        //edit on db to push new favestweets array
+        //check if id store in favestweet list === there ? delete id : skip
+        //delete tweets from tweet list 
+        //edit on db 
         const allTweets = this.state.tweet1.slice();
         console.log("all tweets: ", allTweets);
         console.log("target tweet id: ", tweetId);
         const tweetIndex = allTweets.indexOf(allTweets[tweetId - 1]);
         console.log("target tweet index: ", tweetIndex);
         // console.log("tweet index: ", tweetIndex);
-        // tweetIndex < 0 ? console.log('not there') : console.log('already there');
-        // // if (tweetIndex < 0) {
-        //     faves.unshift(tweetId)
-        // } else {
-        //     faves.splice(tweetIndex, 1)
-        // }
-        // tweetIndex < 0 ? favesTweets.unshift(tweetId) : favesTweets.splice(tweetIndex, 1);
-        // console.log("after if statment :", favesTweets);
-        // this.setState({ favesTweets });
-        // console.log("state edit: ", this.state.favesTweets);
-        // console.log(faves);
-        // console.log(tweetIndex);
-        // this.setState({ favesTweets: faves });
-        // this.editOnDb(favesTweets);
+        // tweetIndex > -1 ? console.log('remove', allTweets[tweetIndex].content) : console.log('not there');
+        tweetIndex > -1 ? allTweets.splice(tweetIndex, 1) : console.log("object");;
+        console.log(allTweets);
+        this.editOnDb1('delete', allTweets);
+    }
+
+    editOnDb1 = (option, tweets) => {
+        //get current data in db
+        //set new favestweet array 
+        //save the db 
+        const getUserDetails = JSON.parse(localStorage.getItem('TwitterDB'));
+        if (option === 'delete') {
+            const tweet1 = tweets;
+            console.log("option: ", option);
+            console.log("before edit: ", getUserDetails[0].tweets.tweet);
+            getUserDetails[0].tweets.tweet = tweet1;
+            console.log("after edit: ", getUserDetails[0].tweets.tweet);
+            localStorage.setItem('TwitterDB', JSON.stringify(getUserDetails));
+            this.setState({ tweet1 });
+        } else {
+            const favesTweets = tweets;
+            console.log("state: ", favesTweets);
+            console.log("before edit: ", getUserDetails[0].favesTweets);
+            getUserDetails[0].favesTweets = favesTweets;
+            console.log("after edit: ", getUserDetails[0].favesTweets);
+            localStorage.setItem('TwitterDB', JSON.stringify(getUserDetails));
+            this.setState({ favesTweets });
+        }
+
+
     }
 
     render() {
