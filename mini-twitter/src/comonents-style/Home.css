@@ -1,0 +1,14 @@
+.addIcon{
+    font-size: 26pt;
+    opacity: 0.5;
+    position:absolute;
+    bottom: 0;
+    right: 0;
+    margin-right: 25px;
+}
+
+.addIcon:hover{
+    opacity: 1;
+}
+
+
