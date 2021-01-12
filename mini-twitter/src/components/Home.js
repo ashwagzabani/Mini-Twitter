@@ -8,6 +8,8 @@ class Home extends Component {
         super(props);
 
         this.state = {
+            // props.history.location.state.userId
+            userLoggedInId: parseInt(localStorage.getItem('userLoggedInId')),
             showComponent: false,
             handleClicked: false,
             newTweetContent: ''
@@ -39,7 +41,14 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        console.log(this.props.location);
+        // console.log(this.props);
+        // console.log(this.props.history.location.state.userId);
+        console.log(parseInt(localStorage.getItem('userLoggedInId')));
+        // this.setState({
+        //     UserLoggedInId: this.props.history.location.state.userId
+        // })
+        console.log(this.state.userLoggedInId);
+
     }
     render() {
         return (

@@ -6,13 +6,17 @@ import {
 
 import {
     Link,
-    Redirect
+    Redirect,
+    Route
 } from "react-router-dom";
+import Home from './Home';
 
 class RegisterForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            TwitterDB: '',
+            userId: 0,
             userName: '',
             displayName: '',
             email: '',
@@ -21,6 +25,31 @@ class RegisterForm extends Component {
 
         }
         this.assignValueToState = this.assignValueToState.bind(this);
+
+    }
+
+    // componentDidMount() {
+    //     this.userLoggedId();
+
+    // }
+
+    // componentDidUpdate() {
+    //     this.userLoggedId();
+    // }
+
+    userLoggedId = () => {
+        if (localStorage.getItem('TwitterDB') == '') {
+            this.setState({
+                userId: 1
+
+            })
+        } else {
+            const TwitterDB = JSON.parse(localStorage.getItem('TwitterDB'));
+            this.setState({
+                userId: TwitterDB.length + 1
+
+            })
+        }
 
     }
 
@@ -34,14 +63,15 @@ class RegisterForm extends Component {
         //set new db to local storage and convert db from json to string
         // if (validation()) {
         let getTwitterDB;
-        let userId = 0;
+        let userId;
 
         if (localStorage.getItem('TwitterDB') == '') {
             console.log("object");
             let arrOfObject = [];
             userId = 1;
             const newUser = this.getNewUser(userId);
-            //this.setState({ userId: 1 })
+            localStorage.setItem('userLoggedInId', userId)
+            // this.setState({ userId })
             //getTwitterDB = localStorage.getItem('TwitterDB');
             arrOfObject.push(newUser);
             // if (getTwitterDB === '') {
@@ -60,7 +90,9 @@ class RegisterForm extends Component {
             // }
             //console.log(getTwitterDB.length);
             userId = getTwitterDB.length + 1;
+            localStorage.setItem('userLoggedInId', userId)
             const newUser = this.getNewUser(userId)
+            this.setState({ userId })
             getTwitterDB.push(newUser);
             console.log(getTwitterDB);
             localStorage.setItem('TwitterDB', JSON.stringify(getTwitterDB));
@@ -98,16 +130,38 @@ class RegisterForm extends Component {
         // //to read json from local storage - 1/ get item 2/convert it from string to json
         // //let b = JSON.parse(localStorage.getItem('notes'))
         // TwitterDB.users.push(newUser)
-        console.log(userId);
+        console.log(this.state.TwitterDB);
+        // this.setState({ userId: userId })
+        return <Redirect from="/register" to="/user/home" />
+        // return <Redirect from="/register" render={(props) => <Home state="Hello, " {...props} />} />
+        // return <Redirect from="/register" to={{
+        //     pathname: "/user/home",
+        //     key: userId
+        // }} />
 
-        return <Redirect from="/register" to="/user/home" state={{ userLoggedInId: userId }} />
-        // return <Redirect from="/register" to="/user/home" />
+        // />
+
 
         // }
         //this.validation();
     }
 
+    // componentDidUpdate() {
+    //     this.userLoggedId()
+    // }
+    // userLoggedId = (id) => {
+    //     this.setState({ userId: id })
+
+    // }
     getNewUser = (id) => {
+        this.userLoggedId();
+        console.log(this.state.displayName);
+        console.log(this.state.userName);
+        console.log(id);
+        this.setState({
+            userId: id
+        })
+        console.log(this.state.userId);
         let newUser = {};
         return newUser = {
             "id": id,
@@ -209,6 +263,13 @@ class RegisterForm extends Component {
         this.setState({
             [fieldName]: event.target.value
         })
+        const getTwitterDB = JSON.parse(localStorage.getItem('TwitterDB'));
+
+        // if (this.state.userId <= (getTwitterDB.length + 1)) {
+        //     this.setState({
+        //         userId: getTwitterDB.length + 1
+        //     })
+        // }
         if (fieldName !== 'password') {
             this.validation(fieldName, event.target.value);
         }
@@ -233,6 +294,7 @@ class RegisterForm extends Component {
     }
 
     render() {
+
         return (
             <div className="RegisterForm" >
                 {this.state.alert ? this.alertMessage() : ''}
@@ -256,7 +318,10 @@ class RegisterForm extends Component {
                             <Form.Label>password</Form.Label>
                             <input name="password" value={this.state.password} type="password" placeholder="Enter password" onChange={this.assignValueToState} />
                         </Form.Group>
-                        <button className="primary" type="submit" onClick={this.register}><Link to="/user/home">Register</Link></button>
+                        <button className="primary" type="submit" onClick={this.register}><Link to={{
+                            pathname: "/user/home",
+                            state: { "userId": this.state.userId + 1 }
+                        }}>Register</Link></button>
                     </fieldset>
                 </form>
 

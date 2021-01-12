@@ -5,6 +5,7 @@ class TweetList extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            userLoggedInId: 0,
             displayName: '',
             userName: '',
             favesTweets: [],
@@ -17,17 +18,31 @@ class TweetList extends Component {
 
     }
     componentDidMount() {
-        //newTweetContent
+        // newTweetContent
         const getUserDetails = JSON.parse(localStorage.getItem('TwitterDB'));
+        const userLoggedInId = parseInt(localStorage.getItem("userLoggedInId")) - 1; //parseInt(localStorage.getItem('userLoggedInId'))
         this.setState({
-            displayName: getUserDetails[0].displayName,
-            userName: getUserDetails[0].userName,
-            favesTweets: getUserDetails[0].favesTweets,
-            tweet1: getUserDetails[0].tweets.tweet
+            userLoggedInId: userLoggedInId,
+            displayName: getUserDetails[userLoggedInId].displayName,
+            userName: getUserDetails[userLoggedInId].userName,
+            favesTweets: getUserDetails[userLoggedInId].favesTweets,
+            tweet1: getUserDetails[userLoggedInId].tweets.tweet
         });
     }
 
-
+    // componentDidUpdate() {
+    //     if (this.state.userLoggedInId <= 0) {
+    //         const getUserDetails = JSON.parse(localStorage.getItem('TwitterDB'));
+    //         const userLoggedInId = this.state.userLoggedInId; //parseInt(localStorage.getItem('userLoggedInId'))
+    //         this.setState({
+    //             userLoggedInId: userLoggedInId,
+    //             displayName: getUserDetails[userLoggedInId].displayName,
+    //             userName: getUserDetails[userLoggedInId].userName,
+    //             favesTweets: getUserDetails[userLoggedInId].favesTweets,
+    //             tweet1: getUserDetails[userLoggedInId].tweets.tweet
+    //         });
+    //     }
+    // }
 
     //I save the favestweet by tweet id so, I add favetoggle for the target favestweet  
     handleFaveToggle(tweetId) {
@@ -119,6 +134,7 @@ class TweetList extends Component {
     }
 
     render() {
+        console.log('pass user id', this.props.userLoggedInId);
         const tweets = this.state.tweet1.map((element, index) => {
             //  console.log(element.content);
             //console.log(this.state.favesTweets.includes(index));
@@ -134,20 +150,20 @@ class TweetList extends Component {
         })
         // //the faves tweet saved by id of tweet so, fisrt: we need to get faves tweet id then get these tweet by id
         const favesTweet = this.state.favesTweets.map((favesTweetId, index) => {
-            const getTweet = this.state.tweet1[favesTweetId - 1];
-            console.log(getTweet);
-            if (getTweet === undefined) {
-                console.log("yes less than 0");
-            } else {
-                // console.log(favesTweetId);
-                // console.log(' content ', getTweet.content);
+            // const getTweet = this.state.tweet1[favesTweetId - 1];
+            // console.log(getTweet);
+            // if (getTweet === undefined) {
+            //     console.log("yes less than 0");
+            // } else {
+            //     // console.log(favesTweetId);
+            //     // console.log(' content ', getTweet.content);
 
-                return (<TweetRow userName={this.state.userName} tweetId={favesTweetId} isFaveToggle={this.handleFaveToggle} handleDeleteClick={this.handleDeleteClick} tweetContent={getTweet.content} isFave={true} />
-                )
-            }
+            //     return (<TweetRow userName={this.state.userName} tweetId={favesTweetId} isFaveToggle={this.handleFaveToggle} handleDeleteClick={this.handleDeleteClick} tweetContent={getTweet.content} isFave={true} />
+            //     )
+            // }
             // return (<TweetRow userName={this.state.userName} tweetId={favesTweetId} isFaveToggle={this.handleFaveToggle} tweetContent={getTweet.content} isFave={true} />
             // )
-
+            console.log(this.props.userLoggedInId);
 
         });
 
