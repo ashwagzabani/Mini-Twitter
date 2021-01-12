@@ -72,10 +72,10 @@ class RegisterForm extends Component {
         }
         //this.validation();
         //pass user id to home page
-        <Router>
-            <Redirect from="/register" to="/home" />
-            <Route path='/home' render={(props) => <Home userLoggedInId={userId} routeProps={props} />} ></Route>
-        </Router>
+        // <Router>
+        return <Redirect from="/register" to="/home" />
+        {/* <Route path='/home' render={(props) => <Home userLoggedInId={userId} routeProps={props} />} ></Route> */ }
+        {/* </Router> */ }
     }
 
     getNewUser = (id) => {
@@ -240,9 +240,10 @@ class RegisterForm extends Component {
                             <Form.Label>password</Form.Label>
                             <input name="password" value={this.state.password} type="password" placeholder="Enter password" onChange={this.assignValueToState} />
                         </Form.Group>
-                        <button className="primary" type="submit" onClick={this.register}><Link to="/home">Register</Link></button>
+                        {/* <button className="primary" type="submit" onClick={this.register}>Register</button> */}
                     </fieldset>
                 </form>
+                <Link to="/home">Register</Link>
             </div>
         );
     }

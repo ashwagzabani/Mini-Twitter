@@ -30,6 +30,7 @@ import {
 import 'font-awesome/css/font-awesome.min.css';
 import TwitterDB from './TwitterDB'
 import LandingPage from './components/Landing-page';
+import RegisterForm from './components/Register-form';
 
 class App extends Component {
   constructor() {
@@ -70,7 +71,9 @@ class App extends Component {
               </span>
             </OverlayTrigger>
           </div>
-          <Route exact path="/LandingPage" component={LandingPage} />
+          <Route exact path="/" component={LandingPage} />
+          <Route path='/register' component={RegisterForm} />
+
           {/* <Link to='/'>Home</Link> {' || '}
           <Link to='/news'>News</Link> {' || '}
           <Link to='/search'>Search</Link> {' || '}
@@ -79,7 +82,7 @@ class App extends Component {
           <Tab.Container id="left-tabs-example" defaultActiveKey="Home">
             <Row>
               <Col sm={3}>
-                <Nav variant="pills" className="flex-column">
+                {/* <Nav variant="pills" className="flex-column">
                   <Nav.Item>
                     <Nav.Link as={Link} to="/home" eventKey="Home" ><i className="fa fa-home"></i>{'  '}Home</Nav.Link>
                   </Nav.Item>
@@ -92,7 +95,7 @@ class App extends Component {
                   <Nav.Item>
                     <Nav.Link as={Link} to="/search" eventKey="search"><i className="fa fa-search"></i>{'  '}search</Nav.Link>
                   </Nav.Item>
-                </Nav>
+                </Nav> */}
               </Col>
               <Col sm={9}>
                 <Tab.Content>
@@ -102,7 +105,7 @@ class App extends Component {
                   <Tab.Pane eventKey="second">
                     <Route path='/news' component={News} />
                   </Tab.Pane> */}
-                  <Route path='/home' component={Home} />
+                  <Route path='/home' render={props => <Home {...props} />} />
                   <Route path='/explore' component={Explore} />
                   <Route path='/search' component={Search} />
                   <Route path='/favesTweets' component={FavesTweets} />
@@ -111,6 +114,8 @@ class App extends Component {
             </Row>
           </Tab.Container>
         </div>
+        <Route path='/home' component={Home} />
+
       </Router>
     );
   }

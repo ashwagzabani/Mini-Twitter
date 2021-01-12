@@ -11,21 +11,18 @@ import RegisterForm from './Register-form'
 class LandingPage extends Component {
     render() {
         return (
-            <Router>
-                <div className="LandingPage">
-                    <Jumbotron>
-                        <h1>Welcom to mini-twitter</h1>
-                        <p>
-                            Join to a simple social now, enjoy writing your tweets and share it with others.
+            <div className="LandingPage">
+                <Jumbotron>
+                    <h1>Welcom to mini-twitter</h1>
+                    <p>
+                        Join to a simple social now, enjoy writing your tweets and share it with others.
                     </p>
-                        <p>
-                            <Button variant="primary" as={Link} to="/register">Join Now</Button>
-                        </p>
-                    </Jumbotron>
-                    <Route exact path='/register' component={RegisterForm} />
+                    <p>
+                        <Button variant="primary" as={Link} to="/register">Join Now</Button>
+                    </p>
+                </Jumbotron>
 
-                </div>
-            </Router>
+            </div>
         );
     }
 }

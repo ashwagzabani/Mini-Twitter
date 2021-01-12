@@ -15,24 +15,46 @@ import {
 import Movies from './Movies';
 import News from './News';
 import Quets from './Quets';
+import axios from 'axios';
 
 
 class Explore extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            responseData: []
+        }
+    }
+
+    bringAxios = (url) => {
+        const limit = 5;
+        axios
+            .get(`${url}=${limit}`)
+            .then(response => {
+                const responseData = response.data;
+                this.setState({ responseData })
+                // setResponseFilmsData(res, limit);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }
+
     render() {
         return (
             <Router>
                 <div className="Explore container">
                     <Tabs defaultActiveKey="Movies" id="uncontrolled-tab-example">
                         <Tab as={Link} to="/expolre/movies" eventKey="Movies" title="Movies">
-                            <Movies />
+                            <Movies responseData={this.state.responseData} callBackAxios={this.bringAxios} />
                             <Route path='/expolre/movies' component={Movies} />
                         </Tab>
                         <Tab as={Link} to="/explore/quets" eventKey="quets" title="Quets">
-                            <Quets />
+                            <Quets responseData={this.state.responseData} callBackAxios={this.bringAxios} />
                             <Route path="/explore/quets" component={Quets} />
                         </Tab>
                         <Tab eventKey="News" title="News">
-                            <News />
+                            <News responseData={this.state.responseData} callBackAxios={this.bringAxios} />
                             <Route path="/explore/news" component={News} />
                         </Tab>
                     </Tabs>
