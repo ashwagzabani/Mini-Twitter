@@ -73,7 +73,7 @@ class RegisterForm extends Component {
         //this.validation();
         //pass user id to home page
         // <Router>
-        return <Redirect from="/register" to="/home" />
+        return <Redirect from="/register" to="/user/home" />
         {/* <Route path='/home' render={(props) => <Home userLoggedInId={userId} routeProps={props} />} ></Route> */ }
         {/* </Router> */ }
     }
@@ -243,7 +243,7 @@ class RegisterForm extends Component {
                         {/* <button className="primary" type="submit" onClick={this.register}>Register</button> */}
                     </fieldset>
                 </form>
-                <Link to="/home">Register</Link>
+                <Link to="/user/home">Register</Link>
             </div>
         );
     }

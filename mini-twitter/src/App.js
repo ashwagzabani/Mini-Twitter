@@ -31,6 +31,7 @@ import 'font-awesome/css/font-awesome.min.css';
 import TwitterDB from './TwitterDB'
 import LandingPage from './components/Landing-page';
 import RegisterForm from './components/Register-form';
+import UserHomePage from './components/UserHomePage';
 
 class App extends Component {
   constructor() {
@@ -79,10 +80,10 @@ class App extends Component {
           <Link to='/search'>Search</Link> {' || '}
           <Link to='/favesTweets'>FavesTweets</Link> */}
 
-          <Tab.Container id="left-tabs-example" defaultActiveKey="Home">
+          {/* <Tab.Container id="left-tabs-example" defaultActiveKey="Home">
             <Row>
               <Col sm={3}>
-                {/* <Nav variant="pills" className="flex-column">
+                <Nav variant="pills" className="flex-column">
                   <Nav.Item>
                     <Nav.Link as={Link} to="/home" eventKey="Home" ><i className="fa fa-home"></i>{'  '}Home</Nav.Link>
                   </Nav.Item>
@@ -95,7 +96,7 @@ class App extends Component {
                   <Nav.Item>
                     <Nav.Link as={Link} to="/search" eventKey="search"><i className="fa fa-search"></i>{'  '}search</Nav.Link>
                   </Nav.Item>
-                </Nav> */}
+                </Nav>
               </Col>
               <Col sm={9}>
                 <Tab.Content>
@@ -104,7 +105,7 @@ class App extends Component {
                      </Tab.Pane>
                   <Tab.Pane eventKey="second">
                     <Route path='/news' component={News} />
-                  </Tab.Pane> */}
+                  </Tab.Pane>
                   <Route path='/home' render={props => <Home {...props} />} />
                   <Route path='/explore' component={Explore} />
                   <Route path='/search' component={Search} />
@@ -114,8 +115,13 @@ class App extends Component {
             </Row>
           </Tab.Container>
         </div>
-        <Route path='/home' component={Home} />
-
+        <Route path='/home' component={Home} /> */}
+          <Route path='/user' component={UserHomePage} />
+          {/* <Route path='/user/home' render={props => <Home {...props} />} /> */}
+          {/* <Route path='/user/explore' component={Explore} /> */}
+          {/* <Route path='/user/search' component={Search} /> */}
+          {/* <Route path='/user/favesTweets' component={FavesTweets} /> */}
+        </div>
       </Router>
     );
   }
