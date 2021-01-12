@@ -8,20 +8,30 @@ class Home extends Component {
         super(props);
 
         this.state = {
-            showComponent: false
+            showComponent: false,
+            handleClicked: false
         }
 
-        this.handleAddClicked = this.handleAddClicked.bind(this)
+        // this.handleAddClicked = this.handleAddClicked.bind(this)
     }
 
     handleAddClicked = () => {
-        console.log("add icon clicked");
+        // console.log("add icon clicked");
         this.setState({
             showComponent: true,
+            handleClicked: true
         });
-
+        // console.log("show compnent state value :", this.state.showComponent);
     }
 
+    handleShow = () => {
+        this.setState({
+            showComponent: false,
+            handleClicked: false
+        });
+        // console.log("handleShowModalToggle value :", this.state.showComponent);
+
+    }
     render() {
         return (
             <div className="Home">
@@ -29,7 +39,7 @@ class Home extends Component {
                 <TweetList listedTweets='all' />
                 <span className="addIcon" onClick={() => this.handleAddClicked()}><i className="fa fa-plus-circle"></i></span>
                 {/* <NewTweet /> */}
-                {this.state.showComponent ? <NewTweet /> : null}
+                {this.state.handleClicked ? <NewTweet handleShow={this.handleShow} showModalStatus={this.state.handleClicked} /> : null}
             </div>
         );
     }

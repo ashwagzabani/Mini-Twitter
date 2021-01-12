@@ -6,22 +6,32 @@ class NewTweet extends Component {
         super(props);
 
         this.state = {
-            setShow: false,
-            show: false
+            show: props.showModalStatus
         }
+        // this.handleClose = this.handleClose.bind(this);
+
     }
 
-    handleClose = () => this.setState({ setShow: false });
-    handleShow = () => this.setState({ setShow: false });
+    // componentDidMount() {
+    //     this.setState({ show: this.props.showModalStatus });
+    // }
+
+    handleClose = () => {
+        this.props.handleShow();
+        // this.setState({ show: false });
+        // console.log("handle show inside handleClose:", this.state.show);
+    }
+
     render() {
+        console.log("handle show:", this.props.showModalStatus);
         return (
             <div className="NewTweet">
-                <Button variant="primary" onClick={this.handleShow}>
+                {/* <Button variant="primary" onClick={this.handleShow}>
                     Launch demo modal
-                </Button>
+                </Button> */}
 
                 <Modal show={this.state.show} onHide={this.handleClose}>
-                    <Modal.Header closeButton>
+                    <Modal.Header closeButton >
                         <Modal.Title>Modal heading</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
@@ -34,7 +44,8 @@ class NewTweet extends Component {
                         </Button>
                     </Modal.Footer>
                 </Modal>
-                {/* hello */}
+                hello
+                {/* hello + {this.state.show} */}
             </div>
         );
     }
