@@ -48,7 +48,7 @@ class UserHomePage extends Component {
                                 {/* <Tab.Pane eventKey="Home">
                                     <Route path='/user/home' render={props => <Home {...props} />} />
                                 </Tab.Pane> */}
-                                {/* <Tab.Pane eventKey="second">
+                                {/* <Tab.Pane eventKey="second"> 
                     <Route path='/news' component={News} />
                   </Tab.Pane> */}
                                 <Route path='/user/home' render={props => <Home {...props} />} />

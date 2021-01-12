@@ -17,6 +17,7 @@ class TweetList extends Component {
 
     }
     componentDidMount() {
+        //newTweetContent
         const getUserDetails = JSON.parse(localStorage.getItem('TwitterDB'));
         this.setState({
             displayName: getUserDetails[0].displayName,
@@ -35,8 +36,8 @@ class TweetList extends Component {
         //if it's there toggle them ? remove from favestweets : add it to favestweets
         //edit on db to push new favestweets array
         const favesTweets = this.state.favesTweets.slice();
-        console.log('faves tweet in state',favesTweets);
-        console.log('tweet id',tweetId);
+        console.log('faves tweet in state', favesTweets);
+        console.log('tweet id', tweetId);
         const tweetIndex = favesTweets.indexOf(tweetId);
         console.log("tweet index: ", tweetIndex);
         tweetIndex < 0 ? console.log('not there') : console.log('already there');

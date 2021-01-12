@@ -9,7 +9,8 @@ class Home extends Component {
 
         this.state = {
             showComponent: false,
-            handleClicked: false
+            handleClicked: false,
+            newTweetContent: ''
         }
 
         // this.handleAddClicked = this.handleAddClicked.bind(this)
@@ -19,8 +20,7 @@ class Home extends Component {
         // console.log("add icon clicked");
         this.setState({
             showComponent: true,
-            handleClicked: true,
-            newTweetContent: ''
+            handleClicked: true
         });
         // console.log("show compnent state value :", this.state.showComponent);
     }
@@ -37,11 +37,15 @@ class Home extends Component {
         this.setState({ newTweetContent })
         console.log(newTweetContent);
     }
+
+    componentDidMount() {
+        console.log(this.props.location);
+    }
     render() {
         return (
             <div className="Home">
                 {/*home page*/}
-                <TweetList listedTweets='all' />
+                <TweetList listedTweets='all' newTweetContent={this.state.newTweetContent} />
                 <span className="addIcon" onClick={() => this.handleAddClicked()}><i className="fa fa-plus-circle"></i></span>
                 {/* <NewTweet /> */}
                 {this.state.handleClicked ? <NewTweet handleShow={this.handleShow} showModalStatus={this.state.handleClicked} getNewTweet={this.getTheNewTweetContent} /> : null}
