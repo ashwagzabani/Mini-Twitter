@@ -18,6 +18,7 @@ class TweetRow extends Component {
 
     handleDeleteClick = () => {
         console.log("delee icon clicked");
+        this.props.handleDeleteClick(this.props.tweetId)
     }
 
     componentDidUpdate() {
