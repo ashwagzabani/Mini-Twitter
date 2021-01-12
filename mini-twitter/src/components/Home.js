@@ -19,7 +19,8 @@ class Home extends Component {
         // console.log("add icon clicked");
         this.setState({
             showComponent: true,
-            handleClicked: true
+            handleClicked: true,
+            newTweetContent: ''
         });
         // console.log("show compnent state value :", this.state.showComponent);
     }
@@ -30,7 +31,11 @@ class Home extends Component {
             handleClicked: false
         });
         // console.log("handleShowModalToggle value :", this.state.showComponent);
+    }
 
+    getTheNewTweetContent = (newTweetContent) => {
+        this.setState({ newTweetContent })
+        console.log(newTweetContent);
     }
     render() {
         return (
@@ -39,7 +44,7 @@ class Home extends Component {
                 <TweetList listedTweets='all' />
                 <span className="addIcon" onClick={() => this.handleAddClicked()}><i className="fa fa-plus-circle"></i></span>
                 {/* <NewTweet /> */}
-                {this.state.handleClicked ? <NewTweet handleShow={this.handleShow} showModalStatus={this.state.handleClicked} /> : null}
+                {this.state.handleClicked ? <NewTweet handleShow={this.handleShow} showModalStatus={this.state.handleClicked} getNewTweet={this.getTheNewTweetContent} /> : null}
             </div>
         );
     }

@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
-import { Modal, Button } from 'react-bootstrap'
+import { Modal, Button, Form } from 'react-bootstrap'
 
 class NewTweet extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            show: props.showModalStatus
+            show: props.showModalStatus,
+            newTweetContent: ''
         }
-        // this.handleClose = this.handleClose.bind(this);
+        this.assignValueToState = this.assignValueToState.bind(this);
 
     }
 
@@ -22,6 +23,17 @@ class NewTweet extends Component {
         // console.log("handle show inside handleClose:", this.state.show);
     }
 
+    assignValueToState = (event) => {
+        let newTweetContent = event.target.value;
+        this.setState({ newTweetContent })
+        // console.log("tweet content:", this.state.tweetContent);
+    }
+
+    getTweetContent = () => {
+        this.props.getNewTweet(this.state.newTweetContent);
+        this.handleClose();
+    }
+
     render() {
         console.log("handle show:", this.props.showModalStatus);
         return (
@@ -32,15 +44,17 @@ class NewTweet extends Component {
 
                 <Modal show={this.state.show} onHide={this.handleClose}>
                     <Modal.Header closeButton >
-                        <Modal.Title>Modal heading</Modal.Title>
+                        <Modal.Title>Write New Tweet</Modal.Title>
                     </Modal.Header>
-                    <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+                    <Modal.Body>
+                        <input type="text" name="newTweet" value={this.state.newTweetContent} placeholder="Write here" onChange={this.assignValueToState} />
+                    </Modal.Body>
                     <Modal.Footer>
-                        <Button variant="secondary" onClick={this.handleClose}>
+                        {/* <Button variant="secondary" onClick={this.handleClose}>
                             Close
-                        </Button>
-                        <Button variant="primary" onClick={this.handleClose}>
-                            Save Changes
+                        </Button> */}
+                        <Button variant="primary" onClick={this.getTweetContent}>
+                            Add new Tweet
                         </Button>
                     </Modal.Footer>
                 </Modal>
