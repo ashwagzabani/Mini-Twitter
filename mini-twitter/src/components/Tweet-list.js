@@ -35,8 +35,8 @@ class TweetList extends Component {
         //if it's there toggle them ? remove from favestweets : add it to favestweets
         //edit on db to push new favestweets array
         const favesTweets = this.state.favesTweets.slice();
-        console.log(favesTweets);
-        // console.log(tweetId);
+        console.log('faves tweet in state',favesTweets);
+        console.log('tweet id',tweetId);
         const tweetIndex = favesTweets.indexOf(tweetId);
         console.log("tweet index: ", tweetIndex);
         tweetIndex < 0 ? console.log('not there') : console.log('already there');
@@ -46,7 +46,7 @@ class TweetList extends Component {
         //     faves.splice(tweetIndex, 1)
         // }
         tweetIndex < 0 ? favesTweets.unshift(tweetId) : favesTweets.splice(tweetIndex, 1);
-        // console.log("after if statment :", favesTweets);
+        console.log("after if statment :", favesTweets);
         // this.setState({ favesTweets });
         // console.log("state edit: ", this.state.favesTweets);
         // console.log(faves);
@@ -64,7 +64,7 @@ class TweetList extends Component {
         // console.log("before edit: ", getUserDetails[0].favesTweets);
         getUserDetails[0].favesTweets = favesTweets;
         // console.log("after edit: ", getUserDetails[0].favesTweets);
-        // localStorage.setItem('TwitterDB', JSON.stringify(getUserDetails));
+        localStorage.setItem('TwitterDB', JSON.stringify(getUserDetails));
         this.setState({ favesTweets });
 
     }
@@ -141,7 +141,7 @@ class TweetList extends Component {
                 // console.log(favesTweetId);
                 // console.log(' content ', getTweet.content);
 
-                return (<TweetRow userName={this.state.userName} tweetId={favesTweetId} isFaveToggle={this.handleFaveToggle} tweetContent={getTweet.content} isFave={true} />
+                return (<TweetRow userName={this.state.userName} tweetId={favesTweetId} isFaveToggle={this.handleFaveToggle} handleDeleteClick={this.handleDeleteClick} tweetContent={getTweet.content} isFave={true} />
                 )
             }
             // return (<TweetRow userName={this.state.userName} tweetId={favesTweetId} isFaveToggle={this.handleFaveToggle} tweetContent={getTweet.content} isFave={true} />

@@ -10,6 +10,7 @@ class TweetRow extends Component {
         //     tweets: []
         // };
         this.handleFavesClick = this.handleFavesClick.bind(this)
+        this.handleDeleteClick = this.handleDeleteClick.bind(this)
     }
     handleFavesClick = () => {
         console.log("fave icon clicked");
