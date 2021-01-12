@@ -40,13 +40,16 @@ class App extends Component {
       loggedInUser: ""
     }
   }
-  render() {
+  componentDidMount() {
     if (localStorage.getItem('TwitterDB') === null) {
       console.log('empty');
       localStorage.setItem('TwitterDB', [])
     } else {
       console.log('not empty');
     }
+  }
+  render() {
+
     //pop up message 
     const popover = (
       <Popover>

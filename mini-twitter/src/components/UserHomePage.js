@@ -20,6 +20,8 @@ import Explore from './Explore';
 import Search from './Search';
 import FavesTweets from './Faves-tweets';
 class UserHomePage extends Component {
+
+
     render() {
         return (
             <div className="Home">

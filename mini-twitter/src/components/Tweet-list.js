@@ -83,23 +83,36 @@ class TweetList extends Component {
         console.log("target tweet index: ", tweetIndex);
         // console.log("tweet index: ", tweetIndex);
         // tweetIndex > -1 ? console.log('remove', allTweets[tweetIndex].content) : console.log('not there');
-        tweetIndex > -1 ? allTweets.splice(tweetIndex, 1) : console.log("object");;
+        tweetIndex > -1 ? allTweets.splice(tweetIndex, 1) : console.log("object");
         console.log(allTweets);
-        this.editOnDb1('delete', allTweets);
+
+        // //second check if the target tweet in favesTweet
+        const favesTweets = this.state.favesTweets.slice();
+        const faveTweetIndex = favesTweets.indexOf(tweetId);
+        tweetIndex < 0 ? console.log("skip") : console.log("remove");
+        this.editOnDb1('delete', allTweets, favesTweets);
     }
 
-    editOnDb1 = (option, tweets) => {
+    editOnDb1 = (option, tweets, favesTweets) => {
         //get current data in db
         //set new favestweet array 
         //save the db 
         const getUserDetails = JSON.parse(localStorage.getItem('TwitterDB'));
         if (option === 'delete') {
+
+            //first delete tweet from alltweet list
             const tweet1 = tweets;
             console.log("option: ", option);
             console.log("before edit: ", getUserDetails[0].tweets.tweet);
             getUserDetails[0].tweets.tweet = tweet1;
             console.log("after edit: ", getUserDetails[0].tweets.tweet);
+
+            console.log("before edit: ", getUserDetails[0].favesTweets);
+            getUserDetails[0].favesTweets = favesTweets;
+            console.log("after edit: ", getUserDetails[0].favesTweets);
+
             localStorage.setItem('TwitterDB', JSON.stringify(getUserDetails));
+            this.setState({ favesTweets });
             this.setState({ tweet1 });
         } else {
             const favesTweets = tweets;
@@ -132,16 +145,17 @@ class TweetList extends Component {
         const favesTweet = this.state.favesTweets.map((favesTweetId, index) => {
             const getTweet = this.state.tweet1[favesTweetId - 1];
             console.log(getTweet);
-            // if (getTweet === undefined) {
-            //     console.log("yes less than 0");
-            // } else {
-            //     // console.log(favesTweetId);
-            //     // console.log(' content ', getTweet.content);
+            if (getTweet === undefined) {
+                console.log("yes less than 0");
+            } else {
+                // console.log(favesTweetId);
+                // console.log(' content ', getTweet.content);
 
-            //     return (<TweetRow userName={this.state.userName} tweetId={favesTweetId} isFaveToggle={this.handleFaveToggle} tweetContent={getTweet.content} isFave={true} />
-            //     )
-            return (<TweetRow userName={this.state.userName} tweetId={favesTweetId} isFaveToggle={this.handleFaveToggle} tweetContent={getTweet.content} isFave={true} />
-            )
+                return (<TweetRow userName={this.state.userName} tweetId={favesTweetId} isFaveToggle={this.handleFaveToggle} tweetContent={getTweet.content} isFave={true} />
+                )
+            }
+            // return (<TweetRow userName={this.state.userName} tweetId={favesTweetId} isFaveToggle={this.handleFaveToggle} tweetContent={getTweet.content} isFave={true} />
+            // )
 
 
         });
