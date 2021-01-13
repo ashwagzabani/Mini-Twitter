@@ -98,12 +98,12 @@ class Home extends Component {
     }
 
     render() {
-        console.log("helooe");
-        console.log(this.props.listedTweets);
+        // console.log("helooe");
+        // console.log(this.props.listedTweets);
         return (
             <div className="Home">
                 {/*home page*/}
-                <TweetList getUserDetails={() => this.getUserLoggedInDetails()} user={this.state.userLoggedInDetails} listedTweets={this.props.listedTweets} />
+                <TweetList getUserDetails={() => this.getUserLoggedInDetails()} user={this.state.userLoggedInDetails} listedTweets={this.props.listedTweets} handleOptionClicked={this.props.handleOptionClicked} />
                 {this.props.listedTweets === 'all' ? <span className="addIcon" onClick={() => this.handleAddClicked()} ><i className="fa fa-plus-circle"></i></span> : ''}
                 {/* <NewTweet /> */}
                 {this.state.handleClicked ? <NewTweet handleShow={this.handleShow} showModalStatus={this.state.handleClicked} insertNewTweet={this.insertNewTweet} /> : null}

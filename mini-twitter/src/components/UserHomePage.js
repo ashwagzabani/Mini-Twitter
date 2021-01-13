@@ -105,9 +105,9 @@ class UserHomePage extends Component {
                                 {/* <Tab.Pane eventKey="second">
                     <Route path='/news' component={News} />
                   </Tab.Pane> */}
-                                <Route path='/user/home' render={props => <Home {...props} listedTweets='all' />} />
+                                <Route path='/user/home' render={props => <Home {...props} listedTweets='all' handleOptionClicked={this.state.handleTypeClicked} />} />
                                 <Route path='/user/explore' component={Explore} />
-                                <Route path='/user/favesTweets' render={props => <Home {...props} listedTweets='favesTweets' />} />
+                                <Route path='/user/favesTweets' render={props => <Home {...props} listedTweets='favesTweets' handleOptionClicked={this.state.handleTypeClicked} />} />
                                 <Route path='/user/search' component={Search} />
                             </Tab.Content>
                         </Col>
