@@ -71,7 +71,8 @@ class TweetList extends Component {
         const allTweets = this.state.tweets.slice();
         // console.log("all tweets: ", allTweets);
         // console.log("target tweet id: ", tweetId);
-        const tweetIndex = allTweets.indexOf(allTweets[tweetId - 1]);
+        // const tweetIndex = allTweets.indexOf(allTweets[tweetId - 1]);
+        const tweetIndex = allTweets.indexOf(this.getTweet(tweetId));
         // console.log("target tweet index: ", tweetIndex);
         // console.log("tweet index: ", tweetIndex);
         // tweetIndex > -1 ? console.log('remove', allTweets[tweetIndex].content) : console.log('not there');
@@ -80,9 +81,12 @@ class TweetList extends Component {
 
         // //second check if the target tweet in favesTweet
         const favesTweets = this.state.favesTweets.slice();
-        const faveTweetIndex = favesTweets.indexOf(tweetId);
+        const faveTweetIndex = favesTweets.indexOf(this.getTweet(tweetId));
+        console.log(faveTweetIndex);
         // tweetIndex < 0 ? console.log("skip") : console.log("remove");
-        tweetIndex < 0 ? favesTweets.unshift(tweetId) : favesTweets.splice(faveTweetIndex, 1);
+        if (tweetIndex < 0) {
+            favesTweets.splice(faveTweetIndex, 1);
+        }
 
         this.deleteTweetFromDb1(allTweets, favesTweets);
     }
