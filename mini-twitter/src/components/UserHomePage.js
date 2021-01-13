@@ -23,27 +23,28 @@ class UserHomePage extends Component {
     constructor() {
         super();
         this.state = {
-            deleteAllTweetsClicked: false,
-            deleteAllFavesTweetsClicked: false,
-            signOutClicked: false
+            // deleteAllTweetsClicked: false,
+            // deleteAllFavesTweetsClicked: false,
+            // signOutClicked: false
+            handleTypeClicked: ''
         }
     }
 
     handleDeleteAllTweetsClicked = () => {
         this.setState({
-            deleteAllTweetsClicked: true
+            handleTypeClicked: 'deleteAllTweetsClicked'
         })
     }
 
     handleDeleteAllFavesTweetsClicked = () => {
         this.setState({
-            deleteAllFavesTweetsClicked: true
+            handleTypeClicked: 'deleteAllFavesTweetsClicked'
         })
     }
 
     handlesignOutClicked = () => {
         this.setState({
-            signOutClicked: true
+            handleTypeClicked: 'signOutClicked'
         })
     }
 
