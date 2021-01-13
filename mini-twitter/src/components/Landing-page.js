@@ -9,7 +9,14 @@ import {
 import RegisterForm from './Register-form'
 
 class LandingPage extends Component {
+
     render() {
+        // parseInt(localStorage.getItem("")) < 0 ? 
+        // window.addEventListener("popstate", () => {
+        //     //when user trying back some sanpshot rendering and hidding at momemt so nex line to solve this problem
+        //     // this.props.history.push("/");
+        //     // this.props.history.go(1);
+        // });
         return (
             <div className="LandingPage">
                 <Jumbotron>

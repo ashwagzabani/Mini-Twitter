@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import TweetList from './Tweet-list';
 import '../comonents-style/Home.css'
 import NewTweet from './NewTweet';
+import { Redirect, Route } from 'react-router-dom';
 
 class Home extends Component {
     constructor(props) {
@@ -59,26 +60,6 @@ class Home extends Component {
 
     }
 
-    /**
-     * addnewTweetToDb() {
-        const getUserDetails = JSON.parse(localStorage.getItem('TwitterDB'));
-        const userLoggedInId = parseInt(localStorage.getItem("userLoggedInId")) - 1; //parseInt(localStorage.getItem('userLoggedInId'))
-        const currentTweets = this.state.tweet1.slice();
-
-        const newTweet = {
-            id: this.state.tweet1.length + 1,
-            content: this.state.newTweet
-        };
-        currentTweets.unshift(newTweet);
-        getUserDetails[userLoggedInId].tweets.tweet = currentTweets;
-        localStorage.setItem('TwitterDB', JSON.stringify(getUserDetails));
-        this.setState({
-            tweet1: currentTweets,
-            newTweet: ''
-        });
-        console.log("done add");
-    }
-     */
     handleShow = () => {
         this.setState({
             showComponent: false,
@@ -97,9 +78,23 @@ class Home extends Component {
 
     }
 
+    handleSignOutClicked = () => {
+        // console.log(this.props.handleOptionClicked);
+        if (this.props.handleOptionClicked === 'signOutClicked') {
+            console.log('hello');
+            // this.props.history.push("/");
+            // console.log(this.props.history);
+            return <Route path="/user/home" to="/" />
+
+        }
+    }
+
     render() {
+        this.handleSignOutClicked();
+        const { history } = this.props;
+
         // console.log("helooe");
-        // console.log(this.props.listedTweets);
+        // console.log(this.props.handleOptionClicked);
         return (
             <div className="Home">
                 {/*home page*/}

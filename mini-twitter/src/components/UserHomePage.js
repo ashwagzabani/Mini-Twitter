@@ -46,6 +46,8 @@ class UserHomePage extends Component {
         this.setState({
             handleTypeClicked: 'signOutClicked'
         })
+        localStorage.setItem("userLoggedInId", -1)
+        console.log(localStorage.getItem("userLoggedInId"));
     }
 
     render() {
@@ -63,7 +65,7 @@ class UserHomePage extends Component {
                         <Dropdown.Item onClick={this.handleDeleteAllTweetsClicked}>Delete All Tweets</Dropdown.Item>
                         <Dropdown.Item onClick={this.handleDeleteAllFavesTweetsClicked}>Delete All Favorite Tweets</Dropdown.Item>
                     </Dropdown>
-                    <Dropdown.Item onClick={this.handlesignOutClicked}>Sign out</Dropdown.Item>
+                    <Dropdown.Item as={Link} to="/" onClick={this.handlesignOutClicked}>Sign out</Dropdown.Item>
                 </Dropdown>
             </Popover>
         );

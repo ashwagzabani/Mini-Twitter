@@ -136,12 +136,20 @@ class TweetList extends Component {
             console.log(option);
         } else if (option === 'deleteAllFavesTweetsClicked') {
             console.log(option);
-        } else if (option === 'signOutClicked') {
-            console.log(option);
         }
     }
+
+    handleDeleteAllTweetsClicked = () => {
+
+    }
+
+    handleDeleteAllFavesTweetsClicked = () => {
+
+    }
+
+
     render() {
-        console.log(this.handleOptionClicked());
+        this.handleOptionClicked();
         const tweets = this.props.user.tweets.tweet.map((element, index) => {
             if (this.state.favesTweets.includes(element.id)) {
                 return (<TweetRow userName={this.state.userName} isFaveToggle={this.handleFaveToggle} handleDeleteClick={this.handleDeleteClick} tweetId={element.id} tweetContent={element.content} isFave={true} />
