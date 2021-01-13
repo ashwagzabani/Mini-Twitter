@@ -20,7 +20,32 @@ import Search from './Search';
 import '../comonents-style/UserHomePage.css'
 
 class UserHomePage extends Component {
+    constructor() {
+        super();
+        this.state = {
+            deleteAllTweetsClicked: false,
+            deleteAllFavesTweetsClicked: false,
+            signOutClicked: false
+        }
+    }
 
+    handleDeleteAllTweetsClicked = () => {
+        this.setState({
+            deleteAllTweetsClicked: true
+        })
+    }
+
+    handleDeleteAllFavesTweetsClicked = () => {
+        this.setState({
+            deleteAllFavesTweetsClicked: true
+        })
+    }
+
+    handlesignOutClicked = () => {
+        this.setState({
+            signOutClicked: true
+        })
+    }
 
     render() {
         //pop up message 
@@ -34,10 +59,10 @@ class UserHomePage extends Component {
                 <Dropdown href="#/action-1">
                     <Dropdown>
                         <span>Settings</span>
-                        <Dropdown.Item href="#/action-1">Delete All Tweets</Dropdown.Item>
-                        <Dropdown.Item href="#/action-2">Delete All Favorite Tweets</Dropdown.Item>
+                        <Dropdown.Item onClick={this.handleDeleteAllTweetsClicked}>Delete All Tweets</Dropdown.Item>
+                        <Dropdown.Item onClick={this.handleDeleteAllFavesTweetsClicked}>Delete All Favorite Tweets</Dropdown.Item>
                     </Dropdown>
-                    <Dropdown.Item href="#/action-2">Sign out</Dropdown.Item>
+                    <Dropdown.Item onClick={this.handlesignOutClicked}>Sign out</Dropdown.Item>
                 </Dropdown>
             </Popover>
         );
