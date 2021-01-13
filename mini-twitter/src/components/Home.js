@@ -52,9 +52,11 @@ class Home extends Component {
         currentTweets.unshift(newTweet);
         getUserDetails[indexOfUserId].tweets.tweet = currentTweets;
         localStorage.setItem('TwitterDB', JSON.stringify(getUserDetails));
+        // window.location.reload();
         this.setState({
             userLoggedInDetails: getUserDetails[indexOfUserId]
         });
+
     }
 
     /**

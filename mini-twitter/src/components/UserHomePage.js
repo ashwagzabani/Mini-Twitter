@@ -31,15 +31,25 @@ class UserHomePage extends Component {
             <li>Followers</li>
             <li>Sign out</li>
           </ul> */}
-                <Dropdown.Item href="#/action-1">My Profile</Dropdown.Item>
-                <Dropdown.Item href="#/action-2">Sign out</Dropdown.Item>
+                <Dropdown href="#/action-1">
+                    <Dropdown.Item href="#/action-2">Sign out</Dropdown.Item>
+                    <Dropdown.Item href="#/action-2">Sign out</Dropdown.Item>
+                </Dropdown>
             </Popover>
         );
+
+        const SubPropOver = (
+            <Popover>
+                <Dropdown.Item href="#/action-2">Sign out</Dropdown.Item>
+                <Dropdown.Item href="#/action-2">Sign out</Dropdown.Item>
+            </Popover >
+        );
+
         return (
-            <div className="Home">
+            <div className="Home" >
                 <div className="Home-header">
                     {/* {TwitterDB.users[0].displayName} */}
-                    <OverlayTrigger trigger="click" placement="right" overlay={popover}>
+                    <OverlayTrigger trigger="click" placement="right" overlay={SubPropOver}>
                         <span className="options">
                             <i className="fa fa-bars">
                             </i>
