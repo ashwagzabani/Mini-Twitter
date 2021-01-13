@@ -17,6 +17,7 @@ class Home extends Component {
         }
 
         this.getTheNewTweetContent = this.getTheNewTweetContent.bind(this)
+        this.insertNewTweet = this.insertNewTweet.bind(this)
     }
 
     getUserLoggedInDetails = () => {
@@ -33,19 +34,7 @@ class Home extends Component {
             showComponent: true,
             handleClicked: true
         });
-        // console.log("show compnent state value :", this.state.showComponent);
-        // const getUserDetails = JSON.parse(localStorage.getItem('TwitterDB'));
-        // const currentTweets = this.state.userLoggedInDetails.tweets.tweet.slice();
 
-        // console.log(currentTweets.length);
-        // console.log(newTweetComponent);
-        // // const newTweet = {
-        //     id: currentTweets.length + 1,
-        //     content: newTweetComponent
-        // };
-        // currentTweets.unshift(newTweet);
-        // getUserDetails[this.state.userLoggedInDetails - 1].tweets.tweet = currentTweets;
-        // localStorage.setItem('TwitterDB', JSON.stringify(getUserDetails));
     }
 
     insertNewTweet = (newTweetComponent) => {
@@ -112,8 +101,8 @@ class Home extends Component {
         return (
             <div className="Home">
                 {/*home page*/}
-                <TweetList getUserDetails={() => this.getUserLoggedInDetails()} user={this.state.userLoggedInDetails} listedTweets={this.props.listedTweets} newTweetContent={this.state.newTweetContent} />
-                <span className="addIcon" onClick={() => this.handleAddClicked()} ><i className="fa fa-plus-circle"></i></span>
+                <TweetList getUserDetails={() => this.getUserLoggedInDetails()} user={this.state.userLoggedInDetails} listedTweets={this.props.listedTweets} />
+                {this.props.listedTweets === 'all' ? <span className="addIcon" onClick={() => this.handleAddClicked()} ><i className="fa fa-plus-circle"></i></span> : ''}
                 {/* <NewTweet /> */}
                 {this.state.handleClicked ? <NewTweet handleShow={this.handleShow} showModalStatus={this.state.handleClicked} insertNewTweet={this.insertNewTweet} /> : null}
             </div>
