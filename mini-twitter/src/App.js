@@ -9,7 +9,6 @@ import {
 import Home from './components/Home';
 import Explore from './components/Explore';
 import Search from './components/Search';
-import FavesTweets from './components/Faves-tweets';
 
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import {
@@ -50,31 +49,12 @@ class App extends Component {
   }
   render() {
 
-    //pop up message 
-    const popover = (
-      <Popover>
-        {/* <ul>
-          <li>My Profile</li>
-          <li>Followers</li>
-          <li>Sign out</li>
-        </ul> */}
-        <Dropdown.Item href="#/action-1">My Profile</Dropdown.Item>
-        <Dropdown.Item href="#/action-2">Sign out</Dropdown.Item>
-      </Popover>
-    );
+    
 
     return (
       <Router>
         <div className="App">
-          <div className="App-header">
-            {TwitterDB.users[0].displayName}
-            <OverlayTrigger trigger="click" placement="right" overlay={popover}>
-              <span className="options">
-                <i className="fa fa-bars">
-                </i>
-              </span>
-            </OverlayTrigger>
-          </div>
+         
           <Route exact path="/" component={LandingPage} />
           <Route path='/register' component={RegisterForm} />
 

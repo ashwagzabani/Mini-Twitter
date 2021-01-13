@@ -19,6 +19,7 @@ class LandingPage extends Component {
                     </p>
                     <p>
                         <Button variant="primary" as={Link} to="/register">Join Now</Button>
+                        {/* <Button variant="primary" as={Link} to="/login">Log In</Button> */}
                     </p>
                 </Jumbotron>
 

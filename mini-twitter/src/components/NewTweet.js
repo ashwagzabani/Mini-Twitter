@@ -30,7 +30,7 @@ class NewTweet extends Component {
     }
 
     getTweetContent = () => {
-        this.props.getNewTweet(this.state.newTweetContent);
+        this.props.insertNewTweet(this.state.newTweetContent);
         this.handleClose();
     }
 

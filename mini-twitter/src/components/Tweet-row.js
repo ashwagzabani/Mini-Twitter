@@ -33,7 +33,7 @@ class TweetRow extends Component {
         // console.log(this.state.tweets);
         // console.log(this.state.displayName);
         const isFave = (this.props.isFave) ? 'fave' : '';
-        console.log("tweet : " + this.props.tweetContent + ' ' + this.props.isFave);
+        // console.log("tweet : " + this.props.tweetContent + ' ' + this.props.isFave);
         return (
             <div className="TweetRow">
                 <div className="Tweet">

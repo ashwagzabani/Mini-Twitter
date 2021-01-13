@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import TweetList from './Tweet-list';
 import {
     Tab,
     Row,
@@ -18,13 +17,35 @@ import {
 import Home from './Home';
 import Explore from './Explore';
 import Search from './Search';
-import FavesTweets from './Faves-tweets';
+import '../comonents-style/UserHomePage.css'
+
 class UserHomePage extends Component {
 
 
     render() {
+        //pop up message 
+        const popover = (
+            <Popover>
+                {/* <ul>
+            <li>My Profile</li>
+            <li>Followers</li>
+            <li>Sign out</li>
+          </ul> */}
+                <Dropdown.Item href="#/action-1">My Profile</Dropdown.Item>
+                <Dropdown.Item href="#/action-2">Sign out</Dropdown.Item>
+            </Popover>
+        );
         return (
             <div className="Home">
+                <div className="Home-header">
+                    {/* {TwitterDB.users[0].displayName} */}
+                    <OverlayTrigger trigger="click" placement="right" overlay={popover}>
+                        <span className="options">
+                            <i className="fa fa-bars">
+                            </i>
+                        </span>
+                    </OverlayTrigger>
+                </div>
                 <Tab.Container id="left-tabs-example" defaultActiveKey="Home">
                     <Row>
                         <Col sm={3}>
@@ -51,9 +72,9 @@ class UserHomePage extends Component {
                                 {/* <Tab.Pane eventKey="second">
                     <Route path='/news' component={News} />
                   </Tab.Pane> */}
-                                <Route path='/user/home' render={props => <Home {...props} />} />
+                                <Route path='/user/home' render={props => <Home {...props} listedTweets='all' />} />
                                 <Route path='/user/explore' component={Explore} />
-                                <Route path='/user/favesTweets' component={FavesTweets} />
+                                <Route path='/user/favesTweets' render={props => <Home {...props} listedTweets='favesTweets' />} />
                                 <Route path='/user/search' component={Search} />
                             </Tab.Content>
                         </Col>
