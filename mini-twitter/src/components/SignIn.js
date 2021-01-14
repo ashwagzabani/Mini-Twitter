@@ -49,12 +49,17 @@ class SignIn extends Component {
         }
     }
 
-    register = () => {
+    signIn = (e) => {
+        e.preventDefault();
+        // console.log("you are not register");
         // //get Twitter Db from local storage
-        // if (localStorage.getItem('TwitterDB') == '') {
-        //     //the TwitterDb is empty
-        //     //alert => your are not registerd
-        //     console.log("you are not register");
+        if (localStorage.getItem('TwitterDB') == '') {
+            //the TwitterDb is empty
+            //alert => your are not registerd
+            console.log("you are not register");
+        } else {
+            console.log("you are register");
+        }
         //     console.log("object");
         //     let arrOfObject = [];
         //     userId = 1;
@@ -110,7 +115,7 @@ class SignIn extends Component {
             <div className='SignIn'>
                 <form>
                     <fieldset>
-                        <legend>User Information</legend>
+                        <legend>Welcome Back!</legend>
                         <Form.Group>
                             <Form.Label>User Name</Form.Label>
                             <input type="text" name="userName" value={this.state.userName} placeholder="Enter user name" onChange={this.assignValueToState} />
@@ -119,10 +124,11 @@ class SignIn extends Component {
                             <Form.Label>password</Form.Label>
                             <input name="password" value={this.state.password} type="password" placeholder="Enter password" onChange={this.assignValueToState} />
                         </Form.Group>
-                        <button className="primary" type="submit" onClick={this.register}><Link to={{
+                        {/* <button className="primary" type="submit" onClick={this.signIn}><Link to={{
                             pathname: "/user/home",
                             state: { "userId": this.state.userId + 1 }
-                        }}>Register</Link></button>
+                        }}>Sign In</Link></button> */}
+                        <button className="primary" type="submit" onClick={this.signIn}>Sign In</button>
                     </fieldset>
                 </form>
             </div>
