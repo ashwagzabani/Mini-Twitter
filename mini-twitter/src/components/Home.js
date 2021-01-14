@@ -91,17 +91,18 @@ class Home extends Component {
 
     render() {
         this.handleSignOutClicked();
-        const { history } = this.props;
-
-        // console.log("helooe");
-        // console.log(this.props.handleOptionClicked);
         return (
             <div className="Home">
+                {parseInt(localStorage.getItem("userLoggedInId")) < 0 ? this.props.history.push("/") : (
+                    <>
+                        <TweetList getUserDetails={() => this.getUserLoggedInDetails()} user={this.state.userLoggedInDetails} listedTweets={this.props.listedTweets} handleOptionClicked={this.props.handleOptionClicked} />
+                        {this.props.listedTweets === 'all' ? <span className="addIcon" onClick={() => this.handleAddClicked()} ><i className="fa fa-plus-circle"></i></span> : ''}
+                        {/* <NewTweet /> */}
+                        {this.state.handleClicked ? <NewTweet handleShow={this.handleShow} showModalStatus={this.state.handleClicked} insertNewTweet={this.insertNewTweet} /> : null}
+                    </>
+                )}
                 {/*home page*/}
-                <TweetList getUserDetails={() => this.getUserLoggedInDetails()} user={this.state.userLoggedInDetails} listedTweets={this.props.listedTweets} handleOptionClicked={this.props.handleOptionClicked} />
-                {this.props.listedTweets === 'all' ? <span className="addIcon" onClick={() => this.handleAddClicked()} ><i className="fa fa-plus-circle"></i></span> : ''}
-                {/* <NewTweet /> */}
-                {this.state.handleClicked ? <NewTweet handleShow={this.handleShow} showModalStatus={this.state.handleClicked} insertNewTweet={this.insertNewTweet} /> : null}
+
             </div>
         );
     }

@@ -11,16 +11,6 @@ import RegisterForm from './Register-form'
 class LandingPage extends Component {
 
     render() {
-        // if (parseInt(localStorage.getItem("userLoggedInId")) < 0) {
-        // console.log(parseInt(localStorage.getItem("userLoggedInId")));
-        window.addEventListener("popstate", () => {
-            //when user trying back some sanpshot rendering and hidding at momemt so nex line to solve this problem
-            // this.props.history.go(1);
-            // this.props.history.push("/");
-            this.props.history.replace("/");
-
-        });
-        // }
         return (
             <div className="LandingPage">
                 <Jumbotron>

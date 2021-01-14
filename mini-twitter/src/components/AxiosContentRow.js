@@ -4,8 +4,9 @@ class AxiosContentRow extends Component {
     render() {
         return (
             <div className="AxiosContentRow">
-                <h1>{this.props.author}</h1>
-                <p>{" ` " + this.props.quetContent + " ` "}</p>
+                {this.props.imgUrl !== null ? <img src={this.props.imgUrl} /> : ''}
+                <h1>{this.props.title}</h1>
+                {/* <p>{" ` " + this.props.quetContent + " ` "}</p> */}
             </div>
         );
     }
