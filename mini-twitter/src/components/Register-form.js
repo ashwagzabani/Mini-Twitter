@@ -28,15 +28,6 @@ class RegisterForm extends Component {
 
     }
 
-    // componentDidMount() {
-    //     this.userLoggedId();
-
-    // }
-
-    // componentDidUpdate() {
-    //     this.userLoggedId();
-    // }
-
     userLoggedId = () => {
         if (localStorage.getItem('TwitterDB') == '') {
             this.setState({
@@ -146,13 +137,6 @@ class RegisterForm extends Component {
         //this.validation();
     }
 
-    // componentDidUpdate() {
-    //     this.userLoggedId()
-    // }
-    // userLoggedId = (id) => {
-    //     this.setState({ userId: id })
-
-    // }
     getNewUser = (id) => {
         this.userLoggedId();
         console.log(this.state.displayName);
@@ -229,7 +213,6 @@ class RegisterForm extends Component {
             "log_in": false
         }
     }
-
 
     validation = (fieldName, value) => {
         //check if user name already used
