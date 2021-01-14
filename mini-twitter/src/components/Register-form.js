@@ -46,7 +46,9 @@ class RegisterForm extends Component {
 
     register = (e) => {
         e.preventDefault();
-
+        //call validation method 
+        //if validtion ir true => redirect to user home page
+        
         //get db from local storage
         //convert from string to json
         //check if it's empty
@@ -123,7 +125,8 @@ class RegisterForm extends Component {
         // TwitterDB.users.push(newUser)
         console.log(this.state.TwitterDB);
         // this.setState({ userId: userId })
-        return <Redirect from="/register" to="/user/home" />
+        this.props.history.push("/user/home")
+        // return <Redirect from="/register" to="/user/home" />
         // return <Redirect from="/register" render={(props) => <Home state="Hello, " {...props} />} />
         // return <Redirect from="/register" to={{
         //     pathname: "/user/home",
@@ -301,10 +304,7 @@ class RegisterForm extends Component {
                             <Form.Label>password</Form.Label>
                             <input name="password" value={this.state.password} type="password" placeholder="Enter password" onChange={this.assignValueToState} />
                         </Form.Group>
-                        <button className="primary" type="submit" onClick={this.register}><Link to={{
-                            pathname: "/user/home",
-                            state: { "userId": this.state.userId + 1 }
-                        }}>Register</Link></button>
+                        <button className="primary" type="submit" onClick={this.register}><Link>Register</Link></button>
                     </fieldset>
                 </form>
 
