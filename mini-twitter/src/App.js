@@ -32,6 +32,7 @@ import LandingPage from './components/Landing-page';
 import RegisterForm from './components/Register-form';
 import UserHomePage from './components/UserHomePage';
 import News from './components/News';
+import SignIn from './components/SignIn';
 
 class App extends Component {
   constructor() {
@@ -101,6 +102,8 @@ class App extends Component {
         </div>
         <Route path='/home' component={Home} /> */}
           <Route path='/user' component={UserHomePage} />
+          <Route path='/signIn' component={SignIn} />
+
           {/* <Route path="/explore/news" render={props => <News {...props} />} /> /> */}
           {/* <Route path='/user/home' render={props => <Home {...props} />} /> */}
           {/* <Route path='/user/explore' component={Explore} /> */}
