@@ -1,0 +1,19 @@
+.AxiosContentRow{
+    display: flex;
+    flex-direction: row;
+    border: 1px red solid;
+    margin: 10px 0;
+    padding: 5px;
+}
+
+.AxiosContentRow img{
+    width: 90px;
+    height: 90px;
+}
+
+.AxiosContentRow p{
+    display: inline-block;
+    font-size: 12pt;
+    padding-left: 5%;
+    vertical-align: middle;
+}

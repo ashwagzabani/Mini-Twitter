@@ -7,12 +7,17 @@ import {
     Link
 } from "react-router-dom";
 import RegisterForm from './Register-form'
+import '../comonents-style/Header.css'
 
 class LandingPage extends Component {
 
     render() {
         return (
             <div className="LandingPage">
+                <div className="header">
+                    <Button variant="primary" as={Link} to="/signIn">Sign In</Button>
+
+                </div>
                 <Jumbotron>
                     <h1>Welcom to mini-twitter</h1>
                     <p>

@@ -31,6 +31,7 @@ import TwitterDB from './TwitterDB'
 import LandingPage from './components/Landing-page';
 import RegisterForm from './components/Register-form';
 import UserHomePage from './components/UserHomePage';
+import News from './components/News';
 
 class App extends Component {
   constructor() {
@@ -49,12 +50,12 @@ class App extends Component {
   }
   render() {
 
-    
+
 
     return (
       <Router>
         <div className="App">
-         
+
           <Route exact path="/" component={LandingPage} />
           <Route path='/register' component={RegisterForm} />
 
@@ -100,6 +101,7 @@ class App extends Component {
         </div>
         <Route path='/home' component={Home} /> */}
           <Route path='/user' component={UserHomePage} />
+          {/* <Route path="/explore/news" render={props => <News {...props} />} /> /> */}
           {/* <Route path='/user/home' render={props => <Home {...props} />} /> */}
           {/* <Route path='/user/explore' component={Explore} /> */}
           {/* <Route path='/user/search' component={Search} /> */}

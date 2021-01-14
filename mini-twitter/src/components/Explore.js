@@ -22,17 +22,30 @@ class Explore extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            responseData: []
+            tab1responseData: [],
+            tab2responseData: [],
+            tab3responseData: []
         }
     }
 
-    bringAxios = (url) => {
+    componentDidMount() {
+        this.bringAxios()
+    }
+
+    // reset = (tabResponseData) => {
+    //     this.setState({ responseData: [] })
+    // }
+    //     // onClick={() => this.bringAxios('http://api.mediastack.com/v1/news?access_key=ddce94e898a6f1e3b3ebad3ef09516c2&categories=science&languages=en&limit')}
+
+    bringAxios = (url, tab) => {
         const limit = 5;
         axios
             .get(`${url}=${limit}`)
             .then(response => {
                 const responseData = response.data;
-                this.setState({ responseData })
+                console.log(tab);
+                this.setState({ [tab]: responseData })
+                console.log(this.state.tab2responseData);
                 // setResponseFilmsData(res, limit);
             })
             .catch(error => {
@@ -45,17 +58,17 @@ class Explore extends Component {
             <Router>
                 <div className="Explore container">
                     <Tabs defaultActiveKey="Movies" id="uncontrolled-tab-example">
-                        <Tab as={Link} to="/expolre/movies" eventKey="Movies" title="Movies">
-                            <Movies responseData={this.state.responseData} callBackAxios={this.bringAxios} />
-                            <Route path='/expolre/movies' component={Movies} />
+                        <Tab eventKey="Movies" title="Movies">
+                            <Movies responseData={this.state.tab1responseData} callBackAxios={this.bringAxios} />
+                            {/* <Route path='/expolre/movies' render={props => <Movies {...props} responseData={this.state.responseData} callBackAxios={this.bringAxios} />} /> */}
                         </Tab>
-                        <Tab as={Link} to="/explore/quets" eventKey="quets" title="Quets">
-                            <Quets responseData={this.state.responseData} callBackAxios={this.bringAxios} />
-                            <Route path="/explore/quets" component={Quets} />
+                        <Tab eventKey="News" title="News" >
+                            <News responseData={this.state.tab2responseData} callBackAxios={this.bringAxios} />
+                            {/* <Route path="/explore/news" component={News} /> */}
                         </Tab>
-                        <Tab eventKey="News" title="News">
-                            <News responseData={this.state.responseData} callBackAxios={this.bringAxios} />
-                            <Route path="/explore/news" component={News} />
+                        <Tab eventKey="quets" title="Quets">
+                            <Quets responseData={this.state.tab3responseData} callBackAxios={this.bringAxios} />
+                            {/* <Route path="/explore/quets" component={Quets} /> */}
                         </Tab>
                     </Tabs>
                     {/* <Tabs id="uncontrolled-tab-example" defaultActiveKey="Movies">

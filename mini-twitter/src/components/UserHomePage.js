@@ -17,7 +17,7 @@ import {
 import Home from './Home';
 import Explore from './Explore';
 import Search from './Search';
-import '../comonents-style/UserHomePage.css'
+import '../comonents-style/Header.css'
 
 class UserHomePage extends Component {
     constructor() {
@@ -72,7 +72,7 @@ class UserHomePage extends Component {
 
         return (
             <div className="Home" >
-                <div className="Home-header">
+                <div className="header">
                     {/* {TwitterDB.users[0].displayName} */}
                     <OverlayTrigger trigger="click" placement="right" overlay={popover}>
                         <span className="options">
@@ -89,7 +89,7 @@ class UserHomePage extends Component {
                                     <Nav.Link as={Link} to="/user/home" eventKey="Home" ><i className="fa fa-home"></i>{'  '}Home</Nav.Link>
                                 </Nav.Item>
                                 <Nav.Item>
-                                    <Nav.Link as={Link} to="/user/explore" eventKey="Explore" ><i className="fa fa-newspaper"></i>{'  '}Explore</Nav.Link>
+                                    <Nav.Link as={Link} to="/user/explore" eventKey="Explore" ><i className="fa fa-newspaper"></i>{'  '}News</Nav.Link>
                                 </Nav.Item>
                                 <Nav.Item>
                                     <Nav.Link as={Link} to="/user/favesTweets" eventKey="favesTweets"><i className="fa fa-star"></i>{'  '}favesTweets</Nav.Link>
