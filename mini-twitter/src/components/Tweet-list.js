@@ -150,12 +150,13 @@ class TweetList extends Component {
             //delete all tweets
             const getUserDetails = JSON.parse(localStorage.getItem('TwitterDB'));
 
-            //first delete tweet from alltweet list
+            //first delete alltweet list
             const userId = parseInt(localStorage.getItem("userLoggedInId")) - 1;
 
             getUserDetails[userId].tweets.tweet = [];
             this.setState({ tweets: [] });
 
+            //first delete allfavestweet list
             getUserDetails[userId].favesTweets = [];
             this.setState({ favesTweets: [] });
 
@@ -165,7 +166,24 @@ class TweetList extends Component {
     }
 
     handleDeleteAllFavesTweetsClicked = () => {
+        console.log(this.props.user.favesTweets.length);
+        if (this.props.user.favesTweets.length === 0) {
+            //there is no tweet to delete it 
+        } else {
+            //get current data in db
+            //delete all tweets
+            const getUserDetails = JSON.parse(localStorage.getItem('TwitterDB'));
 
+            //first delete alltweet list
+            const userId = parseInt(localStorage.getItem("userLoggedInId")) - 1;
+
+            //first delete allfavestweet list
+            getUserDetails[userId].favesTweets = [];
+            this.setState({ favesTweets: [] });
+
+            localStorage.setItem('TwitterDB', JSON.stringify(getUserDetails));
+            window.location.reload();
+        }
     }
 
 
