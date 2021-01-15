@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import {
     Form,
-    InputGroup,
-    FormControl,
-    Col,
     Alert,
     Card,
     Button
@@ -25,6 +22,9 @@ class SignIn extends Component {
         }
     }
 
+    /**
+     * To get and store input value in state
+     */
     assignValueToState = (event) => {
         let fieldName = event.target.name;
         // console.log(this.state.[fieldName]);
@@ -44,13 +44,20 @@ class SignIn extends Component {
         // if (fieldName !== 'password') {
         //     this.validation(fieldName, event.target.value);
         // }
-    }
+    }//end-assignValueToState fun.
 
+    /**
+     * When the user click on sign in button the signIn function will be call
+     */
     signIn = (e) => {
         e.preventDefault();
         this.validation();
-    }
+    }//end-signIn fun.
 
+    /**
+    * After clicked on sign in button the validation fun. will be call via signIn func.
+    * validation func. => check if the user name and email are not exsists 
+    */
     validation = () => {
         if (this.state.userName === '' || this.state.password === '') {
             console.log("please fill the input required");
@@ -86,7 +93,7 @@ class SignIn extends Component {
                 })
             }
         }
-    }
+    }//end-validation fun.
 
     /**
       * the alerMessage fun. will be call via validation
