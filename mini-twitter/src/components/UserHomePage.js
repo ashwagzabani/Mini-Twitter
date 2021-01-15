@@ -57,7 +57,7 @@ class UserHomePage extends Component {
         return (<span>{userDisplayName}</span>)
 
     }
-    
+
     render() {
         //pop up message 
         const popover = (
@@ -101,7 +101,8 @@ class UserHomePage extends Component {
                             </Col>
                             <Col sm={9}>
                                 <div>
-                                    {this.userLoggedInDisplayName()}
+                                    {parseInt(localStorage.getItem("userLoggedInId")) < 0 ? '' : this.userLoggedInDisplayName() 
+                                    }
                                     <OverlayTrigger trigger="click" placement="right" overlay={popover}>
                                         <span className="options">
                                             <i className="fa fa-bars">
