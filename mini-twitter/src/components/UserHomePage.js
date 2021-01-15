@@ -72,49 +72,52 @@ class UserHomePage extends Component {
 
         return (
             <div className="Home" >
-                <div className="header">
-                    {/* {TwitterDB.users[0].displayName} */}
-                    <OverlayTrigger trigger="click" placement="right" overlay={popover}>
-                        <span className="options">
-                            <i className="fa fa-bars">
-                            </i>
-                        </span>
-                    </OverlayTrigger>
-                </div>
-                <Tab.Container id="left-tabs-example" defaultActiveKey="Home">
-                    <Row>
-                        <Col sm={3}>
-                            <Nav variant="pills" className="flex-column">
-                                <Nav.Item>
-                                    <Nav.Link as={Link} to="/user/home" eventKey="Home" ><i className="fa fa-home"></i>{'  '}Home</Nav.Link>
-                                </Nav.Item>
-                                <Nav.Item>
-                                    <Nav.Link as={Link} to="/user/explore" eventKey="Explore" ><i className="fa fa-newspaper"></i>{'  '}News</Nav.Link>
-                                </Nav.Item>
-                                <Nav.Item>
-                                    <Nav.Link as={Link} to="/user/favesTweets" eventKey="favesTweets"><i className="fa fa-star"></i>{'  '}favesTweets</Nav.Link>
-                                </Nav.Item>
-                                <Nav.Item>
-                                    <Nav.Link as={Link} to="/user/search" eventKey="search"><i className="fa fa-search"></i>{'  '}search</Nav.Link>
-                                </Nav.Item>
-                            </Nav>
-                        </Col>
-                        <Col sm={9}>
-                            <Tab.Content>
-                                {/* <Tab.Pane eventKey="Home">
+                <div className="header header-home">
+
+                    <Tab.Container id="left-tabs-example" defaultActiveKey="Home">
+                        <Row>
+                            <Col sm={3}>
+                                <Nav variant="pills" className="flex-column">
+                                    <Nav.Item>
+                                        <Nav.Link as={Link} to="/user/home" eventKey="Home" ><i className="fa fa-home"></i>{'  '}Home</Nav.Link>
+                                    </Nav.Item>
+                                    <Nav.Item>
+                                        <Nav.Link as={Link} to="/user/explore" eventKey="Explore" ><i className="fa fa-newspaper"></i>{'  '}News</Nav.Link>
+                                    </Nav.Item>
+                                    <Nav.Item>
+                                        <Nav.Link as={Link} to="/user/favesTweets" eventKey="favesTweets"><i className="fa fa-star"></i>{'  '}favesTweets</Nav.Link>
+                                    </Nav.Item>
+                                    <Nav.Item>
+                                        <Nav.Link as={Link} to="/user/search" eventKey="search"><i className="fa fa-search"></i>{'  '}search</Nav.Link>
+                                    </Nav.Item>
+                                </Nav>
+                            </Col>
+                            <Col sm={9}>
+                                <div>
+                                    {"TwitterDB.users[0].displayName"}
+                                    <OverlayTrigger trigger="click" placement="right" overlay={popover}>
+                                        <span className="options">
+                                            <i className="fa fa-bars">
+                                            </i>
+                                        </span>
+                                    </OverlayTrigger>
+                                </div>
+                                <Tab.Content>
+                                    {/* <Tab.Pane eventKey="Home">
                                     <Route path='/user/home' render={props => <Home {...props} />} />
                                 </Tab.Pane> */}
-                                {/* <Tab.Pane eventKey="second">
+                                    {/* <Tab.Pane eventKey="second">
                     <Route path='/news' component={News} />
                   </Tab.Pane> */}
-                                <Route path='/user/home' render={props => <Home {...props} listedTweets='all' handleOptionClicked={this.state.handleTypeClicked} />} />
-                                <Route path='/user/explore' component={Explore} />
-                                <Route path='/user/favesTweets' render={props => <Home {...props} listedTweets='favesTweets' handleOptionClicked={this.state.handleTypeClicked} />} />
-                                <Route path='/user/search' component={Search} />
-                            </Tab.Content>
-                        </Col>
-                    </Row>
-                </Tab.Container>
+                                    <Route path='/user/home' render={props => <Home {...props} listedTweets='all' handleOptionClicked={this.state.handleTypeClicked} />} />
+                                    <Route path='/user/explore' component={Explore} />
+                                    <Route path='/user/favesTweets' render={props => <Home {...props} listedTweets='favesTweets' handleOptionClicked={this.state.handleTypeClicked} />} />
+                                    <Route path='/user/search' component={Search} />
+                                </Tab.Content>
+                            </Col>
+                        </Row>
+                    </Tab.Container>
+                </div>
             </div>
         );
     }

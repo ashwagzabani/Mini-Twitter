@@ -35,12 +35,8 @@ import News from './components/News';
 import SignIn from './components/SignIn';
 
 class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      loggedInUser: ""
-    }
-  }
+
+  //to check if there is a db store on local storage , unless create a db 
   componentDidMount() {
     if (localStorage.getItem('TwitterDB') === null) {
       console.log('empty');
@@ -49,9 +45,8 @@ class App extends Component {
       console.log('not empty');
     }
   }
+
   render() {
-
-
 
     return (
       <Router>
@@ -59,48 +54,6 @@ class App extends Component {
 
           <Route exact path="/" component={LandingPage} />
           <Route path='/register' component={RegisterForm} />
-
-          {/* <Link to='/'>Home</Link> {' || '}
-          <Link to='/news'>News</Link> {' || '}
-          <Link to='/search'>Search</Link> {' || '}
-          <Link to='/favesTweets'>FavesTweets</Link> */}
-
-          {/* <Tab.Container id="left-tabs-example" defaultActiveKey="Home">
-            <Row>
-              <Col sm={3}>
-                <Nav variant="pills" className="flex-column">
-                  <Nav.Item>
-                    <Nav.Link as={Link} to="/home" eventKey="Home" ><i className="fa fa-home"></i>{'  '}Home</Nav.Link>
-                  </Nav.Item>
-                  <Nav.Item>
-                    <Nav.Link as={Link} to="/explore" eventKey="Explore" ><i className="fa fa-newspaper"></i>{'  '}Explore</Nav.Link>
-                  </Nav.Item>
-                  <Nav.Item>
-                    <Nav.Link as={Link} to="/favesTweets" eventKey="favesTweets"><i className="fa fa-star"></i>{'  '}favesTweets</Nav.Link>
-                  </Nav.Item>
-                  <Nav.Item>
-                    <Nav.Link as={Link} to="/search" eventKey="search"><i className="fa fa-search"></i>{'  '}search</Nav.Link>
-                  </Nav.Item>
-                </Nav>
-              </Col>
-              <Col sm={9}>
-                <Tab.Content>
-                  {/* <Tab.Pane eventKey="News">
-                    <Route exact path='/' component={Home} />hhh
-                     </Tab.Pane>
-                  <Tab.Pane eventKey="second">
-                    <Route path='/news' component={News} />
-                  </Tab.Pane>
-                  <Route path='/home' render={props => <Home {...props} />} />
-                  <Route path='/explore' component={Explore} />
-                  <Route path='/search' component={Search} />
-                  <Route path='/favesTweets' component={FavesTweets} />
-                </Tab.Content>
-              </Col>
-            </Row>
-          </Tab.Container>
-        </div>
-        <Route path='/home' component={Home} /> */}
           <Route path='/user' component={UserHomePage} />
           <Route path='/signIn' component={SignIn} />
 

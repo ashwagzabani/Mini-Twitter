@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import TwitterDB from '../TwitterDB'
 import '../comonents-style/Tweet-row.css'
+import { Card } from 'react-bootstrap'
 
 class TweetRow extends Component {
     constructor(props) {
@@ -36,7 +37,7 @@ class TweetRow extends Component {
         // console.log("tweet : " + this.props.tweetContent + ' ' + this.props.isFave);
         return (
             <div className="TweetRow">
-                <div className="Tweet">
+                {/* <div className="Tweet">
                     <div className="userDetails">{this.props.userName}</div>
                     <div className="container">{this.props.tweetContent}</div>
                     <div className="optionsIcon">
@@ -45,7 +46,21 @@ class TweetRow extends Component {
                             <i className="fa fa-trash" onClick={this.handleDeleteClick}></i>
                         </span>
                     </div>
-                </div>
+                </div> */}
+                <Card className="Tweet">
+                    <Card.Header >{this.props.userName}</Card.Header>
+                    <Card.Body className="container">
+                        <Card.Text>
+                            {this.props.tweetContent}
+                        </Card.Text>
+                        <footer>
+                            <span>
+                                <i className={"fa fa-star " + isFave} onClick={this.handleFavesClick}></i>
+                                <i className="fa fa-trash" onClick={this.handleDeleteClick}></i>
+                            </span>
+                        </footer>
+                    </Card.Body>
+                </Card>
             </div>
         );
     }

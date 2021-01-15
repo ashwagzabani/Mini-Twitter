@@ -22,7 +22,9 @@ class SignIn extends Component {
             displayName: '',
             email: '',
             password: '',
-            alertValue: ''
+            alertValue: '',
+            valid: true,
+            feedback: ''
         }
     }
 
@@ -54,6 +56,41 @@ class SignIn extends Component {
 
     signIn = (e) => {
         e.preventDefault();
+        this.validation();
+        // if (this.state.userName === '' || this.state.password === '') {
+        //     console.log("please fill the input required");
+        // } else {
+        //     // console.log("you are not register");
+        //     // //get Twitter Db from local storage
+
+        //     if (localStorage.getItem('TwitterDB') == '') {
+        //         //the TwitterDb is empty
+        //         //alert => your are not registerd
+        //         console.log("you are not register");
+        //     } else {
+        //         console.log("you are register");
+        //         const getTwitterDB = JSON.parse(localStorage.getItem('TwitterDB'));
+        //         getTwitterDB.map(element => {
+        //             if (element.userName === this.state.userName) {
+        //                 console.log("step check userName ==> pass");
+        //                 if (element.password === this.state.password) {
+        //                     console.log("step check password ==> pass");
+        //                     parseInt(localStorage.setItem("userLoggedInId", element.id))
+        //                     return this.props.history.push("/user/home")
+        //                 } else {
+        //                     console.log("Your password is error ");
+        //                     this.setState({ alert: "Your password is error " })
+        //                     this.alertMessage()
+        //                 }
+        //             } else {
+        //                 console.log("Your User Name is error or you are not register");
+        //             }
+        //         })
+        //     }
+        // }
+    }
+
+    validation = () => {
         if (this.state.userName === '' || this.state.password === '') {
             console.log("please fill the input required");
         } else {
@@ -65,57 +102,29 @@ class SignIn extends Component {
                 //alert => your are not registerd
                 console.log("you are not register");
             } else {
-                console.log("you are register");
+                // console.log("you are register");
                 const getTwitterDB = JSON.parse(localStorage.getItem('TwitterDB'));
-                getTwitterDB.map(element => {
-                    if (element.userName === this.state.userName) {
+                getTwitterDB.map((element, index) => {
+                    console.log(index);
+                    if (element.userName == this.state.userName) {
                         console.log("step check userName ==> pass");
                         if (element.password === this.state.password) {
                             console.log("step check password ==> pass");
                             parseInt(localStorage.setItem("userLoggedInId", element.id))
-                            return this.props.history.push("/user/home")
+                            // return this.props.history.push("/user/home")
+                            return true
                         } else {
                             console.log("Your password is error ");
                             this.setState({ alert: "Your password is error " })
                             this.alertMessage()
                         }
-                    } else {
+                    } else if (element.length - 1 === index) {
                         console.log("Your User Name is error or you are not register");
+                        this.setState()
                     }
                 })
             }
         }
-        //     console.log("object");
-        //     let arrOfObject = [];
-        //     userId = 1;
-        //     const newUser = this.getNewUser(userId);
-        //     localStorage.setItem('userLoggedInId', userId)
-        //     // this.setState({ userId })
-        //     //getTwitterDB = localStorage.getItem('TwitterDB');
-        //     arrOfObject.push(newUser);
-        //     // if (getTwitterDB === '') {
-        //     //     console.log('object');
-        //     // }
-        //     // let arrOfObject = [];
-        //     // arrOfObject.push(getTwitterDB);
-        //     console.log(arrOfObject);
-        //     localStorage.setItem('TwitterDB', JSON.stringify(arrOfObject))
-        // }
-        // else {
-        //     getTwitterDB = JSON.parse(localStorage.getItem('TwitterDB'));
-        //     // if (getTwitterDB[0] === '') {
-        //     //     getTwitterDB.shift(0);
-        //     //     console.log("donw");
-        //     // }
-        //     //console.log(getTwitterDB.length);
-        //     userId = getTwitterDB.length + 1;
-        //     localStorage.setItem('userLoggedInId', userId)
-        //     const newUser = this.getNewUser(userId)
-        //     this.setState({ userId })
-        //     getTwitterDB.push(newUser);
-        //     console.log(getTwitterDB);
-        //     localStorage.setItem('TwitterDB', JSON.stringify(getTwitterDB));
-        // }
     }
 
     alertMessage = () => {
@@ -141,20 +150,23 @@ class SignIn extends Component {
         return (
             <div className='SignIn'>
                 {this.state.alert ? this.alertMessage() : ''}
-                <form>
+                <form  >
                     <Col xs={7}>
                         <fieldset>
                             <legend>Welcome Back!</legend>
+                            <InputGroup className="mb-2">
+                                <InputGroup.Prepend>
+                                    <InputGroup.Text>@</InputGroup.Text>
+                                </InputGroup.Prepend>
+                                <FormControl placeholder="Username" />
+                            </InputGroup>
+
                             <Form.Group>
-                                <InputGroup className="mb-2">
-                                    <InputGroup.Prepend>
-                                        <InputGroup.Text>@</InputGroup.Text>
-                                    </InputGroup.Prepend>
-                                    <FormControl id="inlineFormInputGroup" placeholder="Username" />
-                                </InputGroup>
                                 <Form.Label>User Name</Form.Label>
                                 <Form.Control type="text" name="userName" value={this.state.userName} placeholder="Enter user name" onChange={this.assignValueToState} />
+                                {/* <Form.Control.Feedback type="valid">{this.state.feedback}</Form.Control.Feedback> */}
                             </Form.Group>
+
                             <Form.Group>
                                 <Form.Label>password</Form.Label>
                                 <Form.Control name="password" value={this.state.password} type="password" placeholder="Enter password" onChange={this.assignValueToState} />

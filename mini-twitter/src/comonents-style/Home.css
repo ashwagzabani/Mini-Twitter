@@ -1,14 +1,15 @@
 .addIcon{
-    font-size: 26pt;
+    font-size: 35pt;
     opacity: 0.5;
-    position:absolute;
+    position:fixed;
     bottom: 0;
-    right: 0;
-    margin-right: 25px;
+    right: 20%;
+    /* margin-right: 20%; */
 }
 
 .addIcon:hover{
     opacity: 1;
+    color: #0062CC;
 }
 
 

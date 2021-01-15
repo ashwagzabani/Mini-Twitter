@@ -1,11 +1,11 @@
 .App {
-  margin: 0 20%;
-  border: 3px red solid;
+  margin: 0 15%;
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .App {
     width: auto;
+    
   }
 }
 
