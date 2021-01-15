@@ -134,13 +134,34 @@ class TweetList extends Component {
         const option = this.props.handleOptionClicked;
         if (option === 'deleteAllTweetsClicked') {
             console.log(option);
+            this.handleDeleteAllTweetsClicked();
         } else if (option === 'deleteAllFavesTweetsClicked') {
             console.log(option);
+            this.handleDeleteAllFavesTweetsClicked();
         }
     }
 
     handleDeleteAllTweetsClicked = () => {
+        console.log(this.props.user.tweets.tweet.length);
+        if (this.props.user.tweets.tweet.length === 0) {
+            //there is no tweet to delete it 
+        } else {
+            //get current data in db
+            //delete all tweets
+            const getUserDetails = JSON.parse(localStorage.getItem('TwitterDB'));
 
+            //first delete tweet from alltweet list
+            const userId = parseInt(localStorage.getItem("userLoggedInId")) - 1;
+
+            getUserDetails[userId].tweets.tweet = [];
+            this.setState({ tweets: [] });
+
+            getUserDetails[userId].favesTweets = [];
+            this.setState({ favesTweets: [] });
+
+            localStorage.setItem('TwitterDB', JSON.stringify(getUserDetails));
+            window.location.reload();
+        }
     }
 
     handleDeleteAllFavesTweetsClicked = () => {
@@ -187,7 +208,9 @@ class TweetList extends Component {
             // })}
             <div className="TweetList" >
                 {/* <TweetRow userName={this.state.userName} tweetId={1} tweetContent={this.state.tweet} /> */}
-                { this.state.listedTweets === 'all' ? tweets : favesTweet
+                { this.state.listedTweets === 'all' ?
+                    this.props.user.tweets.tweet.length !== 0 ? tweets : '' :
+                    this.props.user.favesTweets.length !== 0 ? favesTweet : ''
                 }
                 {/* {this.state.listedTweets === 'all' ? this.state.favesTweets.length < 0 ? '' : favesTweet : ''} */}
 
