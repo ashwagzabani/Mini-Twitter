@@ -22,6 +22,7 @@ class RegisterForm extends Component {
             displayName: '',
             email: '',
             password: '',
+            alertValue: '',
             alert: false
 
         }
@@ -310,13 +311,28 @@ class RegisterForm extends Component {
                         console.log(getTwitterDB);
                         localStorage.setItem('TwitterDB', JSON.stringify(getTwitterDB));
                         this.props.history.push("/user/home")
-                    } else if (element.email === this.state.userName) {
-                        console.log("the user Name already exsist");
-                        //alert error
-                    } else if (element.userName === this.state.email) {
-                        console.log("the user Name already exsist");
-                        //alert error
 
+                    } else {
+                        if (element.userName === this.state.userName) {
+                            console.log("the user Name already exsist");
+                            //alert error
+                            this.alertMessage();
+                            this.setState({ alert: true, alertValue: 'userName' })
+                            if (element.email === this.state.email) {
+                                console.log("the email already exsist");
+                                //alert error
+                                this.alertMessage();
+                                this.setState({ alert: true, alertValue: 'userName & email' })
+
+                            }
+
+                        } else {
+                            console.log("the email already exsist");
+                            //alert error
+                            this.alertMessage();
+                            this.setState({ alert: true, alertValue: 'email' })
+
+                        }
                     }
 
                 })
@@ -339,23 +355,24 @@ class RegisterForm extends Component {
         //         userId: getTwitterDB.length + 1
         //     })
         // }
-        if (fieldName !== 'password') {
-            this.validation(fieldName, event.target.value);
-        }
+        // if (fieldName !== 'password') {
+        //     this.validation(fieldName, event.target.value);
+        // }
     }
 
-    alertMessage = (key) => {
+    alertMessage = () => {
+        console.log(this.state.alertValue);
         let alertValue = '';
-        if (key === 'userName') {
-            alertValue = 'The user name already used';
-        } else if (key === 'email') {
-            alertValue = 'The email already registered';
+        if (this.state.alertValue === 'userName') {
+            alertValue = 'The user name is already used';
+        } else if (this.state.alertValue === 'email') {
+            alertValue = 'The email is already registered';
+        } else if (this.state.alertValue === 'userName & email') {
+            alertValue = 'The user name and the email are already registered';
         }
-        else if (key === 'password') {
-            if (this.state.password.length < 6) {
-                alertValue = 'The password must be less than 6 digit';
-            }
-        }
+        console.log(alertValue);
+        setTimeout(() => { this.setState({ alert: false, alertValue: '' }) }, 3000);
+
         return (
             <Alert variant='warning'>
                 {alertValue}
@@ -365,11 +382,10 @@ class RegisterForm extends Component {
     render() {
         return (
             <div className="RegisterForm" >
-                {this.state.alert ? this.alertMessage() : ''}
-
                 <form>
                     <fieldset>
                         <legend>User Information</legend>
+                        {this.state.alert ? this.alertMessage() : ''}
                         <Form.Group>
                             <Form.Label>User Name</Form.Label>
                             <Form.Control type="text" name="userName" value={this.state.userName} placeholder="Enter user name" onChange={this.assignValueToState} />
