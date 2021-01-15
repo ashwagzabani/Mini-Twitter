@@ -58,7 +58,6 @@ class NewTweet extends Component {
                         </Button>
                     </Modal.Footer>
                 </Modal>
-                hello
                 {/* hello + {this.state.show} */}
             </div>
         );

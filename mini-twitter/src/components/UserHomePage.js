@@ -101,7 +101,7 @@ class UserHomePage extends Component {
                             </Col>
                             <Col sm={9}>
                                 <div>
-                                    {parseInt(localStorage.getItem("userLoggedInId")) < 0 ? '' : this.userLoggedInDisplayName() 
+                                    {parseInt(localStorage.getItem("userLoggedInId")) < 0 ? '' : this.userLoggedInDisplayName()
                                     }
                                     <OverlayTrigger trigger="click" placement="right" overlay={popover}>
                                         <span className="options">
