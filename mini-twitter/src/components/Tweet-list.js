@@ -227,8 +227,8 @@ class TweetList extends Component {
             <div className="TweetList" >
                 {/* <TweetRow userName={this.state.userName} tweetId={1} tweetContent={this.state.tweet} /> */}
                 { this.state.listedTweets === 'all' ?
-                    this.props.user.tweets.tweet.length !== 0 ? tweets : '' :
-                    this.props.user.favesTweets.length !== 0 ? favesTweet : ''
+                    this.props.user.tweets.tweet.length !== 0 ? tweets : 'There is no tweets! Start write your tweet Now' :
+                    this.props.user.favesTweets.length !== 0 ? favesTweet : 'There is no Faves Tweets'
                 }
                 {/* {this.state.listedTweets === 'all' ? this.state.favesTweets.length < 0 ? '' : favesTweet : ''} */}
 
