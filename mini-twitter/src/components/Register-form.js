@@ -7,10 +7,10 @@ import {
 } from 'react-bootstrap'
 
 class RegisterForm extends Component {
-    
+
     constructor(props) {
         super(props);
-    
+
         this.state = {
             TwitterDB: '',
             userId: 0,
@@ -22,7 +22,7 @@ class RegisterForm extends Component {
             alert: false
 
         }
-       
+
         this.assignValueToState = this.assignValueToState.bind(this);
 
     }
@@ -184,7 +184,7 @@ class RegisterForm extends Component {
 
     /**
      * the alerMessage fun. will be call via validation
-     * if the user name and email ready exsist the alert message will be show
+     * if the user name and email are already exsist the alert message will be show
      */
     alertMessage = () => {
         console.log(this.state.alertValue);
@@ -242,7 +242,7 @@ class RegisterForm extends Component {
                                         (< Form.Text>Your password must be at least 6 characters</Form.Text>) : ''}
 
                             </Form.Group>
-                            <Button className="primary" type="submit" onClick={this.register}>Register</Button>
+                            <Button variant="primary" type="submit" onClick={this.register}>Register</Button>
                         </Card.Body>
                     </fieldset>
                 </form>
