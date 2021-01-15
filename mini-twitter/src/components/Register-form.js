@@ -31,15 +31,22 @@ class RegisterForm extends Component {
 
     }
 
+    /**
+     * When the user click on register button the register function will be call
+     */
     register = (e) => {
+
         e.preventDefault();
         //call validation method 
         //if validtion ir true => redirect to user home page
         this.validation();
 
-        console.log(this.state.TwitterDB);
-    }
+        // console.log(this.state.TwitterDB);
+    }//end-register fun.
 
+    /**
+     * after allow the user to register his information will be saved in db - localstorage
+     */
     getNewUser = (id) => {
         let newUser = {};
         return newUser = {
@@ -52,105 +59,103 @@ class RegisterForm extends Component {
                 "tweet": [
                     {
                         "id": 1,
-                        "content": "Hello, this my fisrt tweet",
-                        "send_time": "2021-01-10 10:00:00 AM"
+                        "content": "Hello, this my fisrt tweet"
                     },
                     {
                         "id": 2,
-                        "content": "Good morning",
-                        "send_time": "2021-01-10 10:20:00 AM"
+                        "content": "Good morning"
                     },
                     {
                         "id": 3,
-                        "content": "Good afternoon",
-                        "send_time": "2021-01-10 10:20:00 AM"
+                        "content": "Good afternoon"
                     },
                     {
                         "id": 4,
-                        "content": "hello",
-                        "send_time": "2021-01-10 10:20:00 AM"
+                        "content": "hello"
                     },
                     {
                         "id": 5,
-                        "content": "TEST1",
-                        "send_time": "2021-01-10 10:20:00 AM"
+                        "content": "TEST1"
                     },
                     {
                         "id": 6,
-                        "content": "test2",
-                        "send_time": "2021-01-10 10:20:00 AM"
+                        "content": "test2"
                     },
                     {
                         "id": 7,
-                        "content": "ashwag",
-                        "send_time": "2021-01-10 10:20:00 AM"
+                        "content": "ashwag"
                     },
                     {
                         "id": 8,
-                        "content": "SEI-14",
-                        "send_time": "2021-01-10 10:20:00 AM"
+                        "content": "SEI-14"
                     },
                     {
                         "id": 9,
-                        "content": "today",
-                        "send_time": "2021-01-10 10:20:00 AM"
+                        "content": "today"
                     },
                     {
                         "id": 10,
-                        "content": "today",
-                        "send_time": "2021-01-10 10:20:00 AM"
+                        "content": "today"
                     }
                 ]
             },
             "favesTweets": [],
-            "intersetedTopics": [],
-            "followers": [],
-            "log_in": false
+            "followers": []
         }
-    }
+    }//end-getNewUser fun.
 
+    /**
+     * After clicked on register button the validation fun. will be call via register func.
+     * validation func. => check if the user name and email are already register 
+     */
     validation = () => {
+
         if (this.state.userName === '' || this.state.displayName === '' || this.state.email === '' || (this.state.password !== '' && this.state.password.length < 6)) {
-            console.log("please fill the input required");
+            // console.log("please fill the input required");
             //alert error
+
         } else {
 
             if (localStorage.getItem('TwitterDB') == '') {
+
                 //the TwitterDb is empty,so there is no users to check
                 let arrOfObject = [];
                 let userId = 1;
                 const newUser = this.getNewUser(userId);
                 localStorage.setItem('userLoggedInId', userId)
                 arrOfObject.push(newUser);
-                console.log(arrOfObject);
                 localStorage.setItem('TwitterDB', JSON.stringify(arrOfObject))
                 this.props.history.push("/user/home")
 
             } else {
+
                 // nedd check if the userName or Email already exsist
                 const getTwitterDB = JSON.parse(localStorage.getItem('TwitterDB'));
                 getTwitterDB.map((element, index) => {
 
+                    //after check all of db and the user name and email are not exsist allow user to register
                     if (((getTwitterDB.length - 1) === index) && (element.userName !== this.state.userName) && (element.email !== this.state.email)) {
-                        console.log("passed");
+
+                        // console.log("passed");
                         const getTwitterDB = JSON.parse(localStorage.getItem('TwitterDB'));
                         let userId = getTwitterDB.length + 1;
                         localStorage.setItem('userLoggedInId', userId)
                         const newUser = this.getNewUser(userId)
                         this.setState({ userId })
                         getTwitterDB.push(newUser);
-                        console.log(getTwitterDB);
                         localStorage.setItem('TwitterDB', JSON.stringify(getTwitterDB));
                         this.props.history.push("/user/home")
 
                     } else {
+
                         if (element.userName === this.state.userName) {
-                            console.log("the user Name already exsist");
+
+                            // console.log("the user Name already exsist");
                             //alert error
                             this.alertMessage();
                             this.setState({ alert: true, alertValue: 'userName' })
                             if (element.email === this.state.email) {
-                                console.log("the email already exsist");
+                                // console.log("the email already exsist");
                                 //alert error
                                 this.alertMessage();
                                 this.setState({ alert: true, alertValue: 'userName & email' })
@@ -158,29 +163,34 @@ class RegisterForm extends Component {
                             }
 
                         } else {
-                            console.log("the email already exsist");
+
+                            // console.log("the email already exsist");
                             //alert error
                             this.alertMessage();
                             this.setState({ alert: true, alertValue: 'email' })
 
-                        }
-                    }
+                        }// end-else
+                    }// end-else
+                })//end-map
+            }//end-else
+        }//end-else
+    }//end-validation fun.
 
-                })
-            }
-        }
-    }
-
+    /**
+     * To get and store input value in state
+     */
     assignValueToState = (event) => {
         let fieldName = event.target.name;
 
         this.setState({
             [fieldName]: event.target.value
         })
-        const getTwitterDB = JSON.parse(localStorage.getItem('TwitterDB'));
+    }//end-assignValueToState fun.
 
-    }
-
+    /**
+     * the alerMessage fun. will be call via validation
+     * if the user name and email ready exsist the alert message will be show
+     */
     alertMessage = () => {
         console.log(this.state.alertValue);
         let alertValue = '';
@@ -191,14 +201,14 @@ class RegisterForm extends Component {
         } else if (this.state.alertValue === 'userName & email') {
             alertValue = 'The user name and the email are already registered';
         }
-        console.log(alertValue);
+        // console.log(alertValue);
         setTimeout(() => { this.setState({ alert: false, alertValue: '' }) }, 3000);
 
         return (
             <Alert variant='warning'>
                 {alertValue}
             </Alert>);
-    }
+    }//end-alertMessage fun.
 
     render() {
         return (
