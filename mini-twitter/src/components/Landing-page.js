@@ -6,7 +6,6 @@ import {
     Route,
     Link
 } from "react-router-dom";
-import RegisterForm from './Register-form'
 import '../comonents-style/Header.css'
 import '../comonents-style/Landing-page.css'
 
@@ -23,11 +22,10 @@ class LandingPage extends Component {
                 <Jumbotron>
                     <h1>Welcom to mini-twitter</h1>
                     <p>
-                        Join to a simple social now, enjoy writing your tweets and share it with others.
+                        Join to a simple social now, enjoy writing your tweets.
                     </p>
                     <p>
                         <Button variant="primary" as={Link} to="/register">Join Now</Button>
-                        {/* <Button variant="primary" as={Link} to="/login">Log In</Button> */}
                     </p>
                 </Jumbotron>
 
