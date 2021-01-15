@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import {
     Form,
     Alert,
-    Button
+    Button,
+    Card
 } from 'react-bootstrap'
 
 import {
@@ -201,45 +202,46 @@ class RegisterForm extends Component {
 
     render() {
         return (
-            <div className="RegisterForm" >
+            <Card className="RegisterForm" >
                 <form>
                     <fieldset>
-                        <legend>User Information</legend>
-                        {this.state.alert ? this.alertMessage() : ''}
-                        <Form.Group>
-                            <Form.Label>User Name</Form.Label>
-                            <Form.Control type="text" name="userName" value={this.state.userName} placeholder="Enter user name" onChange={this.assignValueToState} />
-                            {this.state.userName === '' ?
-                                (< Form.Text>please fill required field </Form.Text>) : ''}
-                        </Form.Group>
-                        <Form.Group>
-                            <Form.Label>Display Name</Form.Label>
-                            <Form.Control type="text" name="displayName" value={this.state.displayName} placeholder="Enter display name" onChange={this.assignValueToState} />
-                            {this.state.displayName === '' ?
-                                (< Form.Text>please fill required field </Form.Text>) : ''}
-                        </Form.Group>
-                        <Form.Group>
-                            <Form.Label>Email address</Form.Label>
-                            <Form.Control type="email" name="email" value={this.state.email} placeholder="Enter email" onChange={this.assignValueToState} />
-                            {this.state.email === '' ?
-                                (< Form.Text>please fill required field </Form.Text>) : ''}
-                        </Form.Group>
-                        <Form.Group>
-                            <Form.Label>password</Form.Label>
-                            <Form.Control name="password" value={this.state.password} type="password" placeholder="Enter password" onChange={this.assignValueToState} />
-                            {this.state.password === '' ?
-                                (< Form.Text>please fill required field </Form.Text>)
+                        <Card.Header><h3>User Information</h3></Card.Header>
+                        <Card.Body>
+                            {this.state.alert ? this.alertMessage() : ''}
+                            <Form.Group>
+                                <Form.Label>User Name</Form.Label>
+                                <Form.Control type="text" name="userName" value={this.state.userName} placeholder="Enter user name" onChange={this.assignValueToState} />
+                                {this.state.userName === '' ?
+                                    (< Form.Text>please fill required field </Form.Text>) : ''}
+                            </Form.Group>
+                            <Form.Group>
+                                <Form.Label>Display Name</Form.Label>
+                                <Form.Control type="text" name="displayName" value={this.state.displayName} placeholder="Enter display name" onChange={this.assignValueToState} />
+                                {this.state.displayName === '' ?
+                                    (< Form.Text>please fill required field </Form.Text>) : ''}
+                            </Form.Group>
+                            <Form.Group>
+                                <Form.Label>Email address</Form.Label>
+                                <Form.Control type="email" name="email" value={this.state.email} placeholder="Enter email" onChange={this.assignValueToState} />
+                                {this.state.email === '' ?
+                                    (< Form.Text>please fill required field </Form.Text>) : ''}
+                            </Form.Group>
+                            <Form.Group>
+                                <Form.Label>password</Form.Label>
+                                <Form.Control name="password" value={this.state.password} type="password" placeholder="Enter password" onChange={this.assignValueToState} />
+                                {this.state.password === '' ?
+                                    (< Form.Text>please fill required field </Form.Text>)
 
-                                : this.state.password.length < 6 ?
+                                    : this.state.password.length < 6 ?
 
-                                    (< Form.Text>Your password must be at least 6 characters</Form.Text>) : ''}
+                                        (< Form.Text>Your password must be at least 6 characters</Form.Text>) : ''}
 
-                        </Form.Group>
-                        <Button className="primary" type="submit" onClick={this.register}>Register</Button>
+                            </Form.Group>
+                            <Button className="primary" type="submit" onClick={this.register}>Register</Button>
+                        </Card.Body>
                     </fieldset>
                 </form>
-
-            </div>
+            </Card>
         );
     }
 }
