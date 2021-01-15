@@ -99,8 +99,7 @@ class RegisterForm extends Component {
                     }
                 ]
             },
-            "favesTweets": [],
-            "followers": []
+            "favesTweets": []
         }
     }//end-getNewUser fun.
 
