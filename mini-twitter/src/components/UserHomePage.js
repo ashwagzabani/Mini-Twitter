@@ -50,6 +50,14 @@ class UserHomePage extends Component {
         console.log(localStorage.getItem("userLoggedInId"));
     }
 
+    userLoggedInDisplayName = () => {
+        const getUserDetails = JSON.parse(localStorage.getItem('TwitterDB'));
+        const userLoggedInId = parseInt(localStorage.getItem('userLoggedInId'));
+        const userDisplayName = getUserDetails[userLoggedInId - 1].displayName;
+        return (<span>{userDisplayName}</span>)
+
+    }
+    
     render() {
         //pop up message 
         const popover = (
@@ -73,7 +81,6 @@ class UserHomePage extends Component {
         return (
             <div className="Home" >
                 <div className="header header-home">
-
                     <Tab.Container id="left-tabs-example" defaultActiveKey="Home">
                         <Row>
                             <Col sm={3}>
@@ -94,7 +101,7 @@ class UserHomePage extends Component {
                             </Col>
                             <Col sm={9}>
                                 <div>
-                                    {"TwitterDB.users[0].displayName"}
+                                    {this.userLoggedInDisplayName()}
                                     <OverlayTrigger trigger="click" placement="right" overlay={popover}>
                                         <span className="options">
                                             <i className="fa fa-bars">
