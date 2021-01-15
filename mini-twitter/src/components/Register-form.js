@@ -6,16 +6,11 @@ import {
     Card
 } from 'react-bootstrap'
 
-import {
-    Link,
-    Redirect,
-    Route
-} from "react-router-dom";
-import Home from './Home';
-
 class RegisterForm extends Component {
+    
     constructor(props) {
         super(props);
+    
         this.state = {
             TwitterDB: '',
             userId: 0,
@@ -27,6 +22,7 @@ class RegisterForm extends Component {
             alert: false
 
         }
+       
         this.assignValueToState = this.assignValueToState.bind(this);
 
     }
