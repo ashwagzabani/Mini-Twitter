@@ -30,134 +30,16 @@ class RegisterForm extends Component {
 
     }
 
-    userLoggedId = () => {
-        if (localStorage.getItem('TwitterDB') == '') {
-            this.setState({
-                userId: 1
-
-            })
-        } else {
-            const TwitterDB = JSON.parse(localStorage.getItem('TwitterDB'));
-            this.setState({
-                userId: TwitterDB.length + 1
-
-            })
-        }
-
-    }
-
     register = (e) => {
         e.preventDefault();
         //call validation method 
         //if validtion ir true => redirect to user home page
         this.validation();
-        //get db from local storage
-        //convert from string to json
-        //check if it's empty
-        //push the new user 
-        //set new db to local storage and convert db from json to string
-        // if (validation()) {
 
-
-
-        // let getTwitterDB;
-        // let userId;
-
-        // if (localStorage.getItem('TwitterDB') == '') {
-        //     console.log("object");
-        //     let arrOfObject = [];
-        //     userId = 1;
-        //     const newUser = this.getNewUser(userId);
-        //     localStorage.setItem('userLoggedInId', userId)
-        //     // this.setState({ userId })
-        //     //getTwitterDB = localStorage.getItem('TwitterDB');
-        //     arrOfObject.push(newUser);
-        //     // if (getTwitterDB === '') {
-        //     //     console.log('object');
-        //     // }
-        //     // let arrOfObject = [];
-        //     // arrOfObject.push(getTwitterDB);
-        //     console.log(arrOfObject);
-        //     localStorage.setItem('TwitterDB', JSON.stringify(arrOfObject))
-        // }
-        // else {
-        //     getTwitterDB = JSON.parse(localStorage.getItem('TwitterDB'));
-        //     // if (getTwitterDB[0] === '') {
-        //     //     getTwitterDB.shift(0);
-        //     //     console.log("donw");
-        //     // }
-        //     //console.log(getTwitterDB.length);
-        //     userId = getTwitterDB.length + 1;
-        //     localStorage.setItem('userLoggedInId', userId)
-        //     const newUser = this.getNewUser(userId)
-        //     this.setState({ userId })
-        //     getTwitterDB.push(newUser);
-        //     console.log(getTwitterDB);
-        //     localStorage.setItem('TwitterDB', JSON.stringify(getTwitterDB));
-        // }
-
-
-
-
-        // this.validation();
-        // const newUser = {
-        //     "id": this.state.userId + 1,
-        //     "userName": this.state.userName,
-        //     "displayName": this.state.displayName,
-        //     "email": this.state.email,
-        //     "password": this.state.password,
-        //     "tweets": {
-        //         "tweet": [
-        //             {
-        //                 "id": 1,
-        //                 "content": "Hello, this my fisrt tweet",
-        //                 "send_time": "2021-01-10 10:00:00 AM"
-        //             },
-        //             {
-        //                 "id": 2,
-        //                 "content": "Good morning",
-        //                 "send_time": "2021-01-10 10:20:00 AM"
-        //             }
-        //         ]
-        //     },
-        //     "favesTweets": [],
-        //     "intersetedTopics": [],
-        //     "followers": [],
-        //     "log_in": false
-        // }
-        // arrOfObject.push(newUser);
-        // //getTwitterDB.push(newUser)
-        // //store the db in local storage - stringify : to convert json to string
-        // localStorage.setItem('TwitterDB', JSON.stringify(arrOfObject));
-        // //to read json from local storage - 1/ get item 2/convert it from string to json
-        // //let b = JSON.parse(localStorage.getItem('notes'))
-        // TwitterDB.users.push(newUser)
         console.log(this.state.TwitterDB);
-        // this.setState({ userId: userId })
-        // this.props.history.push("/user/home")
-        // return <Redirect from="/register" to="/user/home" />
-        // return <Redirect from="/register" render={(props) => <Home state="Hello, " {...props} />} />
-        // return <Redirect from="/register" to={{
-        //     pathname: "/user/home",
-        //     key: userId
-        // }} />
-
-        // />
-
-
-        // }
-        //this.validation();
     }
 
     getNewUser = (id) => {
-        this.userLoggedId();
-        console.log(this.state.displayName);
-        console.log(this.state.userName);
-        console.log(id);
-        this.setState({
-            userId: id
-        })
-        console.log(this.state.userId);
         let newUser = {};
         return newUser = {
             "id": id,
@@ -226,57 +108,8 @@ class RegisterForm extends Component {
         }
     }
 
-    // validation = (fieldName, value) => {
-    //     //check if user name already used
-    //     //check if email already used
-    //     //check if password less than 6 digit
-    //     // let key = 'id';
-    //     // console.log(fieldName);
-    //     // const TwitterDB = JSON.parse(localStorage.getItem('TwitterDB'));
-    //     // TwitterDB.map((element) => {
-    //     //     if (element[fieldName] === value) {
-    //     //         // console.log(element[fieldName]);
-    //     //         console.log("problem");
-    //     //         this.setState({ alert: true })
-    //     //         // console.log(value);
-    //     //     } else {
-    //     //         this.setState({ alert: false })
-    //     //     }
-    //     //     //console.log(element[key]);
-    //     //     // return false;
-
-    //     //     //console.log(element);
-    //     // });
-
-    //     let key = 'id';
-    //     // console.log(fieldName);
-    //     const TwitterDB = JSON.parse(localStorage.getItem('TwitterDB'));
-    //     TwitterDB.map((element) => {
-    //         if (element[fieldName] === value) {
-    //             // console.log(element[fieldName]);
-    //             console.log("problem");
-    //             this.setState({ alert: true })
-    //             // console.log(value);
-    //         } else {
-    //             this.setState({ alert: false })
-    //         }
-    //         //console.log(element[key]);
-    //         // return false;
-
-    //         //console.log(element);
-    //     });
-    // }
-    /**
-     *  TwitterDB: '',
-                userId: 0,
-                userName: '',
-                displayName: '',
-                email: '',
-                password: '',
-                alert: false
-     */
     validation = () => {
-        if (this.state.userName === '' || this.state.displayName === '' || this.state.email === '' || this.state.password === '') {
+        if (this.state.userName === '' || this.state.displayName === '' || this.state.email === '' || (this.state.password !== '' && this.state.password.length < 6)) {
             console.log("please fill the input required");
             //alert error
         } else {
@@ -297,10 +130,7 @@ class RegisterForm extends Component {
                 const getTwitterDB = JSON.parse(localStorage.getItem('TwitterDB'));
                 getTwitterDB.map((element, index) => {
 
-                    // console.log(element.length, index);
-                    // console.log(element.email, this.state.email);
-
-                    if ((getTwitterDB.length - 1 === index) && (element.userName !== this.state.userName) && (element.email !== this.state.email)) {
+                    if (((getTwitterDB.length - 1) === index) && (element.userName !== this.state.userName) && (element.email !== this.state.email)) {
                         console.log("passed");
                         const getTwitterDB = JSON.parse(localStorage.getItem('TwitterDB'));
                         let userId = getTwitterDB.length + 1;
@@ -339,25 +169,15 @@ class RegisterForm extends Component {
             }
         }
     }
+
     assignValueToState = (event) => {
         let fieldName = event.target.name;
-        // console.log(this.state.[fieldName]);
-        // console.log(fieldName);
-
 
         this.setState({
             [fieldName]: event.target.value
         })
         const getTwitterDB = JSON.parse(localStorage.getItem('TwitterDB'));
 
-        // if (this.state.userId <= (getTwitterDB.length + 1)) {
-        //     this.setState({
-        //         userId: getTwitterDB.length + 1
-        //     })
-        // }
-        // if (fieldName !== 'password') {
-        //     this.validation(fieldName, event.target.value);
-        // }
     }
 
     alertMessage = () => {
@@ -389,18 +209,31 @@ class RegisterForm extends Component {
                         <Form.Group>
                             <Form.Label>User Name</Form.Label>
                             <Form.Control type="text" name="userName" value={this.state.userName} placeholder="Enter user name" onChange={this.assignValueToState} />
+                            {this.state.userName === '' ?
+                                (< Form.Text>please fill required field </Form.Text>) : ''}
                         </Form.Group>
                         <Form.Group>
                             <Form.Label>Display Name</Form.Label>
                             <Form.Control type="text" name="displayName" value={this.state.displayName} placeholder="Enter display name" onChange={this.assignValueToState} />
+                            {this.state.displayName === '' ?
+                                (< Form.Text>please fill required field </Form.Text>) : ''}
                         </Form.Group>
                         <Form.Group>
                             <Form.Label>Email address</Form.Label>
                             <Form.Control type="email" name="email" value={this.state.email} placeholder="Enter email" onChange={this.assignValueToState} />
+                            {this.state.email === '' ?
+                                (< Form.Text>please fill required field </Form.Text>) : ''}
                         </Form.Group>
                         <Form.Group>
                             <Form.Label>password</Form.Label>
                             <Form.Control name="password" value={this.state.password} type="password" placeholder="Enter password" onChange={this.assignValueToState} />
+                            {this.state.password === '' ?
+                                (< Form.Text>please fill required field </Form.Text>)
+
+                                : this.state.password.length < 6 ?
+
+                                    (< Form.Text>Your password must be at least 6 characters</Form.Text>) : ''}
+
                         </Form.Group>
                         <Button className="primary" type="submit" onClick={this.register}>Register</Button>
                     </fieldset>
