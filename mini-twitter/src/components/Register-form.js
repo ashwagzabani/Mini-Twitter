@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {
     Form,
-    Alert
+    Alert,
+    Button
 } from 'react-bootstrap'
 
 import {
@@ -48,48 +49,55 @@ class RegisterForm extends Component {
         e.preventDefault();
         //call validation method 
         //if validtion ir true => redirect to user home page
-        
+        this.validation();
         //get db from local storage
         //convert from string to json
         //check if it's empty
         //push the new user 
         //set new db to local storage and convert db from json to string
         // if (validation()) {
-        let getTwitterDB;
-        let userId;
 
-        if (localStorage.getItem('TwitterDB') == '') {
-            console.log("object");
-            let arrOfObject = [];
-            userId = 1;
-            const newUser = this.getNewUser(userId);
-            localStorage.setItem('userLoggedInId', userId)
-            // this.setState({ userId })
-            //getTwitterDB = localStorage.getItem('TwitterDB');
-            arrOfObject.push(newUser);
-            // if (getTwitterDB === '') {
-            //     console.log('object');
-            // }
-            // let arrOfObject = [];
-            // arrOfObject.push(getTwitterDB);
-            console.log(arrOfObject);
-            localStorage.setItem('TwitterDB', JSON.stringify(arrOfObject))
-        }
-        else {
-            getTwitterDB = JSON.parse(localStorage.getItem('TwitterDB'));
-            // if (getTwitterDB[0] === '') {
-            //     getTwitterDB.shift(0);
-            //     console.log("donw");
-            // }
-            //console.log(getTwitterDB.length);
-            userId = getTwitterDB.length + 1;
-            localStorage.setItem('userLoggedInId', userId)
-            const newUser = this.getNewUser(userId)
-            this.setState({ userId })
-            getTwitterDB.push(newUser);
-            console.log(getTwitterDB);
-            localStorage.setItem('TwitterDB', JSON.stringify(getTwitterDB));
-        }
+
+
+        // let getTwitterDB;
+        // let userId;
+
+        // if (localStorage.getItem('TwitterDB') == '') {
+        //     console.log("object");
+        //     let arrOfObject = [];
+        //     userId = 1;
+        //     const newUser = this.getNewUser(userId);
+        //     localStorage.setItem('userLoggedInId', userId)
+        //     // this.setState({ userId })
+        //     //getTwitterDB = localStorage.getItem('TwitterDB');
+        //     arrOfObject.push(newUser);
+        //     // if (getTwitterDB === '') {
+        //     //     console.log('object');
+        //     // }
+        //     // let arrOfObject = [];
+        //     // arrOfObject.push(getTwitterDB);
+        //     console.log(arrOfObject);
+        //     localStorage.setItem('TwitterDB', JSON.stringify(arrOfObject))
+        // }
+        // else {
+        //     getTwitterDB = JSON.parse(localStorage.getItem('TwitterDB'));
+        //     // if (getTwitterDB[0] === '') {
+        //     //     getTwitterDB.shift(0);
+        //     //     console.log("donw");
+        //     // }
+        //     //console.log(getTwitterDB.length);
+        //     userId = getTwitterDB.length + 1;
+        //     localStorage.setItem('userLoggedInId', userId)
+        //     const newUser = this.getNewUser(userId)
+        //     this.setState({ userId })
+        //     getTwitterDB.push(newUser);
+        //     console.log(getTwitterDB);
+        //     localStorage.setItem('TwitterDB', JSON.stringify(getTwitterDB));
+        // }
+
+
+
+
         // this.validation();
         // const newUser = {
         //     "id": this.state.userId + 1,
@@ -125,7 +133,7 @@ class RegisterForm extends Component {
         // TwitterDB.users.push(newUser)
         console.log(this.state.TwitterDB);
         // this.setState({ userId: userId })
-        this.props.history.push("/user/home")
+        // this.props.history.push("/user/home")
         // return <Redirect from="/register" to="/user/home" />
         // return <Redirect from="/register" render={(props) => <Home state="Hello, " {...props} />} />
         // return <Redirect from="/register" to={{
@@ -217,29 +225,104 @@ class RegisterForm extends Component {
         }
     }
 
-    validation = (fieldName, value) => {
-        //check if user name already used
-        //check if email already used
-        //check if password less than 6 digit
-        let key = 'id';
-        console.log(fieldName);
-        const TwitterDB = JSON.parse(localStorage.getItem('TwitterDB'));
-        TwitterDB.map((element) => {
-            if (element[fieldName] === value) {
-                // console.log(element[fieldName]);
-                console.log("problem");
-                this.setState({ alert: true })
-                // console.log(value);
+    // validation = (fieldName, value) => {
+    //     //check if user name already used
+    //     //check if email already used
+    //     //check if password less than 6 digit
+    //     // let key = 'id';
+    //     // console.log(fieldName);
+    //     // const TwitterDB = JSON.parse(localStorage.getItem('TwitterDB'));
+    //     // TwitterDB.map((element) => {
+    //     //     if (element[fieldName] === value) {
+    //     //         // console.log(element[fieldName]);
+    //     //         console.log("problem");
+    //     //         this.setState({ alert: true })
+    //     //         // console.log(value);
+    //     //     } else {
+    //     //         this.setState({ alert: false })
+    //     //     }
+    //     //     //console.log(element[key]);
+    //     //     // return false;
+
+    //     //     //console.log(element);
+    //     // });
+
+    //     let key = 'id';
+    //     // console.log(fieldName);
+    //     const TwitterDB = JSON.parse(localStorage.getItem('TwitterDB'));
+    //     TwitterDB.map((element) => {
+    //         if (element[fieldName] === value) {
+    //             // console.log(element[fieldName]);
+    //             console.log("problem");
+    //             this.setState({ alert: true })
+    //             // console.log(value);
+    //         } else {
+    //             this.setState({ alert: false })
+    //         }
+    //         //console.log(element[key]);
+    //         // return false;
+
+    //         //console.log(element);
+    //     });
+    // }
+    /**
+     *  TwitterDB: '',
+                userId: 0,
+                userName: '',
+                displayName: '',
+                email: '',
+                password: '',
+                alert: false
+     */
+    validation = () => {
+        if (this.state.userName === '' || this.state.displayName === '' || this.state.email === '' || this.state.password === '') {
+            console.log("please fill the input required");
+            //alert error
+        } else {
+
+            if (localStorage.getItem('TwitterDB') == '') {
+                //the TwitterDb is empty,so there is no users to check
+                let arrOfObject = [];
+                let userId = 1;
+                const newUser = this.getNewUser(userId);
+                localStorage.setItem('userLoggedInId', userId)
+                arrOfObject.push(newUser);
+                console.log(arrOfObject);
+                localStorage.setItem('TwitterDB', JSON.stringify(arrOfObject))
+                this.props.history.push("/user/home")
+
             } else {
-                this.setState({ alert: false })
+                // nedd check if the userName or Email already exsist
+                const getTwitterDB = JSON.parse(localStorage.getItem('TwitterDB'));
+                getTwitterDB.map((element, index) => {
+
+                    // console.log(element.length, index);
+                    // console.log(element.email, this.state.email);
+
+                    if ((getTwitterDB.length - 1 === index) && (element.userName !== this.state.userName) && (element.email !== this.state.email)) {
+                        console.log("passed");
+                        const getTwitterDB = JSON.parse(localStorage.getItem('TwitterDB'));
+                        let userId = getTwitterDB.length + 1;
+                        localStorage.setItem('userLoggedInId', userId)
+                        const newUser = this.getNewUser(userId)
+                        this.setState({ userId })
+                        getTwitterDB.push(newUser);
+                        console.log(getTwitterDB);
+                        localStorage.setItem('TwitterDB', JSON.stringify(getTwitterDB));
+                        this.props.history.push("/user/home")
+                    } else if (element.email === this.state.userName) {
+                        console.log("the user Name already exsist");
+                        //alert error
+                    } else if (element.userName === this.state.email) {
+                        console.log("the user Name already exsist");
+                        //alert error
+
+                    }
+
+                })
             }
-            //console.log(element[key]);
-            // return false;
-
-            //console.log(element);
-        });
+        }
     }
-
     assignValueToState = (event) => {
         let fieldName = event.target.name;
         // console.log(this.state.[fieldName]);
@@ -280,7 +363,6 @@ class RegisterForm extends Component {
     }
 
     render() {
-
         return (
             <div className="RegisterForm" >
                 {this.state.alert ? this.alertMessage() : ''}
@@ -290,21 +372,21 @@ class RegisterForm extends Component {
                         <legend>User Information</legend>
                         <Form.Group>
                             <Form.Label>User Name</Form.Label>
-                            <input type="text" name="userName" value={this.state.userName} placeholder="Enter user name" onChange={this.assignValueToState} />
+                            <Form.Control type="text" name="userName" value={this.state.userName} placeholder="Enter user name" onChange={this.assignValueToState} />
                         </Form.Group>
                         <Form.Group>
                             <Form.Label>Display Name</Form.Label>
-                            <input type="text" name="displayName" value={this.state.displayName} placeholder="Enter display name" onChange={this.assignValueToState} />
+                            <Form.Control type="text" name="displayName" value={this.state.displayName} placeholder="Enter display name" onChange={this.assignValueToState} />
                         </Form.Group>
                         <Form.Group>
                             <Form.Label>Email address</Form.Label>
-                            <input type="email" name="email" value={this.state.email} placeholder="Enter email" onChange={this.assignValueToState} />
+                            <Form.Control type="email" name="email" value={this.state.email} placeholder="Enter email" onChange={this.assignValueToState} />
                         </Form.Group>
                         <Form.Group>
                             <Form.Label>password</Form.Label>
-                            <input name="password" value={this.state.password} type="password" placeholder="Enter password" onChange={this.assignValueToState} />
+                            <Form.Control name="password" value={this.state.password} type="password" placeholder="Enter password" onChange={this.assignValueToState} />
                         </Form.Group>
-                        <button className="primary" type="submit" onClick={this.register}><Link>Register</Link></button>
+                        <Button className="primary" type="submit" onClick={this.register}>Register</Button>
                     </fieldset>
                 </form>
 

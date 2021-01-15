@@ -105,7 +105,6 @@ class SignIn extends Component {
                 // console.log("you are register");
                 const getTwitterDB = JSON.parse(localStorage.getItem('TwitterDB'));
                 getTwitterDB.map((element, index) => {
-                    console.log(index);
                     if (element.userName == this.state.userName) {
                         console.log("step check userName ==> pass");
                         if (element.password === this.state.password) {
@@ -118,7 +117,7 @@ class SignIn extends Component {
                             this.setState({ alert: "Your password is error " })
                             this.alertMessage()
                         }
-                    } else if (element.length - 1 === index) {
+                    } else if (getTwitterDB.length - 1 === index) {
                         console.log("Your User Name is error or you are not register");
                         this.setState()
                     }
