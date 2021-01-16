@@ -12,6 +12,17 @@
     color: #0062CC;
 }
 
+.emptyList{
+    top: 16%;
+}
+
+.oneTweet{
+    top: 30%;
+}
+
+.twoTweet{
+    top: 60%;
+}
 @media only screen and (min-width: 350px) and (max-width: 1200px){
     .addIcon{
         right: 20%;

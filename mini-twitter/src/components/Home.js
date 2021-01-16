@@ -90,13 +90,17 @@ class Home extends Component {
     }
 
     render() {
+        const numOfTweets = this.state.userLoggedInDetails.tweets.tweet.length;
+        const style = (numOfTweets === 0) ? 'emptyList' : numOfTweets === 1 ? "oneTweet" : numOfTweets === 2 ? 'twoTweet' : '';
+
         this.handleSignOutClicked();
         return (
             <div className="Home">
                 {parseInt(localStorage.getItem("userLoggedInId")) < 0 ? this.props.history.push("/") : (
                     <>
                         <TweetList getUserDetails={() => this.getUserLoggedInDetails()} user={this.state.userLoggedInDetails} listedTweets={this.props.listedTweets} handleOptionClicked={this.props.handleOptionClicked} />
-                        {this.props.listedTweets === 'all' ? <span className="addIcon" onClick={() => this.handleAddClicked()} ><i className="fa fa-plus-circle"></i></span> : ''}
+                        {/* {this.props.tweets} */}
+                        {this.props.listedTweets === 'all' ? <span className={"addIcon " + style} onClick={() => this.handleAddClicked()} ><i className="fa fa-plus-circle"></i></span> : ''}
                         {/* <NewTweet /> */}
                         {this.state.handleClicked ? <NewTweet handleShow={this.handleShow} showModalStatus={this.state.handleClicked} insertNewTweet={this.insertNewTweet} /> : null}
                     </>

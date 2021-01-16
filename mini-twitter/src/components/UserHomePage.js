@@ -17,7 +17,6 @@ import {
 import Home from './Home';
 import Explore from './Explore';
 import Search from './Search';
-import '../comonents-style/Header.css'
 import '../comonents-style/UserHomePage.css'
 class UserHomePage extends Component {
     constructor() {
@@ -99,13 +98,10 @@ class UserHomePage extends Component {
                                         <Nav.Link as={Link} to="/user/home" eventKey="Home" ><i className="fa fa-home"></i>{'  '}Home</Nav.Link>
                                     </Nav.Item>
                                     <Nav.Item>
-                                        <Nav.Link as={Link} to="/user/explore" eventKey="Explore" ><i className="fa fa-newspaper"></i>{'  '}News</Nav.Link>
+                                        <Nav.Link as={Link} to="/user/explore" eventKey="Explore" ><i className="fa fa-rss"></i>{'  '}News</Nav.Link>
                                     </Nav.Item>
                                     <Nav.Item>
-                                        <Nav.Link as={Link} to="/user/favesTweets" eventKey="favesTweets"><i className="fa fa-star"></i>{'  '}favesTweets</Nav.Link>
-                                    </Nav.Item>
-                                    <Nav.Item>
-                                        <Nav.Link as={Link} to="/user/search" eventKey="search"><i className="fa fa-search"></i>{'  '}search</Nav.Link>
+                                        <Nav.Link as={Link} to="/user/favesTweets" eventKey="favesTweets"><i className="fa fa-star"></i>{'  '}Faves</Nav.Link>
                                     </Nav.Item>
                                 </Nav>
                             </Col>
@@ -130,7 +126,6 @@ class UserHomePage extends Component {
                                     <Route path='/user/home' render={props => <Home {...props} listedTweets='all' handleOptionClicked={this.state.handleTypeClicked} />} />
                                     <Route path='/user/explore' component={Explore} />
                                     <Route path='/user/favesTweets' render={props => <Home {...props} listedTweets='favesTweets' handleOptionClicked={this.state.handleTypeClicked} />} />
-                                    <Route path='/user/search' component={Search} />
                                 </Tab.Content>
                             </Col>
                         </Row>

@@ -14,7 +14,7 @@ class LandingPage extends Component {
     render() {
         return (
             <div className="LandingPage">
-                <div className="header">
+                <div className="header1">
                     <p>MINI-TWITTER</p>
                     <Button className="signIn" variant="primary" as={Link} to="/signIn">Sign In</Button>
 
