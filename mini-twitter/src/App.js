@@ -31,7 +31,7 @@ import TwitterDB from './TwitterDB'
 import LandingPage from './components/Landing-page';
 import RegisterForm from './components/Register-form';
 import UserHomePage from './components/UserHomePage';
-import News from './components/News';
+import HealthNews from './components/HealthNews';
 import SignIn from './components/SignIn';
 
 class App extends Component {

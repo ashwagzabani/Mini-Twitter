@@ -13,7 +13,7 @@ import {
     Link
 } from "react-router-dom";
 import Movies from './Movies';
-import News from './News';
+import HealthNews from './HealthNews';
 import Quets from './Quets';
 import axios from 'axios';
 
@@ -62,8 +62,8 @@ class Explore extends Component {
                             <Movies responseData={this.state.tab1responseData} callBackAxios={this.bringAxios} />
                             {/* <Route path='/expolre/movies' render={props => <Movies {...props} responseData={this.state.responseData} callBackAxios={this.bringAxios} />} /> */}
                         </Tab>
-                        <Tab eventKey="News" title="News" >
-                            <News responseData={this.state.tab2responseData} callBackAxios={this.bringAxios} />
+                        <Tab eventKey="HealthNews" title="Health" >
+                            <HealthNews responseData={this.state.tab2responseData} callBackAxios={this.bringAxios} />
                             {/* <Route path="/explore/news" component={News} /> */}
                         </Tab>
                         <Tab eventKey="quets" title="Quets">
