@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TweetRow from './Tweet-row';
+import '../comonents-style/Tweet-list.css'
 
 class TweetList extends Component {
     constructor(props) {
@@ -257,8 +258,8 @@ class TweetList extends Component {
             <div className="TweetList" >
                 {/* <TweetRow userName={this.state.userName} tweetId={1} tweetContent={this.state.tweet} /> */}
                 { this.state.listedTweets === 'all' ?
-                    this.props.user.tweets.tweet.length !== 0 ? tweets : 'There is no tweets! Start write your tweet Now' :
-                    this.props.user.favesTweets.length !== 0 ? favesTweet : 'There is no Faves Tweets'
+                    this.props.user.tweets.tweet.length !== 0 ? tweets : <p className="nothing">There is no tweets! Start write your tweet Now</p> :
+                    this.props.user.favesTweets.length !== 0 ? favesTweet : <p className="nothing">There is no Faves Tweets</p>
                 }
                 {/* {this.state.listedTweets === 'all' ? this.state.favesTweets.length < 0 ? '' : favesTweet : ''} */}
 

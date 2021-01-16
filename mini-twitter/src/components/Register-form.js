@@ -52,48 +52,7 @@ class RegisterForm extends Component {
             "email": this.state.email,
             "password": this.state.password,
             "tweets": {
-                "tweet": [
-                    {
-                        "id": 1,
-                        "content": "Hello, this my fisrt tweet"
-                    },
-                    {
-                        "id": 2,
-                        "content": "Good morning"
-                    },
-                    {
-                        "id": 3,
-                        "content": "Good afternoon"
-                    },
-                    {
-                        "id": 4,
-                        "content": "hello"
-                    },
-                    {
-                        "id": 5,
-                        "content": "TEST1"
-                    },
-                    {
-                        "id": 6,
-                        "content": "test2"
-                    },
-                    {
-                        "id": 7,
-                        "content": "ashwag"
-                    },
-                    {
-                        "id": 8,
-                        "content": "SEI-14"
-                    },
-                    {
-                        "id": 9,
-                        "content": "today"
-                    },
-                    {
-                        "id": 10,
-                        "content": "today"
-                    }
-                ]
+                "tweet": []
             },
             "favesTweets": []
         }
@@ -120,7 +79,7 @@ class RegisterForm extends Component {
                 localStorage.setItem('userLoggedInId', userId)
                 arrOfObject.push(newUser);
                 localStorage.setItem('TwitterDB', JSON.stringify(arrOfObject))
-                this.props.history.push("/user/home")
+                this.props.history.push("/ashwagzabani/Project-2/user/home")
 
             } else {
 
