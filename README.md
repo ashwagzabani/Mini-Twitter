@@ -1,5 +1,5 @@
 # Mini-Twitter
-Mini-Twitter is a simple version of Twitter website.  It's allow the user to add new tweets and manage them. 
+Mini-Twitter is a simple version of Twitter website.  It's allow the user to add new tweets and manage them. The user information is store in Local Storage.
 
 ### User stories
 - As a user, I should be able to sign up.
