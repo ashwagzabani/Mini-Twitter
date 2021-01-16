@@ -20,5 +20,12 @@ Mini-Twitter is a simple version of Twitter website.  It's allow the user to add
 - Css
 - React Bootstrap
 
+### Future works
+- Allow the user to share his tweets with others
+- Allow the user to add followers
+- Allow the user to see his followers tweets
+- Allow the user to manage his profile 
+
+
 
 
