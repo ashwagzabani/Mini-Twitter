@@ -192,22 +192,26 @@ class TweetList extends Component {
 
         console.log("edit clicked" + tweetId, newContent);
 
-        // this.editTargetTweetOnDb(tweetId);
+        this.editTargetTweetOnDb(tweetId, newContent);
     }
 
-    editTargetTweetOnDb = (favesTweets) => {
-        //get current data in db
-        //set new favestweet array 
+    editTargetTweetOnDb = (tweetId, newContent) => {
+        //get current tweet in db
+        //set new ontent to current tweet  
         //save the db 
 
-        // const getUserDetails = JSON.parse(localStorage.getItem('TwitterDB'));
-        // const userId = parseInt(localStorage.getItem("userLoggedInId")) - 1;
-        // console.log("state: ", favesTweets);
-        // console.log("before edit: ", getUserDetails[userId].favesTweets);
-        // getUserDetails[userId].favesTweets = favesTweets;
+        const getUserDetails = JSON.parse(localStorage.getItem('TwitterDB'));
+        const userId = parseInt(localStorage.getItem("userLoggedInId")) - 1;
+
+        getUserDetails[userId].tweets.tweet.map((element, index) => {
+            if (element.id === tweetId) {
+                element.content = newContent
+                console.log(element);
+            }
+        })
         // console.log("after edit: ", getUserDetails[userId].favesTweets);
-        // localStorage.setItem('TwitterDB', JSON.stringify(getUserDetails));
-        // // window.location.reload();
+        localStorage.setItem('TwitterDB', JSON.stringify(getUserDetails));
+        window.location.reload();
         // this.setState({ favesTweets });
 
     }
