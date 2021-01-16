@@ -78,7 +78,7 @@ class SignIn extends Component {
                         if (element.password === this.state.password) {
                             // console.log("step check password ==> pass");
                             parseInt(localStorage.setItem("userLoggedInId", element.id))
-                            this.props.history.push("/user/home")
+                            this.props.history.push("/ashwagzabani/Project-2/user/home")
                         } else {
                             // console.log("Your password is error ");
                             this.alertMessage();

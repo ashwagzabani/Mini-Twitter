@@ -47,7 +47,7 @@ class NewTweet extends Component {
                         <Modal.Title>Write New Tweet</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <input type="text" name="newTweet" value={this.state.n} placeholder="Write here" onChange={this.assignValueToState} />
+                        <Form.Control type="text" name="newTweet" value={this.state.n} placeholder="Write here" onChange={this.assignValueToState} />
                     </Modal.Body>
                     <Modal.Footer>
                         {/* <Button variant="secondary" onClick={this.handleClose}>
