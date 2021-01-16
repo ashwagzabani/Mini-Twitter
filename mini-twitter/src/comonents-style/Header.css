@@ -4,14 +4,17 @@
     color: rgb(0, 98, 204);
     border-radius: .25rem;
     box-shadow: 2px gray;
+
   }
   
   .header .options{
     position: absolute;
-    right: 22%;
+    right: 5%;
     cursor: pointer;
+
   }
   
   .header-home{
     padding-bottom: 30px;
+
   }

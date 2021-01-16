@@ -83,16 +83,17 @@ class UserHomePage extends Component {
                 <div className="header header-home">
                     <Tab.Container id="left-tabs-example" defaultActiveKey="Home">
                         <Row>
-                            <Col sm={3}> <div className="flex-column-sm">
-                                {parseInt(localStorage.getItem("userLoggedInId")) < 0 ? '' : this.userLoggedInDisplayName()
-                                }
-                                <OverlayTrigger trigger="click" placement="right" overlay={popover}>
-                                    <span className="options">
-                                        <i className="fa fa-bars">
-                                        </i>
-                                    </span>
-                                </OverlayTrigger>
-                            </div>
+                            <Col sm={3}>
+                                <div className="flex-column-sm">
+                                    {parseInt(localStorage.getItem("userLoggedInId")) < 0 ? '' : this.userLoggedInDisplayName()
+                                    }
+                                    <OverlayTrigger trigger="click" placement="right" overlay={popover}>
+                                        <span className="options">
+                                            <i className="fa fa-bars">
+                                            </i>
+                                        </span>
+                                    </OverlayTrigger>
+                                </div>
                                 <Nav variant="pills" className="clg-sm-12 bottom">
                                     <Nav.Item>
                                         <Nav.Link as={Link} to="/user/home" eventKey="Home" ><i className="fa fa-home"></i>{'  '}Home</Nav.Link>
@@ -135,7 +136,7 @@ class UserHomePage extends Component {
                         </Row>
                     </Tab.Container>
                 </div>
-            </div>
+            </div >
         );
     }
 }
