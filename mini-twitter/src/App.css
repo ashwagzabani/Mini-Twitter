@@ -1,7 +1,13 @@
 .App {
-  margin: 0 15%;
+  margin: 0 25%;
 }
 
+@media only screen and (min-width: 350px) and (max-width: 1200px){
+  .App {
+    margin: 0 15%;
+  }
+  
+}
 @media (prefers-reduced-motion: no-preference) {
   .App {
     width: auto;
