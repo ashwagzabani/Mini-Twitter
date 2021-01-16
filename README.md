@@ -50,6 +50,7 @@ Now, you can visit the Mini-Twitter App on `https://localhost:3000/`
 - [Npm](https://www.npmjs.com/)
 - [Axios](https://github.com/axios/axios)
 - [React-Bootstrap](https://react-bootstrap.github.io/)
+- [News Api](https://newsapi.org/)
 
 
 
