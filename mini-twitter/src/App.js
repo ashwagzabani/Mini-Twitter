@@ -55,13 +55,13 @@ class App extends Component {
   render() {
 
     return (
-      <Router>
+      <Router basename="">
         <div className="App">
 
-          <Route exact path="pages.git.generalassemb.ly/Project-2/" component={LandingPage} />
-          <Route path="pages.git.generalassemb.ly/register" component={RegisterForm} />
-          <Route path='pages.git.generalassemb.ly/user' component={UserHomePage} />
-          <Route path='pages.git.generalassemb.ly/signIn' component={SignIn} />
+          <Route exact path="/" component={LandingPage} />
+          <Route path="/register" component={RegisterForm} />
+          <Route path='/user' component={UserHomePage} />
+          <Route path='/signIn' component={SignIn} />
 
           {/* <Route path="/explore/news" render={props => <News {...props} />} /> /> */}
           {/* <Route path='/user/home' render={props => <Home {...props} />} /> */}
