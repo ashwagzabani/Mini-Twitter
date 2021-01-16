@@ -52,7 +52,7 @@ class App extends Component {
       <Router>
         <div className="App">
 
-          <Route exact path="ashwagzabani/Project-2/landingPage" component={LandingPage} />
+          <Route exact path="pages.git.generalassemb.ly/ashwagzabani/Project-2/" component={LandingPage} />
           <Route path='/register' component={RegisterForm} />
           <Route path='/user' component={UserHomePage} />
           <Route path='/signIn' component={SignIn} />
