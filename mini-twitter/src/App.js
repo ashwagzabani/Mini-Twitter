@@ -3,10 +3,15 @@ import './App.css';
 import {
   BrowserRouter as Router,
   Switch,
-  HashRouter,
   Route,
   Link
 } from "react-router-dom";
+import {
+  HashRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";//HashRouter
 import Home from './components/Home';
 import Explore from './components/Explore';
 import Search from './components/Search';
@@ -50,7 +55,7 @@ class App extends Component {
   render() {
 
     return (
-      <HashRouter basename="/">
+      <Router>
         <div className="App">
 
           <Route exact path="/" component={LandingPage} />
@@ -64,7 +69,7 @@ class App extends Component {
           {/* <Route path='/user/search' component={Search} /> */}
           {/* <Route path='/user/favesTweets' component={FavesTweets} /> */}
         </div>
-      </HashRouter>
+      </Router>
     );
   }
 }
