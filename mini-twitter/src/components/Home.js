@@ -96,7 +96,7 @@ class Home extends Component {
         this.handleSignOutClicked();
         return (
             <div className="Home">
-                {parseInt(localStorage.getItem("userLoggedInId")) < 0 ? this.props.history.push("/") : (
+                {parseInt(localStorage.getItem("userLoggedInId")) < 0 ? this.props.history.push("/ashwagzabani/Project-2/") : (
                     <>
                         <TweetList getUserDetails={() => this.getUserLoggedInDetails()} user={this.state.userLoggedInDetails} listedTweets={this.props.listedTweets} handleOptionClicked={this.props.handleOptionClicked} />
                         {/* {this.props.tweets} */}

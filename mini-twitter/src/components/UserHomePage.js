@@ -72,7 +72,7 @@ class UserHomePage extends Component {
                         <Dropdown.Item onClick={this.handleDeleteAllTweetsClicked}>Delete All Tweets</Dropdown.Item>
                         <Dropdown.Item onClick={this.handleDeleteAllFavesTweetsClicked}>Delete All Favorite Tweets</Dropdown.Item>
                     </Dropdown>
-                    <Dropdown.Item as={Link} to="/" onClick={this.handlesignOutClicked}>Sign out</Dropdown.Item>
+                    <Dropdown.Item as={Link} to="/ashwagzabani/Project-2/" onClick={this.handlesignOutClicked}>Sign out</Dropdown.Item>
                 </Dropdown>
             </Popover>
         );
@@ -95,13 +95,13 @@ class UserHomePage extends Component {
                                 </div>
                                 <Nav variant="pills" className="clg-sm-12 bottom">
                                     <Nav.Item>
-                                        <Nav.Link as={Link} to="/user/home" eventKey="Home" ><i className="fa fa-home"></i>{'  '}Home</Nav.Link>
+                                        <Nav.Link as={Link} to="/ashwagzabani/Project-2/user/home" eventKey="Home" ><i className="fa fa-home"></i>{'  '}Home</Nav.Link>
                                     </Nav.Item>
                                     <Nav.Item>
-                                        <Nav.Link as={Link} to="/user/explore" eventKey="Explore" ><i className="fa fa-rss"></i>{'  '}News</Nav.Link>
+                                        <Nav.Link as={Link} to="/ashwagzabani/Project-2/user/explore" eventKey="Explore" ><i className="fa fa-rss"></i>{'  '}News</Nav.Link>
                                     </Nav.Item>
                                     <Nav.Item>
-                                        <Nav.Link as={Link} to="/user/favesTweets" eventKey="favesTweets"><i className="fa fa-star"></i>{'  '}Faves</Nav.Link>
+                                        <Nav.Link as={Link} to="/ashwagzabani/Project-2/user/favesTweets" eventKey="favesTweets"><i className="fa fa-star"></i>{'  '}Faves</Nav.Link>
                                     </Nav.Item>
                                 </Nav>
                             </Col>
@@ -123,9 +123,9 @@ class UserHomePage extends Component {
                                     {/* <Tab.Pane eventKey="second">
                     <Route path='/news' component={News} />
                   </Tab.Pane> */}
-                                    <Route path='/user/home' render={props => <Home {...props} listedTweets='all' handleOptionClicked={this.state.handleTypeClicked} />} />
-                                    <Route path='/user/explore' component={Explore} />
-                                    <Route path='/user/favesTweets' render={props => <Home {...props} listedTweets='favesTweets' handleOptionClicked={this.state.handleTypeClicked} />} />
+                                    <Route path='/ashwagzabani/Project-2/user/home' render={props => <Home {...props} listedTweets='all' handleOptionClicked={this.state.handleTypeClicked} />} />
+                                    <Route path='/ashwagzabani/Project-2/user/explore' component={Explore} />
+                                    <Route path='/ashwagzabani/Project-2/user/favesTweets' render={props => <Home {...props} listedTweets='favesTweets' handleOptionClicked={this.state.handleTypeClicked} />} />
                                 </Tab.Content>
                             </Col>
                         </Row>
