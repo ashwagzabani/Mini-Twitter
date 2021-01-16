@@ -55,7 +55,7 @@ class App extends Component {
   render() {
 
     return (
-      <Router basename="/roject-2/">
+      <Router basename="/ashwagzabani/Project-2/">
         <div className="App">
 
           <Route exact path="/" component={LandingPage} />
