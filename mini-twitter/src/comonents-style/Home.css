@@ -14,6 +14,8 @@
 
 .emptyList{
     top: 16%;
+    padding-bottom: 15%;
+
 }
 
 .oneTweet{
@@ -22,6 +24,7 @@
 
 .twoTweet{
     top: 60%;
+    
 }
 @media only screen and (min-width: 350px) and (max-width: 1200px){
     .addIcon{

@@ -81,10 +81,10 @@ class TweetList extends Component {
 
         // //second check if the target tweet in favesTweet
         const favesTweets = this.state.favesTweets.slice();
-        const faveTweetIndex = favesTweets.indexOf(this.getTweet(tweetId));
+        const faveTweetIndex = favesTweets.indexOf((tweetId));
         console.log(faveTweetIndex);
         // tweetIndex < 0 ? console.log("skip") : console.log("remove");
-        if (tweetIndex < 0) {
+        if (tweetIndex > -1) {
             favesTweets.splice(faveTweetIndex, 1);
         }
 
@@ -103,13 +103,13 @@ class TweetList extends Component {
         getUserDetails[userId].tweets.tweet = tweets;
         // console.log("after edit: ", getUserDetails[0].tweets.tweet);
 
-        // console.log("faves tweets before delete: ", getUserDetails[userId].favesTweets);
+        console.log("faves tweets before delete: ", getUserDetails[userId].favesTweets);
         getUserDetails[userId].favesTweets = favesTweets;
-        // console.log("after faves tweets after delete: ", getUserDetails[userId].favesTweets);
+        console.log("after faves tweets after delete: ", getUserDetails[userId].favesTweets);
 
         localStorage.setItem('TwitterDB', JSON.stringify(getUserDetails));
         this.setState({ favesTweets });
-        // console.log("faves tweets in state: ", this.state.favesTweets);
+        console.log("faves tweets in state: ", this.state.favesTweets);
         window.location.reload();
         this.setState({ tweets });
     }
@@ -120,7 +120,7 @@ class TweetList extends Component {
             // console.log(tweetId);
             // console.log(element.id);
 
-            if (element.id == tweetId) {
+            if (element.id === tweetId) {
                 id = element;
                 // console.log("yes");
 

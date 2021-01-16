@@ -56,6 +56,7 @@ class TweetRow extends Component {
                         <footer>
                             <span>
                                 <i className={"fa fa-star " + isFave} onClick={this.handleFavesClick}></i>
+                                <i className="fa fa-edit" onClick={this.handleDeleteClick}></i>
                                 <i className="fa fa-trash" onClick={this.handleDeleteClick}></i>
                             </span>
                         </footer>

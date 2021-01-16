@@ -2,6 +2,11 @@
   margin: 0 25%;
 }
 
+body{
+  height: 100%;
+  background-color: lightblue;
+}
+
 @media only screen and (min-width: 350px) and (max-width: 1200px){
   .App {
     margin: 0 15%;
