@@ -12,9 +12,9 @@ import {
     Route,
     Link
 } from "react-router-dom";
-import Movies from './Movies';
+import Sports from './Sports';
 import HealthNews from './HealthNews';
-import Quets from './Quets';
+import Technology from './Technology';
 import axios from 'axios';
 
 
@@ -57,35 +57,35 @@ class Explore extends Component {
         return (
             <Router>
                 <div className="Explore container">
-                    <Tabs defaultActiveKey="Movies" id="uncontrolled-tab-example">
-                        <Tab eventKey="Movies" title="Movies">
-                            <Movies responseData={this.state.tab1responseData} callBackAxios={this.bringAxios} />
-                            {/* <Route path='/expolre/movies' render={props => <Movies {...props} responseData={this.state.responseData} callBackAxios={this.bringAxios} />} /> */}
+                    <Tabs defaultActiveKey="Sports" id="uncontrolled-tab-example">
+                        <Tab eventKey="Sports" title="Sports">
+                            <Sports responseData={this.state.tab1responseData} callBackAxios={this.bringAxios} />
+                            {/* <Route path='/expolre/Sports' render={props => <Sports {...props} responseData={this.state.responseData} callBackAxios={this.bringAxios} />} /> */}
                         </Tab>
                         <Tab eventKey="HealthNews" title="Health" >
                             <HealthNews responseData={this.state.tab2responseData} callBackAxios={this.bringAxios} />
                             {/* <Route path="/explore/news" component={News} /> */}
                         </Tab>
-                        <Tab eventKey="quets" title="Quets">
-                            <Quets responseData={this.state.tab3responseData} callBackAxios={this.bringAxios} />
-                            {/* <Route path="/explore/quets" component={Quets} /> */}
+                        <Tab eventKey="Technology" title="Technology">
+                            <Technology responseData={this.state.tab3responseData} callBackAxios={this.bringAxios} />
+                            {/* <Route path="/explore/Technology" component={Technology} /> */}
                         </Tab>
                     </Tabs>
-                    {/* <Tabs id="uncontrolled-tab-example" defaultActiveKey="Movies">
+                    {/* <Tabs id="uncontrolled-tab-example" defaultActiveKey="Sports">
                         <Nav variant="pills" className="flex-column">
                             <Nav.Item>
-                                <Nav.Link as={Link} to="/expolre/movies" eventKey="Movies" ><i className="fa fa-home"></i>{'  '}Movies</Nav.Link>
+                                <Nav.Link as={Link} to="/expolre/Sports" eventKey="Sports" ><i className="fa fa-home"></i>{'  '}Sports</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
-                                <Nav.Link as={Link} to="/explore/quets" eventKey="Quets" ><i className="fa fa-newspaper"></i>{'  '}Quets</Nav.Link>
+                                <Nav.Link as={Link} to="/explore/Technology" eventKey="Technology" ><i className="fa fa-newspaper"></i>{'  '}Technology</Nav.Link>
                             </Nav.Item>
                             <Nav.Item>
                                 <Nav.Link as={Link} to="/explore/news" eventKey="News"><i className="fa fa-star"></i>{'  '}News</Nav.Link>
                             </Nav.Item>
                         </Nav>
                         <Tab.Content>
-                            <Route path='/expolre/movies' component={Movies} />
-                            <Route path='/explore/quets' component={Quets} />
+                            <Route path='/expolre/Sports' component={Sports} />
+                            <Route path='/explore/Technology' component={Technology} />
                             <Route path='/explore/news' component={News} />
                         </Tab.Content>
 

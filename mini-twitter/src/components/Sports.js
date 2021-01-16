@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import AxiosContentRow from './AxiosContentRow';
 
-class Quets extends Component {
+class Sports extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -11,7 +11,7 @@ class Quets extends Component {
     componentDidMount() {
         //http://api.mediastack.com/v1/news?access_key=ddce94e898a6f1e3b3ebad3ef09516c2&categories=sports
         // this.props.callBackAxios('https://ghibliapi.herokuapp.com/films/?limit');
-        this.props.callBackAxios('https://newsapi.org/v2/top-headlines?country=sa&apiKey=6d73526b0ae34c5d9b8d1d9b7ba6c9da&category=technology&pageSize', 'tab3responseData');
+        this.props.callBackAxios('https://newsapi.org/v2/top-headlines?country=sa&apiKey=6d73526b0ae34c5d9b8d1d9b7ba6c9da&category=sports&pageSize', 'tab1responseData');
         // this.setState({ responseData: this.props.responseData })
         // this.bringAxios();
     }
@@ -33,4 +33,4 @@ class Quets extends Component {
     }
 }
 
-export default Quets;
+export default Sports;
