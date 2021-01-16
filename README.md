@@ -1,6 +1,5 @@
 # Mini-Twitter
 Mini-Twitter is a simple version of Twitter website.  It's allow the user to add new tweets and manage them. 
-log in, add new tweets , manage his tweets by fltier them as faves, edit and delete them. In addtion, it's as a simple soical ,so, the user can see recent news about sporst, health and technology
 
 ### User stories
 - As a user, I should be able to sign up.
@@ -13,3 +12,5 @@ log in, add new tweets , manage his tweets by fltier them as faves, edit and del
 - As a user, I should be able to filter my tweets as faves.
 - As a user, I should be able to delete all faves tweets.
 - As a user, I should be able to show recent news in sports, health and technology.
+
+
