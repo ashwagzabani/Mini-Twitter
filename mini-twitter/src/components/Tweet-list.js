@@ -10,6 +10,7 @@ class TweetList extends Component {
             favesTweets: props.user.favesTweets,
             tweets: props.user.tweets.tweet,
             listedTweets: props.listedTweets
+
         }
 
         this.handleFaveToggle = this.handleFaveToggle.bind(this);
@@ -82,7 +83,7 @@ class TweetList extends Component {
         // //second check if the target tweet in favesTweet
         const favesTweets = this.state.favesTweets.slice();
         const faveTweetIndex = favesTweets.indexOf((tweetId));
-        console.log(faveTweetIndex);
+        // console.log(faveTweetIndex);
         // tweetIndex < 0 ? console.log("skip") : console.log("remove");
         if (tweetIndex > -1) {
             favesTweets.splice(faveTweetIndex, 1);
@@ -103,13 +104,13 @@ class TweetList extends Component {
         getUserDetails[userId].tweets.tweet = tweets;
         // console.log("after edit: ", getUserDetails[0].tweets.tweet);
 
-        console.log("faves tweets before delete: ", getUserDetails[userId].favesTweets);
+        // console.log("faves tweets before delete: ", getUserDetails[userId].favesTweets);
         getUserDetails[userId].favesTweets = favesTweets;
-        console.log("after faves tweets after delete: ", getUserDetails[userId].favesTweets);
+        // console.log("after faves tweets after delete: ", getUserDetails[userId].favesTweets);
 
         localStorage.setItem('TwitterDB', JSON.stringify(getUserDetails));
         this.setState({ favesTweets });
-        console.log("faves tweets in state: ", this.state.favesTweets);
+        // console.log("faves tweets in state: ", this.state.favesTweets);
         window.location.reload();
         this.setState({ tweets });
     }
@@ -187,14 +188,38 @@ class TweetList extends Component {
     }
 
 
+    handleEditClicked = (tweetId, newContent) => {
+
+        console.log("edit clicked" + tweetId, newContent);
+
+        // this.editTargetTweetOnDb(tweetId);
+    }
+
+    editTargetTweetOnDb = (favesTweets) => {
+        //get current data in db
+        //set new favestweet array 
+        //save the db 
+
+        // const getUserDetails = JSON.parse(localStorage.getItem('TwitterDB'));
+        // const userId = parseInt(localStorage.getItem("userLoggedInId")) - 1;
+        // console.log("state: ", favesTweets);
+        // console.log("before edit: ", getUserDetails[userId].favesTweets);
+        // getUserDetails[userId].favesTweets = favesTweets;
+        // console.log("after edit: ", getUserDetails[userId].favesTweets);
+        // localStorage.setItem('TwitterDB', JSON.stringify(getUserDetails));
+        // // window.location.reload();
+        // this.setState({ favesTweets });
+
+    }
+
     render() {
         this.handleOptionClicked();
         const tweets = this.props.user.tweets.tweet.map((element, index) => {
             if (this.state.favesTweets.includes(element.id)) {
-                return (<TweetRow userName={this.state.userName} isFaveToggle={this.handleFaveToggle} handleDeleteClick={this.handleDeleteClick} tweetId={element.id} tweetContent={element.content} isFave={true} />
+                return (<TweetRow userName={this.state.userName} isFaveToggle={this.handleFaveToggle} handleDeleteClick={this.handleDeleteClick} handleEditClicked={this.handleEditClicked} tweetId={element.id} tweetContent={element.content} isFave={true} />
                 );
             } else {
-                return (<TweetRow userName={this.state.userName} isFaveToggle={this.handleFaveToggle} handleDeleteClick={this.handleDeleteClick} tweetId={element.id} tweetContent={element.content} isFave={false} />);
+                return (<TweetRow userName={this.state.userName} isFaveToggle={this.handleFaveToggle} handleDeleteClick={this.handleDeleteClick} handleEditClicked={this.handleEditClicked} tweetId={element.id} tweetContent={element.content} isFave={false} />);
             }
         })
 

@@ -1,17 +1,21 @@
 import React, { Component } from 'react';
-import TwitterDB from '../TwitterDB'
+import EditTargetTweet from './EditTargetTweet'
 import '../comonents-style/Tweet-row.css'
 import { Card } from 'react-bootstrap'
+
 
 class TweetRow extends Component {
     constructor(props) {
         super(props);
-        // this.state = {
-        //     displayName: 'ashwag',
-        //     tweets: []
-        // };
+        this.state = {
+            showComponent: false,
+            handleEditClicked: false,
+        };
+
         this.handleFavesClick = this.handleFavesClick.bind(this)
         this.handleDeleteClick = this.handleDeleteClick.bind(this)
+        this.handleEditClick = this.handleEditClick.bind(this)
+
     }
     handleFavesClick = () => {
         console.log("fave icon clicked");
@@ -23,9 +27,30 @@ class TweetRow extends Component {
         this.props.handleDeleteClick(this.props.tweetId)
     }
 
-    componentDidUpdate() {
+
+    handleEditClick = () => {
+        this.setState({
+            showComponent: true,
+            handleEditClicked: true
+        });
+        console.log("edit clicked" + this.props.tweetId);
+
+        // this.editTargetTweetOnDb(tweetId);
+    }
+    handleShow = () => {
+        this.setState({
+            showComponent: false,
+            handleEditClicked: false
+        });
+        // console.log("handleShowModalToggle value :", this.state.showComponent);
+    }
+
+    insertNewTweet = (newContent) => {
+
+        this.props.handleEditClicked(this.props.tweetId, newContent);
 
     }
+
 
     render() {
         //this.getUserLoggedInDetails();
@@ -56,8 +81,10 @@ class TweetRow extends Component {
                         <footer>
                             <span>
                                 <i className={"fa fa-star " + isFave} onClick={this.handleFavesClick}></i>
-                                <i className="fa fa-edit" onClick={this.handleDeleteClick}></i>
+                                <i className="fa fa-edit" onClick={() => this.handleEditClick()}></i>
                                 <i className="fa fa-trash" onClick={this.handleDeleteClick}></i>
+                                {this.state.handleEditClicked ? <EditTargetTweet handleShow={this.handleShow} showModalStatus={this.state.handleEditClicked} insertNewTweetContent={this.insertNewTweet} /> : null}
+
                             </span>
                         </footer>
                     </Card.Body>
