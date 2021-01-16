@@ -7,7 +7,7 @@ import './App.css';
 //   Link
 // } from "react-router-dom";
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Switch,
   Route,
   Link
