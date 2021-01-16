@@ -2,7 +2,7 @@
 Mini-Twitter is a simple version of Twitter website.  It's allow the user to add new tweets and manage them. The user information is store in Local Storage.
 
 ### WireFrames 
-To show wirefrimes of this project click [here](https://drive.google.com/drive/u/0/folders/1iVgSo8WOSIPjL4roLlLOZ8nRiH6DbTak)
+To show wirefrimes of this project click [here](https://drive.google.com/file/d/1JNOGqc4jQwCFth_0Sg8wr5tEJAxS3QE2/view?usp=sharing)
 
 ### User stories
 - As a user, I should be able to sign up.
