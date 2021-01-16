@@ -36,6 +36,12 @@ Now, you can visit the Mini-Twitter App on `https://localhost:3000/`
 - Allow the user to see his followers tweets
 - Allow the user to manage his profile 
 
+### Resources
+- [React](https://ar.reactjs.org/)
+- [Node](https://nodejs.org/en/)
+- [Npm](https://www.npmjs.com/)
+- [Axios](https://github.com/axios/axios)
+- [React-Bootstrap](https://react-bootstrap.github.io/)
 
 
 
