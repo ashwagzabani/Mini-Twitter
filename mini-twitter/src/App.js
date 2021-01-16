@@ -7,7 +7,7 @@ import './App.css';
 //   Link
 // } from "react-router-dom";
 import {
-  HashRouter as Router,
+  HashRouter, BrowserRouter as Router,
   Switch,
   Route,
   Link
@@ -55,11 +55,11 @@ class App extends Component {
   render() {
 
     return (
-      <Router>
+      <Router basename="/">
         <div className="App">
 
-          <Route exact path={`${process.env.PUBLIC_URL}/`} component={LandingPage} />
-          <Route path={`${process.env.PUBLIC_URL}/register`} component={RegisterForm} />
+          <Route exact path="/" component={LandingPage} />
+          <Route path="/register" component={RegisterForm} />
           <Route path='/user' component={UserHomePage} />
           <Route path='/signIn' component={SignIn} />
 
