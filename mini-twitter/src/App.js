@@ -49,10 +49,10 @@ class App extends Component {
   render() {
 
     return (
-      <Router>
+      <HashRouter basename="/">
         <div className="App">
 
-          <Route exact path="pages.git.generalassemb.ly/ashwagzabani/Project-2/" component={LandingPage} />
+          <Route exact path="/" component={LandingPage} />
           <Route path='/register' component={RegisterForm} />
           <Route path='/user' component={UserHomePage} />
           <Route path='/signIn' component={SignIn} />
@@ -63,7 +63,7 @@ class App extends Component {
           {/* <Route path='/user/search' component={Search} /> */}
           {/* <Route path='/user/favesTweets' component={FavesTweets} /> */}
         </div>
-      </Router>
+      </HashRouter>
     );
   }
 }
