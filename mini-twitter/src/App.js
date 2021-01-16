@@ -59,7 +59,7 @@ class App extends Component {
         <div className="App">
 
           <Route exact path={`${process.env.PUBLIC_URL}/`} component={LandingPage} />
-          <Route path='/register' component={RegisterForm} />
+          <Route path={`${process.env.PUBLIC_URL}/register`} component={RegisterForm} />
           <Route path='/user' component={UserHomePage} />
           <Route path='/signIn' component={SignIn} />
 
