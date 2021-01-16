@@ -83,7 +83,7 @@ class TweetRow extends Component {
                                 <i className={"fa fa-star " + isFave} onClick={this.handleFavesClick}></i>
                                 <i className="fa fa-edit" onClick={() => this.handleEditClick()}></i>
                                 <i className="fa fa-trash" onClick={this.handleDeleteClick}></i>
-                                {this.state.handleEditClicked ? <EditTargetTweet handleShow={this.handleShow} showModalStatus={this.state.handleEditClicked} insertNewTweetContent={this.insertNewTweet} /> : null}
+                                {this.state.handleEditClicked ? <EditTargetTweet handleShow={this.handleShow} showModalStatus={this.state.handleEditClicked} currentTweet={this.props.tweetContent} insertNewTweetContent={this.insertNewTweet} /> : null}
 
                             </span>
                         </footer>

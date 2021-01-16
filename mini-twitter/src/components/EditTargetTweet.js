@@ -7,7 +7,7 @@ class NewTweet extends Component {
 
         this.state = {
             show: props.showModalStatus,
-            newContent: ''
+            newContent: props.currentTweet
         }
         this.assignValueToState = this.assignValueToState.bind(this);
 
@@ -30,8 +30,12 @@ class NewTweet extends Component {
     }
 
     getTweetContent = () => {
-        this.props.insertNewTweetContent(this.state.newContent);
-        this.handleClose();
+        if (this.state.newContent === '') {
+            //alert 
+        } else {
+            this.props.insertNewTweetContent(this.state.newContent);
+            this.handleClose();
+        }
     }
 
     render() {
@@ -47,7 +51,9 @@ class NewTweet extends Component {
                         <Modal.Title>Edit Your Tweet Content</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <Form.Control type="text" name="newTweet" value={this.state.newContent} placeholder="Write here" onChange={this.assignValueToState} />
+                        <Form.Control type="text" name="newTweet" value={this.state.newContent} onChange={this.assignValueToState} />
+                        {this.state.newContent === '' ?
+                            (< Form.Text>please fill required field </Form.Text>) : ''}
                     </Modal.Body>
                     <Modal.Footer>
                         {/* <Button variant="secondary" onClick={this.handleClose}>

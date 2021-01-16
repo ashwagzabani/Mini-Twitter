@@ -9,7 +9,8 @@ class TweetList extends Component {
             userName: props.user.userName,
             favesTweets: props.user.favesTweets,
             tweets: props.user.tweets.tweet,
-            listedTweets: props.listedTweets
+            listedTweets: props.listedTweets,
+            currentTweet: ''
 
         }
 
@@ -191,9 +192,9 @@ class TweetList extends Component {
     handleEditClicked = (tweetId, newContent) => {
 
         console.log("edit clicked" + tweetId, newContent);
-
         this.editTargetTweetOnDb(tweetId, newContent);
     }
+
 
     editTargetTweetOnDb = (tweetId, newContent) => {
         //get current tweet in db
