@@ -11,7 +11,7 @@ Mini-Twitter is a simple version of Twitter website.  It's allow the user to add
 - As a user, I should be able to delete all tweets.
 - As a user, I should be able to filter my tweets as faves.
 - As a user, I should be able to delete all faves tweets.
-- As a user, I should be able to show recent news in sports, health and technology.
+- As a user, I should be able to see recent news in sports, health and technology.
 
 ### Technologies
 - React
