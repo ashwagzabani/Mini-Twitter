@@ -55,7 +55,7 @@ class App extends Component {
   render() {
 
     return (
-      <Router>
+      <Router basename="pages.git.generalassemb.ly/">
         <div className="App">
 
           <Route exact path="/" component={LandingPage} />
