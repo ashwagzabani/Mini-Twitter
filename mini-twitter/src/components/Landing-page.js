@@ -16,7 +16,7 @@ class LandingPage extends Component {
             <div className="LandingPage">
                 <div className="header1">
                     <p>MINI-TWITTER</p>
-                    <Button className="signIn" variant="primary" as={Link} to="/ashwagzabani/Project-2/signIn">Sign In</Button>
+                    <Button className="signIn" variant="primary" as={Link} to="/signIn">Sign In</Button>
 
                 </div>
                 <Jumbotron>
@@ -25,7 +25,7 @@ class LandingPage extends Component {
                         Join to a simple social now, enjoy writing your tweets.
                     </p>
                     <p>
-                        <Button variant="primary" as={Link} to="/ashwagzabani/Project-2/register">Join Now</Button>
+                        <Button variant="primary" as={Link} to="/register">Join Now</Button>
                     </p>
                 </Jumbotron>
 

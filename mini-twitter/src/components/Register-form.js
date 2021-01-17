@@ -79,7 +79,7 @@ class RegisterForm extends Component {
                 localStorage.setItem('userLoggedInId', userId)
                 arrOfObject.push(newUser);
                 localStorage.setItem('TwitterDB', JSON.stringify(arrOfObject))
-                this.props.history.push("/ashwagzabani/Project-2/user/home")
+                this.props.history.push("/user/home")
 
             } else {
 
@@ -98,7 +98,7 @@ class RegisterForm extends Component {
                         this.setState({ userId })
                         getTwitterDB.push(newUser);
                         localStorage.setItem('TwitterDB', JSON.stringify(getTwitterDB));
-                        this.props.history.push("/ashwagzabani/Project-2/user/home")
+                        this.props.history.push("/user/home")
 
                     } else {
 
