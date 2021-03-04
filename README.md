@@ -33,7 +33,7 @@ Clone down this repository. You will need `node` and `npm` installed globally on
 `npm start`
 
 ### Demo
-The Mini-Twitter app demo link (here)[https://mini-twitter-react-app.herokuapp.com/]
+The Mini-Twitter app demo link [here](https://mini-twitter-react-app.herokuapp.com/)
 
 Now, you can visit the Mini-Twitter App on `https://localhost:3000/`
 ### Future works
