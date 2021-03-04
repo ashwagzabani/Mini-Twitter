@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import { Jumbotron, Button } from 'react-bootstrap'
 import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
+    BrowserRouter as Link
 } from "react-router-dom";
 import '../comonents-style/Header.css'
 import '../comonents-style/Landing-page.css'

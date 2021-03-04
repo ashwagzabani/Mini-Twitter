@@ -2,8 +2,9 @@
   "name": "mini-twitter",
   "version": "0.1.0",
   "private": true,
-  "engines":{
-	"node":"13.x"
+  "engines": {
+    "node": "13.12.0",
+    "npm": "6.14.10"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.8",
@@ -23,9 +24,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build "
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
@@ -39,14 +38,7 @@
       "not dead",
       "not op_mini all"
     ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "development": []
   },
-  "devDependencies": {
-    "gh-pages": "^3.1.0",
-    "homepage": "https://pages.git.generalassemb.ly/ashwagzabani/Project-2/"
-  }
+  "devDependencies": {}
 }

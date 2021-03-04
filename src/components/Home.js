@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import TweetList from './Tweet-list';
 import '../comonents-style/Home.css'
 import NewTweet from './NewTweet';
-import { Redirect, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 class Home extends Component {
     constructor(props) {
