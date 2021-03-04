@@ -9,11 +9,14 @@ import {
     Dropdown
 } from 'react-bootstrap'
 import {
-    BrowserRouter as Route,
+    BrowserRouter as Router,
+    Switch,
+    Route,
     Link
 } from "react-router-dom";
 import Home from './Home';
 import Explore from './Explore';
+import Search from './Search';
 import '../comonents-style/UserHomePage.css'
 class UserHomePage extends Component {
     constructor() {
